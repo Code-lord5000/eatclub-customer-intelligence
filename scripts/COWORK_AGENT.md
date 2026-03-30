@@ -2,7 +2,7 @@
 
 **Run frequency**: Every 2 days  
 **Runtime**: Claude Cowork (agentic, scheduled)  
-**MCP connections required**: Slack, HubSpot, Atlassian (Jira + Confluence), Granola, Mixpanel, Gmail  
+**MCP connections required**: Slack, HubSpot, Atlassian (Jira + Confluence), Granola, Mixpanel  
 **Output**: Updated Confluence intelligence page + Slack nudge to Adam
 
 ---
@@ -489,9 +489,9 @@ Problems nobody is explicitly raising — surfaced through behavioural patterns,
 
 ---
 
-#### 📧 CS email inbox — category trends
+#### 🎫 CS helpdesk — ticket category trends
 
-*Volume and category breakdown. Updated every run. Change = vs prior period.*
+*HubSpot helpdesk ticket breakdown. Updated every run. Change = vs prior period.*
 
 | Category | This period | Prior period | Change | Flag |
 |---|---|---|---|---|
@@ -507,14 +507,18 @@ Problems nobody is explicitly raising — surfaced through behavioural patterns,
 
 **Volume status**: Normal / ⚠️ Elevated / 🚨 Spike
 
-**Recurring senders this period**
-| Venue / sender | Emails this period | Prior periods | Also flagged in | Risk |
-|---|---|---|---|---|
+**Recurring venues this period**
+| Venue | Tickets this period | Prior periods | AM | Also flagged in | Risk |
+|---|---|---|---|---|---|
 
-**Strongest problem language** (exact words venues used)
-- 
-- 
-- 
+**Churn intent tickets**
+| Venue | AM | Last AM activity | Action needed |
+|---|---|---|---|
+
+**Strongest problem language** (exact words venues used in tickets)
+-
+-
+-
 
 ---
 
@@ -553,69 +557,65 @@ Problems nobody is explicitly raising — surfaced through behavioural patterns,
 
 ---
 
-### 1G. Gmail — CS admin inbox (pre-process before main synthesis)
+### 1G. HubSpot helpdesk — CS ticket intelligence (pre-process before main synthesis)
 
-**Connection**: Use Gmail MCP to access the EatClub CS admin inbox.
+**Connection**: Use HubSpot MCP to access the CS helpdesk ticket pipeline.
 
-This inbox is processed as its own task before signals feed into synthesis. Every email represents a customer who crossed a friction threshold — they went looking for a contact point and wrote something. That's higher-intent signal than a Slack mention.
+CS tickets are processed as their own pre-synthesis task. Every ticket represents a venue or customer who couldn't self-serve, couldn't get resolution through their AM, or hit something broken enough to formally escalate. That's high-intent, high-friction signal — and because it's now in HubSpot, it's structured and queryable rather than raw inbox noise.
 
-**Step 1 — Pull emails from the last 48 hours**
+**Step 1 — Pull tickets from the last 48 hours**
 
-Query the CS inbox for all emails received in the last 48 hours.
-For each email capture:
-- Sender email address and domain (venue identifier)
-- Subject line
-- Body text (full, not truncated)
-- Any existing CS team tags or labels already applied
-- Thread length — is this a reply chain? How many back-and-forths?
-- Date and time received
+Query the HubSpot helpdesk for all tickets created or updated in the last 48 hours. For each ticket capture:
+- Ticket ID and subject
+- Venue / company name and associated AM
+- Existing category / pipeline stage already applied by CS team
+- Ticket body and any CS agent notes
+- Resolution status (open / in progress / closed)
+- Time to first response and time to resolution if closed
+- Whether this is a new ticket or an update to an existing one
 
-**Step 2 — Use existing CS tags as your starting taxonomy**
+**Step 2 — Respect existing CS categorisation as the starting taxonomy**
 
-The CS team has partially tagged emails. Use their existing labels as a foundation:
+The CS team has partially categorised tickets. Use their pipeline stages and labels as a foundation:
 - Accept their categorisation where it exists — don't second-guess it
-- Where no tag exists, classify yourself using the categories below
-- Where a tag exists but seems wrong or incomplete, note the discrepancy — don't override it, flag it
+- Where no category exists, classify yourself using the taxonomy below
+- Where a category seems incomplete or misapplied, note it — don't override, flag it
 
-**Step 3 — Classify every untagged email into one of these categories**
-
-Use the subject line and body text together. Pick the primary category — one per email:
+**Step 3 — Classify uncategorised tickets**
 
 | Category | What it looks like |
 |---|---|
 | **Deal confusion** | Can't enable, can't change, doesn't understand deal settings, wrong deal showing |
 | **Billing / payment** | Invoices, charges, credits, payment failures, debt queries |
-| **App / technical** | Login issues, app not loading, features not working, errors |
-| **Reporting / data** | Can't see their results, confused by metrics, asking for numbers |
-| **Onboarding** | New venue questions, setup help, "how do I" for basic functionality |
-| **AM relationship** | Can't reach their AM, AM hasn't responded, asking who their AM is |
+| **App / technical** | Login issues, features not working, errors, performance |
+| **Reporting / data** | Can't see results, confused by metrics, asking for export |
+| **Onboarding** | New venue setup questions, "how do I" for basic functionality |
+| **AM relationship** | Can't reach AM, AM unresponsive, unclear who their AM is |
 | **Churn intent** | Wants to cancel, pause, or significantly reduce usage |
-| **Competitor mention** | References a competitor by name, asking for comparison |
-| **Compliment / positive** | Positive feedback, thanks, praise |
-| **Other** | Doesn't fit above — note the subject for pattern review |
+| **Competitor mention** | References a competitor by name |
+| **Compliment / positive** | Positive feedback, thanks |
+| **Other** | Doesn't fit above — note subject for pattern review |
 
-**Step 4 — Recurring sender detection**
+**Step 4 — Recurring venue detection**
 
-Cross-reference sender email addresses against:
-- Emails from the prior synthesis period (check /synthesis/ logs for previously flagged senders)
-- Multiple emails from the same sender within this 48-hour window
+Cross-reference venue names against:
+- Tickets from the prior synthesis period (check /synthesis/ logs)
+- Multiple tickets from the same venue within this 48-hour window
+- HubSpot CRM records — is this venue also appearing in deal notes or churn signals?
 
 Flag any venue that:
-- Has emailed more than once in this period (acute frustration — something isn't being resolved)
-- Has appeared in prior synthesis periods (chronic issue — something is repeatedly unresolved)
-- Is also appearing in Slack signals or HubSpot notes this period (friction stack — multiple surfaces)
+- Has submitted more than one ticket this period — acute frustration, something isn't being resolved
+- Has appeared in prior synthesis periods — chronic unresolved issue
+- Is also appearing in Slack signals or Mixpanel silent venue data — friction stack across multiple surfaces
 
-A recurring sender is not just a difficult customer. It's a product failure that keeps regenerating contact.
+**Step 5 — Build the helpdesk signal summary**
 
-**Step 5 — Build the email signal summary**
-
-Before passing to main synthesis, produce a structured summary:
+Before passing to main synthesis, produce this structured summary:
 
 ```
-EMAIL INBOX SUMMARY — {date range}
-Total emails: {n}
-Previously tagged by CS: {n} ({%})
-Classified by agent this run: {n}
+HUBSPOT HELPDESK SUMMARY — {date range}
+Total tickets: {n} new · {n} updated
+CS-categorised: {n} ({%}) · Agent-classified: {n} ({%})
 
 CATEGORY BREAKDOWN:
 Deal confusion:      {n} ({%}) — {change vs prior period: +/- n}
@@ -626,33 +626,35 @@ Onboarding:          {n} ({%}) — {change}
 AM relationship:     {n} ({%}) — {change}
 Churn intent:        {n} ({%}) — {change}
 Competitor mention:  {n} ({%}) — {change}
-Compliment/positive: {n} ({%}) — {change}
 Other:               {n} ({%}) — {change}
 
 VOLUME FLAG: {Normal / ⚠️ Elevated (+>20% vs prior) / 🚨 Spike (+>50% vs prior)}
 
-RECURRING SENDERS:
-- {venue/email}: {n} emails this period · {n} prior periods · also in: {Slack/HubSpot/none}
+RECURRING VENUES:
+- {venue name}: {n} tickets this period · {n} prior periods · AM: {name} · also in: {Slack/Mixpanel/none}
 
-STRONGEST PROBLEM LANGUAGE (direct quotes from email bodies):
-- "{exact phrase}" — {category} — {sender domain}
-- "{exact phrase}" — {category} — {sender domain}
-- "{exact phrase}" — {category} — {sender domain}
-(Max 5 quotes. Pick the most specific, behavioural language — not complaints, but descriptions of what went wrong)
+CHURN INTENT TICKETS:
+- {venue name} — {AM name} — HubSpot last activity: {date} — Risk: {High/Critical}
 
-AGENT CLASSIFICATION NOTES:
-- {any discrepancies with CS tagging worth flagging}
-- {any emails that didn't fit the taxonomy}
+STRONGEST PROBLEM LANGUAGE (exact words from ticket bodies):
+- "{exact phrase}" — {category} — {venue name}
+- "{exact phrase}" — {category} — {venue name}
+- "{exact phrase}" — {category} — {venue name}
+(Max 5. Most specific and behavioural — descriptions of what went wrong, not generic complaints)
+
+CS CATEGORISATION NOTES:
+- {any discrepancies or gaps worth flagging to the CS team}
 ```
 
-This summary is what feeds into the main synthesis — not the raw emails. The agent reads this summary alongside all other Phase 1 signals.
+This summary feeds into main synthesis. Not raw tickets — this structured output only.
 
-**What the email inbox can tell you that nothing else can:**
+**What the helpdesk adds that nothing else provides:**
 
-- **Volume trends** — a 30% spike in deal confusion emails in one period means something changed. Cross-reference with recent Jira deployments.
-- **Category drift** — if "AM relationship" emails are climbing steadily, that's a service model problem, not a product problem. Different owner, same urgency.
-- **The words venues actually use** — not AM paraphrase, not Slack shorthand. The exact language a frustrated venue owner used when they had enough to write an email. This is your best source of unfiltered customer language for problem statements.
-- **Churn intent** — any email in this category is an active churn risk. Cross-reference the sender against HubSpot immediately. If there's no AM activity logged against that venue in 14 days, that's a double-absence. Name them.
+- **Volume and category trends** — a spike in deal confusion tickets after a recent deployment means something broke. Cross-reference with Jira immediately.
+- **AM relationship tickets** — if venues are raising tickets because they can't reach their AM, that's a service model signal worth escalating to Luke, not just a product problem.
+- **Churn intent** — any ticket in this category gets cross-referenced with HubSpot CRM immediately. If the AM has had no logged activity against that venue in 14 days, double-absence alert. Name the venue.
+- **Verbatim venue language** — tickets are written by venues in their own words, unfiltered. This is your cleanest source of the actual language behind problems, invaluable for writing problem statements.
+- **Resolution time patterns** — if a category consistently takes long to resolve, that's either a product gap (no self-serve path) or a CS capacity problem. Both matter.
 
 ---
 
@@ -717,10 +719,10 @@ After the Confluence page is updated, send a short direct message to Adam Glegg.
 
 {1-sentence summary of the most important finding this run}
 
-*{N} signals · {N} emails processed · {N} hidden signals · Mixpanel: {✅ / ⚠️ / ❌}*
+*{N} signals · {N} helpdesk tickets · {N} hidden signals · Mixpanel: {✅ / ⚠️ / ❌}*
 
-{If email volume spike}: 🚨 Email spike — {category} up {%} vs prior period
-{If churn intent emails}: 🚨 {N} churn intent email(s) — venues named in Confluence
+{If ticket volume spike}: 🚨 Helpdesk spike — {category} up {%} vs prior period
+{If churn intent tickets}: 🚨 {N} churn intent ticket(s) — venues named in Confluence
 {If friction stack alerts}: 🚨 {N} venue(s) at churn risk across multiple sources
 {If ready-to-raise}: 🎯 {N} problem(s) ready to raise
 
@@ -758,14 +760,14 @@ Keep it to 5 lines maximum. The point is to pull Adam into Confluence, not to su
 | Venue silent in Mixpanel AND no AM HubSpot note 14+ days | Double-absence — name the venue, near-certain churn precursor |
 | Mixpanel contradicts a strong qualitative signal | Flag as CONFLICTING — surface both to Adam intact, do not resolve |
 | Mixpanel query fails | Note in synthesis log, flag in Slack nudge, do not treat as absence of problem |
-| Email volume spike >50% vs prior period | 🚨 Flag in Slack nudge immediately — something changed |
-| Email volume elevated >20% vs prior period | ⚠️ Note in Confluence, cross-reference with recent deployments |
-| Category spike in single email type | Flag as emerging problem — cross-ref with qualitative signals |
-| Recurring sender: 2+ emails this period | Acute frustration — cross-ref HubSpot, flag by name |
-| Recurring sender: appeared in prior periods | Chronic unresolved issue — escalate in digest |
-| Churn intent email received | Cross-ref HubSpot immediately — if no AM activity 14+ days, double-absence alert |
-| Recurring sender also in Slack or HubSpot | Friction stack — highest churn risk, name the venue |
-| CS tag discrepancy detected | Note in synthesis — CS taxonomy may need updating |
+| Helpdesk ticket volume spike >50% vs prior period | 🚨 Flag in Slack nudge immediately — something changed |
+| Helpdesk ticket volume elevated >20% vs prior period | ⚠️ Note in Confluence, cross-reference with recent deployments |
+| Category spike in single ticket type | Flag as emerging problem — cross-ref with qualitative signals |
+| Recurring venue: 2+ tickets this period | Acute frustration — cross-ref HubSpot CRM, flag by name |
+| Recurring venue: appeared in prior periods | Chronic unresolved issue — escalate in digest |
+| Churn intent ticket received | Cross-ref HubSpot CRM immediately — if no AM activity 14+ days, double-absence alert |
+| Recurring venue also in Slack or Mixpanel | Friction stack — highest churn risk, name the venue |
+| CS categorisation gap detected | Note in synthesis — helpdesk taxonomy may need updating |
 | Signal doesn't fit any OST branch | Flag as potential new branch |
 | No signals from a source | Note the gap — absence of signal ≠ absence of problems |
 
@@ -782,5 +784,5 @@ Keep it to 5 lines maximum. The point is to pull Adam into Confluence, not to su
 - Do not let normalised pain signals drop out because their heat score is low — track them regardless, they compound
 - Do not use Mixpanel data to dismiss or override a strong qualitative signal — it corroborates, it does not arbitrate
 - Do not treat a failed Mixpanel query as confirming there is no behavioural problem — note the gap and move on
-- Do not override CS team email tags — note discrepancies, don't correct them unilaterally
-- Do not summarise email bodies — extract the specific problem language venues used, verbatim
+- Do not override CS team helpdesk categorisation — note discrepancies, don't correct them unilaterally
+- Do not summarise ticket bodies — extract the specific problem language venues used, verbatim

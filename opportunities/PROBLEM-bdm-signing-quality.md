@@ -24,6 +24,12 @@ Venues are being signed with unsustainable deal structures (35% × unlimited off
 
 ## Signal log
 
+### 2026-W14
+| Signal | Source | Mom Test quality | Notes |
+|---|---|---|---|
+| Pizza Da Italia: Early churn — venue uncontactable on same details used to sign up, only made $260 in 3+ weeks before pausing | Slack #churned_or_changed (Mar 30, Tomas McGay) | STRONG | Classic early churn: low revenue, went dark. Sign-up quality issue. |
+| Ambra Spirits Distillery & Cocktail Bar: Owner decided "EC is not the right fit" — "tight margins and increasing costs, want to focus on full paying customers, believe EC devalues their offering to regulars" | Slack #churned_or_changed (Mar 30, Gabriella Szabo) | STRONG | ICP mismatch — premium/cocktail bar brand position conflicts with discount model. Different churn reason from margin complaints: this is brand objection. |
+
 ### 2026-W13
 | Signal | Source | Mom Test quality | Notes |
 |---|---|---|---|
@@ -43,6 +49,7 @@ Venues are being signed with unsustainable deal structures (35% × unlimited off
 
 | Week | Signal count | Sources | Heat | Notes |
 |---|---|---|---|---|
+| 2026-W14 | 2 | Slack #churned_or_changed | 10/12 | New churn signals validate signing quality problem. New churn reason type: brand/ICP mismatch (Ambra) |
 | 2026-W13 | 9 | AM transcript, Granola, Slack #urgent | 10/12 | First run — high signal, strong quality |
 
 **Current status**: 🔴 Rising
@@ -57,6 +64,8 @@ Venues are being signed with unsustainable deal structures (35% × unlimited off
 | Non-ICP venues (bakeries, low-AOV cafes) | Tom's bakery example, Jay's bubble tea | Unknown but flagged repeatedly |
 | AMs inheriting poor signings | All AMs on transcript | Full AM team |
 | ESL venue owners | Nicole's Mandarin-speaking venue portfolio | Subset of new signings |
+| Premium/cocktail bar venues (ICP mismatch) | Ambra Spirits — brand position conflicts with discount model | Unknown — new segment identified |
+| Low-revenue venues that go dark quickly | Pizza Da Italia — $260 in 3+ weeks | Unknown |
 
 ---
 
@@ -97,5 +106,5 @@ Venues are being signed with unsustainable deal structures (35% × unlimited off
 - [ ] IDEA ticket raised → {IDEA-XXX}
 - [ ] In delivery
 
-**Last updated**: 2026-03-28
+**Last updated**: 2026-03-30
 **Owner**: Adam Glegg

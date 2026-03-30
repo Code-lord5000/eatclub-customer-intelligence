@@ -24,6 +24,11 @@ When venues need operational support — terminal exclusions, refunds, menu upda
 
 ## Signal log
 
+### 2026-W14
+| Signal | Source | Mom Test quality | Notes |
+|---|---|---|---|
+| Alyra Cafe: Owner upset — following up on refund, complaining about customers using offers for incorrect methods, has billing questions. CS flagged as ASAP to AM Nader. | Slack #urgent (Mar 30, Jesstoni Santiago) | STRONG | Multi-faceted venue frustration — refund delay + billing confusion + offer misuse. CS routing urgently to AM. |
+
 ### 2026-W13
 | Signal | Source | Mom Test quality | Notes |
 |---|---|---|---|
@@ -44,6 +49,7 @@ When venues need operational support — terminal exclusions, refunds, menu upda
 
 | Week | Signal count | Sources | Heat | Notes |
 |---|---|---|---|---|
+| 2026-W14 | 1 | Slack #urgent | 9/12 | Alyra Cafe adds to pattern. Heat maintained. |
 | 2026-W13 | 10 | AM transcript, Granola, Slack #urgent, Confluence | 9/12 | First run — multi-source, strong quality |
 
 **Current status**: 🔴 Rising
@@ -96,5 +102,5 @@ When venues need operational support — terminal exclusions, refunds, menu upda
 - [ ] IDEA ticket raised → {IDEA-XXX}
 - [ ] In delivery
 
-**Last updated**: 2026-03-28
+**Last updated**: 2026-03-30
 **Owner**: Adam Glegg
