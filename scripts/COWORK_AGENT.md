@@ -2,8 +2,8 @@
 
 **Run frequency**: Every 2 days  
 **Runtime**: Claude Cowork (agentic, scheduled)  
-**MCP connections required**: Slack, HubSpot, Atlassian (Jira + Confluence), Granola  
-**Output**: Updated repo files + Slack digest to Adam
+**MCP connections required**: Slack, HubSpot, Atlassian (Jira + Confluence), Granola, Mixpanel, Gmail  
+**Output**: Updated Confluence intelligence page + Slack nudge to Adam
 
 ---
 
@@ -93,6 +93,90 @@ Pull SD support tickets created or updated in the last 48 hours.
 - Filter: tickets assigned to or flagged for product review
 - Capture: ticket summary, description, reporter, any AM comments
 - Look for recurring issue types — the same ticket category appearing multiple times is a pattern
+
+### 1E. Hidden signals — what nobody is saying out loud
+
+This is the most important and most easily missed signal layer. Declared problems (complaints, tickets, requests) are already being heard by someone. Hidden signals are problems that exist but have never been named — because they feel normal, because nobody knows who to tell, or because the evidence is behavioural rather than verbal.
+
+Hunt for each of the following on every run:
+
+**Workaround language — someone has already given up on the product solving this**
+Search all Slack channels and HubSpot notes for:
+- "we just manually", "we export it to", "we use a spreadsheet for", "we have a workaround", "we figured out a way to", "we just do it outside of", "easier to just", "quicker to just"
+- Every workaround is a silent product failure. Someone built their own solution because ours didn't work. Capture every instance.
+
+**Normalised pain language — problems so chronic they've stopped feeling like problems**
+Search for:
+- "yeah that's just how it works", "venues always ask about that", "that's always been an issue", "we get that a lot", "that's a known thing", "everyone struggles with that", "just tell them to", "just ignore that"
+- When something is described as "just how it is" — that is your biggest opportunity. The person has stopped expecting it to be fixed. That's not acceptance, that's a product failure that became invisible.
+
+**Absence signals from HubSpot — what's not happening**
+- Venues with zero HubSpot activity logged by their AM in 21+ days (not just stagnant deals — no activity at all)
+- AMs with no notes logged in the last 14 days (AM disengagement is a leading indicator of venue churn)
+- Deals that have never had a second contact logged after the first
+- These are not complaints. They are silence. Silence at EatClub almost always precedes churn.
+
+**Volume anomalies in SD tickets — patterns hiding in plain sight**
+Rather than reading individual tickets, look at the category distribution:
+- Are any ticket categories appearing more than twice in the 48-hour window? That's a pattern.
+- Are the same venues filing multiple tickets in a short period? Friction stacking in action.
+- Has a category that was previously quiet suddenly spiked? That's a new problem emerging.
+- Do not just read the tickets — count them by type and look for the shape of the data.
+
+**Language of delegation — AMs solving problems that product should own**
+Search Slack and HubSpot for:
+- "I told the venue to just", "I explained to them that", "I had to walk them through", "I manually updated", "I sorted it out for them", "I fixed it on their behalf"
+- Every time an AM manually fixes something for a venue, that is a product gap disguised as good service. These almost never get raised as product problems because the AM feels good about helping. But at scale it's unsustainable and it means venues are dependent on AM heroics rather than the product.
+
+**The question that keeps getting asked**
+In #am-team specifically — search for questions that have been asked before. If the same type of question appears in different weeks, the product is not answering something that should be self-evident.
+- Compare this run's questions against prior synthesis logs in /synthesis/ to identify recurring question patterns.
+
+### 1F. Mixpanel — behavioural signals (treat with caution)
+
+**Connection**: Try `mcp-eu.mixpanel.com` first. If unavailable or returning no data, fall back to `mcp.mixpanel.com`. Log which endpoint was used in the synthesis log.
+
+**Critical caution — read before querying:**
+Mixpanel instrumentation at EatClub has known gaps. This means:
+- Missing data is not the same as zero activity — always note when a query returns unexpectedly low numbers
+- Never state a Mixpanel finding as fact — always frame as "Mixpanel suggests..." or "behavioural data indicates..."
+- Every Mixpanel signal must be tagged with confidence: HIGH (corroborated by qualitative signal), MEDIUM (plausible, no corroboration), LOW (anomalous, may be instrumentation gap)
+- If a metric looks dramatically different from the prior run, suspect instrumentation before assuming a real behaviour change
+- Do not let a Mixpanel signal override a strong qualitative signal — use it to corroborate, not contradict
+
+**Query 1 — Deal enable / disable rate**
+
+Pull for the last 48 hours and compare against the prior 48-hour period:
+- Event: deal enabled (or equivalent event name in EatClub's schema)
+- Event: deal disabled (or equivalent)
+- Calculate: enable rate, disable rate, and the ratio between them
+- Segment by: venue cohort if possible (new venue <30 days, established, at-risk)
+- Flag if: disable rate has increased >10% vs prior period — this is a leading churn indicator
+- Flag if: enable rate has dropped >10% vs prior period — activation failure signal
+- Flag if: a venue enables then disables within 24 hours — confusion or disappointment signal
+
+What to look for beyond the numbers:
+- Are disables clustered at a particular time of day or day of week? (suggests a specific trigger)
+- Are disables concentrated in a particular venue segment or city? (suggests a segment-specific problem)
+- Is there a cohort of venues that have never enabled a deal despite being onboarded? (activation failure)
+
+**Query 2 — Silent venue % (14+ days no login)**
+
+Pull current count of venues with zero product activity in the last 14 days.
+Compare against: prior run count, and the run before that (drift detection).
+
+- If silent venue % is increasing run-over-run: accelerating disengagement — flag as high priority
+- If silent venue % is stable but high: chronic disengagement — flag as normalised pain
+- If silent venue % has spiked suddenly: something changed — cross-reference with recent Jira deployments and #urgent channel
+
+For silent venues, check if there is a corresponding AM HubSpot note. If the venue is silent AND the AM has not logged contact in 14+ days — this is a double-absence signal and a near-certain churn precursor. Flag these venues by name in the synthesis.
+
+**Handling Mixpanel query failures:**
+If a query returns no data, an error, or implausibly low numbers:
+- Note the failure in the synthesis log with the exact query attempted
+- Do not substitute an assumption — leave the metric blank with a note: "Mixpanel query failed — possible instrumentation gap or connectivity issue"
+- Do not reduce the overall signal confidence of qualitative findings because Mixpanel couldn't corroborate them
+- Flag to Adam in the Slack nudge: "Mixpanel queries failed this run — behavioural layer absent"
 
 ---
 
@@ -247,6 +331,52 @@ For each theme that emerges, score:
 
 **Total heat score**: 4–5 = Low, 6–8 = Medium, 9–12 = High
 
+### Framework 6: Hidden signal classification
+
+Every hidden signal captured in Phase 1E must be classified before it enters synthesis:
+
+| Type | What it means | How to weight it |
+|---|---|---|
+| Workaround | Product failed, user self-solved | Treat as STRONG Mom Test — this is past behaviour, not hypothetical |
+| Normalised pain | Problem so chronic it's invisible | Elevate — these are your highest-leverage opportunities |
+| Absence | Silence where activity should exist | Flag immediately if venue-level — potential churn precursor |
+| Volume anomaly | Pattern hiding in ticket noise | Weight by frequency — 3+ instances = medium signal, 5+ = high |
+| AM delegation | AM heroics masking product gap | Flag as scalability risk — what happens when that AM leaves? |
+| Recurring question | Product not answering something obvious | Check against prior synthesis logs — recurrence = chronic gap |
+
+Hidden signals don't always meet the heat score threshold immediately — especially normalised pain which by definition has low frequency per period. Track them in problem cards regardless. They compound.
+
+### Framework 7: Drift detection — what is slowly getting worse
+
+Compare this run's signals against the last 3 synthesis logs in /synthesis/:
+
+- Are any themes appearing in every run without a corresponding IDEA ticket or delivery ticket? That's a chronic problem being systematically ignored.
+- Is the frequency of any theme increasing week over week? That's acceleration — escalate urgency.
+- Is any theme that had high heat now going quiet? Either it was resolved (check Jira) or it became normalised pain (worse).
+- Are the same venues appearing repeatedly across runs? They are telling you something. Name them in the digest.
+
+Drift cannot be seen in a single 48-hour window. It only appears across runs. This is why the synthesis logs exist — read them before synthesising, not after.
+
+### Framework 8: Mixpanel corroboration — behavioural layer
+
+After qualitative synthesis is complete, cross-reference themes against the Mixpanel data pulled in Phase 1F. The purpose is corroboration only — Mixpanel strengthens or honestly flags uncertainty around qualitative signals. It does not lead, and it does not override.
+
+**Corroboration rules:**
+
+| Qualitative signal | Mixpanel finding | What to do |
+|---|---|---|
+| High heat theme | Behavioural data confirms | Mark HIGH confidence — elevate in Confluence |
+| High heat theme | Query failed or no data | Mark MEDIUM — note instrumentation gap, do not downgrade the qualitative signal |
+| High heat theme | Behavioural data contradicts | Flag as CONFLICTING — do not resolve, surface to Adam with both signals intact |
+| Low heat theme | Behavioural data strongly confirms | Upgrade to MEDIUM — hidden problem being surfaced by data |
+| Low heat theme | Query failed or no data | Remain LOW — insufficient evidence either way |
+
+**Important constraints:**
+- Never use Mixpanel to dismiss a qualitative signal. An AM's direct observation of venue confusion outweighs a clean-looking session metric — the instrumentation may simply not capture the moment of friction.
+- If disable rate is rising but no qualitative signal has surfaced yet, flag as a **behavioural-only signal** — it warrants proactive investigation, not immediate problem card creation. Ask: is anyone else seeing this? What would explain it?
+- If silent venue % has increased but AMs aren't talking about it in Slack, that gap itself is the signal — either AMs don't know, or they know and have normalised it.
+- Always log in the synthesis: which Mixpanel queries ran, which failed, and which returned implausible numbers.
+
 ---
 
 ## Phase 4 — Write back to repo
@@ -314,69 +444,290 @@ Adam then decides which to raise. When he replies, use the Jira Discovery Ticket
 
 ---
 
-## Phase 5 — Send Slack digest to Adam
+## Phase 5 — Update Confluence intelligence page
 
-Use Slack MCP to send a direct message to Adam Glegg with the following digest format:
+Use Atlassian MCP to update (or create if it doesn't exist) a Confluence page titled **"Customer Intelligence — Restaurant Product"** in the EatClub Product space.
+
+This is the primary output of every run. It is a living document — not a report, not a summary. It accumulates and sharpens over time. Every run updates it in place.
+
+**Page structure — maintain exactly this structure on every update:**
+
+---
+
+### 🧠 Customer Intelligence — Restaurant Product
+
+*Last updated: {date} · Next run: {date} · Runs to date: {n}*
+
+---
+
+#### 📡 Signal sources active
+{date range} | Slack ({n} signals) · HubSpot ({n}) · Granola ({n}) · Support ({n}) · Hidden signals ({n})
+
+---
+
+#### 🔥 Live opportunity map
+
+For each active problem card, one row. Sorted by heat score descending. Updated every run.
+
+| Problem | Heat | OST branch | Stage | Recurrence | Delivery status |
+|---|---|---|---|---|---|
+| {problem statement, linked to card} | {score}/12 | {branch} | {Watching/Interview/Discovery/Building} | {New/Recurring N runs/Chronic} | {No coverage/In discovery/Being built/Shipped} |
+
+---
+
+#### 👻 Hidden signals this period
+
+Problems nobody is explicitly raising — surfaced through behavioural patterns, absence, workarounds, and normalised pain.
+
+| Signal type | What was found | Venues/AMs affected | Implication |
+|---|---|---|---|
+| Workaround | {description} | {names if known} | {what product gap this reveals} |
+| Normalised pain | {description} | {names if known} | {what this means at scale} |
+| Absence | {description} | {names if known} | {churn risk level} |
+| AM delegation | {description} | {names if known} | {scalability risk} |
+| Volume anomaly | {description} | {names if known} | {pattern significance} |
+
+---
+
+#### 📧 CS email inbox — category trends
+
+*Volume and category breakdown. Updated every run. Change = vs prior period.*
+
+| Category | This period | Prior period | Change | Flag |
+|---|---|---|---|---|
+| Deal confusion | | | | |
+| Billing / payment | | | | |
+| App / technical | | | | |
+| Reporting / data | | | | |
+| Onboarding | | | | |
+| AM relationship | | | | |
+| Churn intent | | | | |
+| Competitor mention | | | | |
+| **Total** | | | | |
+
+**Volume status**: Normal / ⚠️ Elevated / 🚨 Spike
+
+**Recurring senders this period**
+| Venue / sender | Emails this period | Prior periods | Also flagged in | Risk |
+|---|---|---|---|---|
+
+**Strongest problem language** (exact words venues used)
+- 
+- 
+- 
+
+---
+
+*Updated each run by comparing against prior synthesis logs.*
+
+| Theme | Direction | Runs tracked | Signal count trend | Action needed |
+|---|---|---|---|---|
+| {theme} | 🔴 Accelerating / 🟡 Stable / 🟢 Cooling | {n} | {n → n → n} | {Watch/Escalate/Close} |
+
+---
+
+#### 📊 Mixpanel behavioural layer
+
+*Treat with caution — known instrumentation gaps exist. Always read alongside qualitative signals.*
+
+**Deal enable / disable rate** — last 48 hrs vs prior period
+| Metric | Current | Prior period | Change | Confidence | Notes |
+|---|---|---|---|---|---|
+| Deal enable rate | | | | HIGH / MEDIUM / LOW | |
+| Deal disable rate | | | | HIGH / MEDIUM / LOW | |
+| Enable → disable within 24hrs | | | | HIGH / MEDIUM / LOW | |
+
+**Silent venue %** — venues with zero activity 14+ days
+| Metric | Current | Prior run | Run before | Trend | Confidence |
+|---|---|---|---|---|---|
+| Silent venue count | | | | 🔴 Rising / 🟡 Stable / 🟢 Falling | |
+| Double-absence venues (silent + no AM contact) | | | | | |
+
+**Mixpanel query health this run**
+| Query | Endpoint used | Status | Notes |
+|---|---|---|---|
+| Deal enable/disable | eu / standard | ✅ Success / ⚠️ Failed / ❓ Implausible | |
+| Silent venue % | eu / standard | ✅ Success / ⚠️ Failed / ❓ Implausible | |
+
+*If queries failed: behavioural layer absent this run — qualitative signals carry full weight unmodified.*
+
+---
+
+### 1G. Gmail — CS admin inbox (pre-process before main synthesis)
+
+**Connection**: Use Gmail MCP to access the EatClub CS admin inbox.
+
+This inbox is processed as its own task before signals feed into synthesis. Every email represents a customer who crossed a friction threshold — they went looking for a contact point and wrote something. That's higher-intent signal than a Slack mention.
+
+**Step 1 — Pull emails from the last 48 hours**
+
+Query the CS inbox for all emails received in the last 48 hours.
+For each email capture:
+- Sender email address and domain (venue identifier)
+- Subject line
+- Body text (full, not truncated)
+- Any existing CS team tags or labels already applied
+- Thread length — is this a reply chain? How many back-and-forths?
+- Date and time received
+
+**Step 2 — Use existing CS tags as your starting taxonomy**
+
+The CS team has partially tagged emails. Use their existing labels as a foundation:
+- Accept their categorisation where it exists — don't second-guess it
+- Where no tag exists, classify yourself using the categories below
+- Where a tag exists but seems wrong or incomplete, note the discrepancy — don't override it, flag it
+
+**Step 3 — Classify every untagged email into one of these categories**
+
+Use the subject line and body text together. Pick the primary category — one per email:
+
+| Category | What it looks like |
+|---|---|
+| **Deal confusion** | Can't enable, can't change, doesn't understand deal settings, wrong deal showing |
+| **Billing / payment** | Invoices, charges, credits, payment failures, debt queries |
+| **App / technical** | Login issues, app not loading, features not working, errors |
+| **Reporting / data** | Can't see their results, confused by metrics, asking for numbers |
+| **Onboarding** | New venue questions, setup help, "how do I" for basic functionality |
+| **AM relationship** | Can't reach their AM, AM hasn't responded, asking who their AM is |
+| **Churn intent** | Wants to cancel, pause, or significantly reduce usage |
+| **Competitor mention** | References a competitor by name, asking for comparison |
+| **Compliment / positive** | Positive feedback, thanks, praise |
+| **Other** | Doesn't fit above — note the subject for pattern review |
+
+**Step 4 — Recurring sender detection**
+
+Cross-reference sender email addresses against:
+- Emails from the prior synthesis period (check /synthesis/ logs for previously flagged senders)
+- Multiple emails from the same sender within this 48-hour window
+
+Flag any venue that:
+- Has emailed more than once in this period (acute frustration — something isn't being resolved)
+- Has appeared in prior synthesis periods (chronic issue — something is repeatedly unresolved)
+- Is also appearing in Slack signals or HubSpot notes this period (friction stack — multiple surfaces)
+
+A recurring sender is not just a difficult customer. It's a product failure that keeps regenerating contact.
+
+**Step 5 — Build the email signal summary**
+
+Before passing to main synthesis, produce a structured summary:
 
 ```
-🧠 *Customer Intelligence Update* — {date}
+EMAIL INBOX SUMMARY — {date range}
+Total emails: {n}
+Previously tagged by CS: {n} ({%})
+Classified by agent this run: {n}
 
-*Signals pulled*: {n} Slack · {n} HubSpot · {n} Granola · {n} Support tickets
-*Delivery context loaded*: {n} active Jira tickets · {n} open IDEA tickets · {n} Confluence pages checked
+CATEGORY BREAKDOWN:
+Deal confusion:      {n} ({%}) — {change vs prior period: +/- n}
+Billing/payment:     {n} ({%}) — {change}
+App/technical:       {n} ({%}) — {change}
+Reporting/data:      {n} ({%}) — {change}
+Onboarding:          {n} ({%}) — {change}
+AM relationship:     {n} ({%}) — {change}
+Churn intent:        {n} ({%}) — {change}
+Competitor mention:  {n} ({%}) — {change}
+Compliment/positive: {n} ({%}) — {change}
+Other:               {n} ({%}) — {change}
 
----
+VOLUME FLAG: {Normal / ⚠️ Elevated (+>20% vs prior) / 🚨 Spike (+>50% vs prior)}
 
-🔥 *Rising themes*
+RECURRING SENDERS:
+- {venue/email}: {n} emails this period · {n} prior periods · also in: {Slack/HubSpot/none}
 
-1. *{Theme name}* — Heat: {score}/12
-   {1-sentence problem statement}
-   Sources: {list} · Signals: {n} · {New/Recurring}
-   Delivery status: {Being built / In discovery / Recently shipped / No coverage}
+STRONGEST PROBLEM LANGUAGE (direct quotes from email bodies):
+- "{exact phrase}" — {category} — {sender domain}
+- "{exact phrase}" — {category} — {sender domain}
+- "{exact phrase}" — {category} — {sender domain}
+(Max 5 quotes. Pick the most specific, behavioural language — not complaints, but descriptions of what went wrong)
 
-2. *{Theme name}* — Heat: {score}/12
-   Delivery status: {status}
-
-3. *{Theme name}* — Heat: {score}/12
-   Delivery status: {status}
-
----
-
-🚧 *Delivery gaps* (high-heat signals with no Jira or Confluence coverage)
-{List problems the field is feeling that product has no record of — or "None identified"}
-
-📐 *Scope challenges* (signals contradicting what's been scoped out)
-{List any — or "None identified"}
-
-🔄 *Revisit candidates* (previously deprioritised, new evidence now)
-{List any — or "None identified"}
-
----
-
-⚠️ *Friction stack alerts* (active churn risk)
-{Venues/AMs appearing across multiple sources — or "None this period"}
-
----
-
-📋 *Repo updates*
-· {N} problem cards updated
-· {N} new problem cards created: {names}
-
-🎯 *Ready to raise as IDEA tickets* (your call — reply to action)
-{For each theme meeting the threshold:}
-· *{Theme name}* — Heat {score}/12 · {N} signals · {N} sources
-  "{Suggested ticket title}"
-  Reply *"raise {theme name}"* to create the IDEA ticket
-
----
-
-💡 *Open questions for Adam*
-{What needs human judgment — interview questions to add, decisions to revisit, signals that need context only Adam has}
-
----
-_Next run: {date}_
+AGENT CLASSIFICATION NOTES:
+- {any discrepancies with CS tagging worth flagging}
+- {any emails that didn't fit the taxonomy}
 ```
 
-If there are friction stack alerts, prepend the message with 🚨 and flag it as urgent.
+This summary is what feeds into the main synthesis — not the raw emails. The agent reads this summary alongside all other Phase 1 signals.
+
+**What the email inbox can tell you that nothing else can:**
+
+- **Volume trends** — a 30% spike in deal confusion emails in one period means something changed. Cross-reference with recent Jira deployments.
+- **Category drift** — if "AM relationship" emails are climbing steadily, that's a service model problem, not a product problem. Different owner, same urgency.
+- **The words venues actually use** — not AM paraphrase, not Slack shorthand. The exact language a frustrated venue owner used when they had enough to write an email. This is your best source of unfiltered customer language for problem statements.
+- **Churn intent** — any email in this category is an active churn risk. Cross-reference the sender against HubSpot immediately. If there's no AM activity logged against that venue in 14 days, that's a double-absence. Name them.
+
+---
+
+#### 🚧 Delivery gaps
+
+High-heat problems with no Jira or Confluence coverage. These are invisible to delivery.
+
+| Problem | Heat | Weeks surfacing | Recommended action |
+|---|---|---|---|
+
+---
+
+#### ⚠️ Friction stack alerts
+
+Venues showing compounding signals across multiple sources this period.
+
+| Venue | Sources | Signal types | Risk level |
+|---|---|---|---|
+
+*None this period — update if applicable.*
+
+---
+
+#### 🎯 Ready to raise
+
+Problems that have crossed the threshold (Heat 9+, Strong Mom Test, 2+ sources, no open ticket). Adam decides which to action.
+
+| Problem | Heat | Evidence summary | Suggested ticket title |
+|---|---|---|---|
+
+---
+
+#### 📐 Scope challenges & revisit candidates
+
+| Type | Problem | Evidence | Existing decision/PRD | Recommendation |
+|---|---|---|---|---|
+| Scope challenge | | | | |
+| Revisit candidate | | | | |
+
+---
+
+#### 💡 Open questions
+
+What needs Adam's judgment this period — interview questions to run, decisions to revisit, signals that need context only he has.
+
+---
+
+#### 📋 Run log
+
+| Date | Signals | New cards | Updated cards | Hidden signals | Drift flags | Notes |
+|---|---|---|---|---|---|---|
+| {date} | {n} | {n} | {n} | {n} | {n} | |
+
+---
+
+## Phase 6 — Send Slack nudge to Adam
+
+After the Confluence page is updated, send a short direct message to Adam Glegg. This is a nudge, not a digest — the full intelligence lives in Confluence.
+
+```
+🧠 *Intelligence repo updated* — {date}
+
+{1-sentence summary of the most important finding this run}
+
+*{N} signals · {N} emails processed · {N} hidden signals · Mixpanel: {✅ / ⚠️ / ❌}*
+
+{If email volume spike}: 🚨 Email spike — {category} up {%} vs prior period
+{If churn intent emails}: 🚨 {N} churn intent email(s) — venues named in Confluence
+{If friction stack alerts}: 🚨 {N} venue(s) at churn risk across multiple sources
+{If ready-to-raise}: 🎯 {N} problem(s) ready to raise
+
+→ {Confluence page link}
+```
+
+Keep it to 5 lines maximum. The point is to pull Adam into Confluence, not to summarise it in Slack.
 
 ---
 
@@ -384,19 +735,38 @@ If there are friction stack alerts, prepend the message with 🚨 and flag it as
 
 | Condition | Action |
 |---|---|
-| New signal maps to existing problem card | Append to card, update heat |
-| New theme, 2+ signals | Create new problem card |
-| Heat 9+, Strong Mom Test, 2+ sources, no open ticket | Prepare ready-to-raise brief — flag in digest for Adam's decision |
+| New signal maps to existing problem card | Append to card, update heat, update Confluence table |
+| New theme, 2+ signals | Create new problem card, add to Confluence opportunity map |
+| Heat 9+, Strong Mom Test, 2+ sources, no open ticket | Add to Confluence "Ready to raise" table, nudge Adam in Slack |
 | Signal maps to active REST delivery ticket | Note as "strengthening active work" — no new ticket |
 | Signal maps to open IDEA ticket | Add evidence to that ticket via comment — no new ticket |
-| Signal maps to recently shipped work | Flag as post-release feedback — high priority for Adam to review |
-| Signal maps to something blocked in Jira | Escalation signal — note in digest with ticket reference |
-| Signal contradicts scope of an existing PRD | Flag as "scope challenge" — Adam needs to know |
-| Signal contradicts a prior deprioritisation decision | Flag as "revisit candidate" with new evidence |
-| High-heat signal with zero Jira/Confluence coverage | Highest priority flag — "delivery gap" in digest |
-| Venue appears in 2+ sources this period | Friction stack alert in digest |
+| Signal maps to recently shipped work | Flag as post-release feedback in Confluence |
+| Signal maps to something blocked in Jira | Escalation signal — note in Confluence and Slack nudge |
+| Signal contradicts scope of an existing PRD | Flag as "scope challenge" in Confluence |
+| Signal contradicts a prior deprioritisation | Flag as "revisit candidate" in Confluence |
+| High-heat signal with zero Jira/Confluence coverage | "Delivery gap" in Confluence — highest priority |
+| Workaround language detected | Treat as STRONG signal — add to hidden signals table |
+| Normalised pain language detected | Elevate — add to hidden signals table, track across runs |
+| Absence detected (venue/AM silence) | Flag in hidden signals table, check against churn signals |
+| AM delegation language detected | Hidden signal — flag scalability risk |
+| Volume anomaly in SD tickets | Pattern signal — add to hidden signals with frequency count |
+| Same theme appearing in 3+ consecutive runs | Mark as Chronic in drift table — escalate urgency |
+| Theme frequency increasing across runs | Mark as Accelerating in drift table |
+| Venue appearing in 2+ sources this period | Friction stack alert — Confluence + Slack nudge |
+| Mixpanel disable rate rising >10% vs prior period | Behavioural signal — flag in Confluence, cross-ref qualitative |
+| Silent venue % rising run-over-run | Accelerating disengagement — flag in drift table |
+| Venue silent in Mixpanel AND no AM HubSpot note 14+ days | Double-absence — name the venue, near-certain churn precursor |
+| Mixpanel contradicts a strong qualitative signal | Flag as CONFLICTING — surface both to Adam intact, do not resolve |
+| Mixpanel query fails | Note in synthesis log, flag in Slack nudge, do not treat as absence of problem |
+| Email volume spike >50% vs prior period | 🚨 Flag in Slack nudge immediately — something changed |
+| Email volume elevated >20% vs prior period | ⚠️ Note in Confluence, cross-reference with recent deployments |
+| Category spike in single email type | Flag as emerging problem — cross-ref with qualitative signals |
+| Recurring sender: 2+ emails this period | Acute frustration — cross-ref HubSpot, flag by name |
+| Recurring sender: appeared in prior periods | Chronic unresolved issue — escalate in digest |
+| Churn intent email received | Cross-ref HubSpot immediately — if no AM activity 14+ days, double-absence alert |
+| Recurring sender also in Slack or HubSpot | Friction stack — highest churn risk, name the venue |
+| CS tag discrepancy detected | Note in synthesis — CS taxonomy may need updating |
 | Signal doesn't fit any OST branch | Flag as potential new branch |
-| All signals from single source only | Weak signal set — note in digest |
 | No signals from a source | Note the gap — absence of signal ≠ absence of problems |
 
 ---
@@ -404,7 +774,13 @@ If there are friction stack alerts, prepend the message with 🚨 and flag it as
 ## What you do NOT do
 
 - Do not create Jira tickets — ever. Surface the intelligence, let Adam decide what gets raised
+- Do not treat absence of declared problems as absence of problems — always hunt for hidden signals
+- Do not synthesise each run in isolation — always read prior synthesis logs for drift detection
 - Do not engage with solution-shaped signals at face value — always translate to the underlying problem
 - Do not summarise meeting notes — extract signals from them
-- Do not assume silence in a channel means no problems — note the gap
 - Do not merge two distinct problems into one card to keep the repo tidy — keep them separate, frequency is data
+- Do not let normalised pain signals drop out because their heat score is low — track them regardless, they compound
+- Do not use Mixpanel data to dismiss or override a strong qualitative signal — it corroborates, it does not arbitrate
+- Do not treat a failed Mixpanel query as confirming there is no behavioural problem — note the gap and move on
+- Do not override CS team email tags — note discrepancies, don't correct them unilaterally
+- Do not summarise email bodies — extract the specific problem language venues used, verbatim
