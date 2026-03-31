@@ -24,7 +24,18 @@ Customers cannot reliably set up or use the EatClub payment card — encounterin
 
 ## Signal log
 
-### 2026-W14
+### 2026-W14b (Mar 30)
+| Signal | Source | Mom Test quality | Notes |
+|---|---|---|---|
+| H M at Homeboy Bar (London): FAILED AUTH x2 for £60.18 (insufficient_funds), then submitted refund for £88.31 — "card didn't work, I had enough money" | Slack #ecpayuk-ops (Mar 30) | STRONG | Same consumer, repeated failure, explicit "card didn't work" + contradicts decline reason |
+| William Franzén at AperiPasta Prosecco Bar: FAILED AUTH £45.70 (insufficient_funds) + Stripe decline $71.85 | Slack #ecpayuk-ops (Mar 30) | MEDIUM | Consumer-side (insufficient funds) but generates venue-impacting decline |
+| Gabriel Banner at Tacacho @ Van Gogh Cottage: FAILED AUTH £26.54 (decline reason: 100) + Stripe decline x2 $36.50 | Slack #ecpayuk-ops (Mar 30) | MEDIUM | Unusual decline code (100), repeated failures |
+| Eat Thai Paddington: "venue does not have a successful transaction for today, I disabled them for now, awaiting response from HS" | Slack #urgent (Mar 30, Jesstoni Santiago) | STRONG | Payment failure caused venue to be DISABLED — direct impact on venue operations |
+| Refund request was MISSED by support team — Jeroen had to ask Blessie to check, found it unprocessed | Slack #ecpayuk-ops (Mar 30, Jeroen → Blessie) | STRONG | Refund process gap — consumer waited longer because request fell through cracks |
+| SD-699/572/337/165: All 4 EC Card setup tickets STILL Blocked Internally — no status change since last run | Jira SD (Mar 30) | STRONG | Chronic blockers, no resolution progress |
+| Miryu Numao at Noisy Oyster: "venue closes at 4:00 but I chose to arrive at 5:30" — venue info accuracy issue causing failed dining experiences | Slack #ecpayuk-ops (Mar 30) | MEDIUM | Not card-specific but venue data accuracy affects consumer experience |
+
+### 2026-W14a (Mar 28-30 — prior run)
 | Signal | Source | Mom Test quality | Notes |
 |---|---|---|---|
 | SD-699: Customer cannot link EC card to Apple Pay — error message on setup | Jira SD (Blocked Internally) | STRONG | Specific failure, ticket blocked |
@@ -44,7 +55,8 @@ Customers cannot reliably set up or use the EatClub payment card — encounterin
 
 | Week | Signal count | Sources | Heat | Notes |
 |---|---|---|---|---|
-| 2026-W14 | 10+ | Jira SD, Slack #ecpayuk-ops | 9/12 | First identification — high volume, multi-source |
+| 2026-W14b | 7 | Jira SD, Slack #ecpayuk-ops, Slack #urgent | 9/12 | Continuing — new UK payment failures, Eat Thai disabled, missed refund. 4 SD tickets still blocked. |
+| 2026-W14a | 10+ | Jira SD, Slack #ecpayuk-ops | 9/12 | First identification — high volume, multi-source |
 
 **Current status**: 🔴 Rising — 4 of 7 active SD tickets are card setup issues, ALL blocked internally
 

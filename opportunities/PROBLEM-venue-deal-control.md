@@ -24,7 +24,22 @@ Venues cannot easily manage their deals, menus, and operational settings through
 
 ## Signal log
 
-### 2026-W14
+### 2026-W14b (Mar 30)
+| Signal | Source | Mom Test quality | Notes |
+|---|---|---|---|
+| SD-700: Petit Bistro & Wine Bar — venue/staff admin CANNOT edit offers for the day. AM Elliot also tried, no luck. Created new offer attempt also failed. | Jira SD (New, Mar 30) | STRONG | Self-serve is technically BROKEN, not just limited. AM also blocked. |
+| Barrel N Basket: HS wants ALL offers reduced to 20% ASAP. CS left ticket. | Slack #urgent (Mar 30, Jesstoni Santiago) | MEDIUM | Urgent discount reduction routed through CS |
+| Chicken Bandits: "would like to reduce deals to just 10% as they only have low profit ASAP" | Slack #urgent (Mar 30, Lyann Bayno) | STRONG | Explicit margin pressure — venue needs immediate control |
+| Lilong by Taste of Shanghai: Change deal time 13:30–18:00 → 13:30–17:00 | Slack #urgent (Mar 30, Jesstoni Santiago) | MEDIUM | Time change routed through CS |
+| The Maya Lounge: Modify seating time 3hrs → 90min. "Owner was very upset customers redeem offers too late during peak hours and not supporting their business." | Slack #churned_or_changed (Mar 30, Elodie Fitzsimmons) | STRONG | Peak hour friction — setup doesn't match venue operating reality |
+| Burwood Teppanyaki House: Delete offer Mon/All Day/20%/DI. Reason: staffIssue | Slack #urgent (Mar 30, ECPay bot) | MEDIUM | Staff capacity driving deal change |
+| JA Square: Delete offer Wed/All Day/30%/DI. Reason: badTime | Slack #urgent (Mar 30, ECPay bot) | MEDIUM | Timing mismatch |
+| Polly Bar: Asked to remove offers for this week, added to HDS until Monday | Slack #urgent (Mar 30, Victoria Toledo) | MEDIUM | Temporary pause routed through AM |
+| Kane Russell: "right now I only have access to do NCI. RCI needs to be activated by the account themselves" — admin tool limitation | Slack #churned_or_changed (Mar 30) | MEDIUM | Internal tooling gap — CS can't execute all deal types |
+| Emma Viezzi asks Luke: "Do we have any guidelines on reducing seating time to 90 mins?" — no documented process | Slack #churned_or_changed (Mar 30) | MEDIUM | Process gap for common venue request |
+| 6+ ECPay bot deal edit/delete alerts in single afternoon session | Slack #urgent (Mar 30) | MEDIUM | Continuing high volume of portal-initiated changes |
+
+### 2026-W14a (Mar 28-30 — prior run)
 | Signal | Source | Mom Test quality | Notes |
 |---|---|---|---|
 | Punch Lane Wine Bar: Venue requested to remove 3pm-5pm recurring offer and change deal timing to 12pm-4pm | Slack #urgent (Mar 30, Nestor) | MEDIUM | Deal timing change routed through CS |
@@ -49,10 +64,11 @@ Venues cannot easily manage their deals, menus, and operational settings through
 
 | Week | Signal count | Sources | Heat | Notes |
 |---|---|---|---|---|
-| 2026-W14 | 3 | Slack #urgent | 8/12 | Steady volume — deal change requests continuing |
+| 2026-W14b | 11 | Slack #urgent, #churned_or_changed, Jira SD | 10/12 | ESCALATING — SD-700 confirms self-serve is technically broken. 11 signals, 3 sources. |
+| 2026-W14a | 3 | Slack #urgent | 8/12 | Steady volume — deal change requests continuing |
 | 2026-W13 | 8 | Slack #urgent, Jira SD, Granola | 8/12 | First run — high volume, medium quality |
 
-**Current status**: 🟡 Stable — chronic background signal
+**Current status**: 🔴 Rising — SD-700 confirms self-serve is broken, not just limited. Heat rising to 10/12.
 
 ---
 

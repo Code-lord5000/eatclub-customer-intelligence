@@ -19,19 +19,22 @@ Framed as: increase the number of venues that find enough value in EatClub to st
 
 _Venues are losing trust or motivation to engage because the product makes routine tasks harder than they should be._
 
-**Signal heat this period**: 🔴 High (26/12 combined across sub-problems — new card added)
+**Signal heat this period**: 🔴🔴 CRITICAL (36/12 combined — deal control ESCALATING, new T&C friction card)
 **Active problem cards**:
-- /opportunities/PROBLEM-ec-card-payment-reliability.md (Heat 9/12) ⚠️ NEW — DELIVERY GAP
-- /opportunities/PROBLEM-support-response-time.md (Heat 9/12)
-- /opportunities/PROBLEM-venue-deal-control.md (Heat 8/12)
+- /opportunities/PROBLEM-venue-deal-control.md (Heat 10/12) ⬆️ UP from 8 — SD-700 confirms self-serve is technically broken
+- /opportunities/PROBLEM-ec-card-payment-reliability.md (Heat 9/12) — stable, 4 SD tickets still blocked
+- /opportunities/PROBLEM-support-response-time.md (Heat 9/12) — SD-700 + SD-703 + missed refund
 - /opportunities/PROBLEM-settlement-payment-failures.md (Heat 8/12)
+- /opportunities/PROBLEM-tc-friction-venue-trust.md (Heat 7/12) ⚠️ NEW — high-performing venues at churn risk from T&C friction
 
 **Sub-opportunities surfacing from signals**:
 - [x] Support response SLA: venues waiting weeks for terminal exclusions, refunds, menu updates — eroding trust
-- [x] Self-serve deal management: high volume of manual change requests reveals PP friction
+- [x] Self-serve deal management: SD-700 confirms self-serve is broken (not just limited). High volume of manual change requests continues
 - [x] Settlement timing & failure detection: manual monitoring, all-platform Monday settlement crunch
-- [x] EC Card / payment reliability: 4 of 7 active SD tickets are card setup issues, all blocked internally. UK payment failures high volume.
+- [x] EC Card / payment reliability: 4 of 7 active SD tickets are card setup issues, all blocked internally. UK payment failures continuing.
+- [x] T&C friction: Hayashi + Como Garden at extreme churn risk despite high performance. Rebates being offered as relationship management.
 - [ ] Venue gaming / T&C enforcement: Rao's Bar giving inflated menu to EC users (emerging, watch)
+- [ ] Venue info accuracy: Noisy Oyster — venue hours wrong, customer arrived to closed door (NEW signal W14b)
 
 ---
 
@@ -39,16 +42,18 @@ _Venues are losing trust or motivation to engage because the product makes routi
 
 _Venues aren't reaching the "aha moment" — first successful deal, first tables filled — before they disengage._
 
-**Signal heat this period**: 🔴 High (10/12) — new churn signals validate
+**Signal heat this period**: 🔴🔴 CRITICAL (12/12) — highest heat ever. Failed churn save + 3 explicit ICP churns + Granola meeting mapping onboarding bottlenecks
 **Active problem cards**:
-- /opportunities/PROBLEM-bdm-signing-quality.md (Heat 10/12)
+- /opportunities/PROBLEM-bdm-signing-quality.md (Heat 12/12) ⬆️ UP from 10 — CRITICAL
 
 **Sub-opportunities surfacing from signals**:
-- [x] BDM signing quality: venues signed at unsustainable deals (35% unlimited), non-ICP venues, missing data
-- [x] Week 6-7 churn cliff: predictable drop point when initial excitement fades and cash flow pressure hits
+- [x] BDM signing quality: venues signed at unsustainable deals, non-ICP venues, missing data
+- [x] Week 6-7 churn cliff: predictable drop point when initial excitement fades
+- [x] ICP / brand mismatch at sign-up: Ambra Spirits, Little B by Bruno&Co (regulars exploit deals for coffee)
+- [x] Early churn from low-activity venues: Pizza Da Italia, That Viet Place (FAILED churn save)
+- [x] Post-contract onboarding bottleneck: 9 Manila staff manual menu digitization, photo quality issues, go-live preferences friction (NEW — Granola W14b)
 - [ ] Cuisine-specific onboarding: one-size-fits-all approach doesn't work across venue types
-- [ ] ICP / brand mismatch at sign-up: Ambra Spirits churned because "EC devalues offering to regulars" — premium venues reject discount positioning (NEW signal W14)
-- [ ] Early churn from low-activity venues: Pizza Da Italia made $260 in 3+ weeks, went dark (NEW signal W14)
+- [ ] Ghost kitchen / wrong venue type selection: Bema Burgers replaced by better venue from same group (NEW W14b)
 
 ---
 
@@ -61,6 +66,7 @@ _Venues can't see whether EatClub is working for them, so they make churn decisi
 
 **Sub-opportunities surfacing from signals**:
 - [ ] Venue performance visibility (indirect signal: Insights page net revenue fix recently shipped REST-204)
+- [ ] Customer.io survey delivery in progress (REST-243 In Review) — could generate value perception data
 
 ---
 
@@ -74,7 +80,8 @@ _Multi-venue operators can't manage their EatClub presence at the portfolio leve
 **Sub-opportunities surfacing from signals**:
 - [ ] Group account linking: Nicole's embarrassment at not seeing grouped venues
 - [ ] Missing contact data across multi-venue portfolios
-- [ ] Multi-venue deal restructuring: Famished Wolf (4 venues) coordinating deal changes through CS (NEW signal W14)
+- [x] Multi-venue deal restructuring: Famished Wolf (4 venues) — now settled on 25% x 10/day + 35% x 2/day after NCI boost deletion
+- [ ] Granola meeting: group signup form redesign identified as needed (NEW W14b)
 
 ---
 
@@ -82,7 +89,7 @@ _Multi-venue operators can't manage their EatClub presence at the portfolio leve
 
 _AMs are spending time on manual tasks that reduce the time they have to add genuine value to venues._
 
-**Signal heat this period**: 🔴 High (19/12 combined — Sam Benjamin's RGA manifesto validates direction)
+**Signal heat this period**: 🔴 High (19/12 combined — stable)
 **Active problem cards**:
 - /opportunities/PROBLEM-deal-score-trust.md (Heat 11/12) ⚠️ POST-RELEASE FEEDBACK
 - /opportunities/PROBLEM-commission-dispute-process.md (Heat 8/12)
@@ -92,7 +99,8 @@ _AMs are spending time on manual tasks that reduce the time they have to add gen
 - [x] Commission dispute process: no transparent verification, disputes expire, AMs lose pay
 - [x] Churn save penalty: saving venues from churn = negative deal score impact, perverse incentive
 - [ ] AM wins visibility: no way to prove saves, upgrades, or loyalty sign-ups reliably
-- [ ] Non-RGA work consuming AM/BDM time: Sam Benjamin announced internal AI tool being built to remove non-RGA work — validates problem, question is whether this overlaps IDEA-344/348/349 (NEW signal W14)
+- [ ] Non-RGA work consuming AM/BDM time: Sam Benjamin's internal AI tool — no new signals this period
+- [ ] Kane Russell admin limitations: "right now I only have access to do NCI. RCI needs to be activated by the account themselves" (NEW W14b)
 
 ---
 
@@ -108,12 +116,12 @@ The OST should feel like it's growing toward you from the data, not being impose
 
 ---
 
-## Branch priority — last updated 2026-03-30
+## Branch priority — last updated 2026-03-30 (run 2)
 
 | Branch | Heat | Problem cards | Discovery tickets | Notes |
 |---|---|---|---|---|
-| Core venue friction | 🔴 26/12 | 4 | IDEA-291, IDEA-356, IDEA-353 | Highest heat — NEW EC Card reliability card (9/12). 4 of 7 SD tickets blocked. |
-| AM efficiency | 🔴 19/12 | 2 | IDEA-344/348/349 (AM Tooling) | Stable high heat. Sam Benjamin building parallel AI/RGA tool — scope overlap question. |
-| Onboarding | 🔴 10/12 | 1 | None — **DELIVERY GAP** | BDM signing quality still zero Jira coverage. New churn signals: ICP mismatch (Ambra), early churn (Pizza Da Italia). |
-| Enterprise/Groups | 🟡 6/12 | 0 | IDEA-329 (Groups Onboarding) | Famished Wolf 4-venue deal restructure adds signal. |
-| Value surfacing | ⚪ Low | 0 | IDEA-210, IDEA-232 (AT V2) | No direct signals. REST-204 (net revenue fix) recently shipped. |
+| Core venue friction | 🔴🔴 36/12 | 5 | IDEA-291, IDEA-356, IDEA-353 | NEW card: T&C friction (7/12). Deal control UP to 10/12 — SD-700 self-serve broken. |
+| Onboarding | 🔴🔴 12/12 | 1 | None — **DELIVERY GAP** | CRITICAL. 3 explicit ICP churns + failed churn save + Granola maps full onboarding bottleneck. |
+| AM efficiency | 🔴 19/12 | 2 | IDEA-344/348/349 (AM Tooling) | Stable. No new Sam Benjamin signals this period. |
+| Enterprise/Groups | 🟡 6/12 | 0 | IDEA-329 (Groups Onboarding) | Famished Wolf settled on new deal structure. Granola flagged group signup form. |
+| Value surfacing | ⚪ Low | 0 | IDEA-210, IDEA-232 (AT V2) | No signals. Customer.io survey (REST-243) could change this. |

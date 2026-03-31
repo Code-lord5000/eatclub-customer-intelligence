@@ -444,13 +444,17 @@ Adam then decides which to raise. When he replies, use the Jira Discovery Ticket
 
 ---
 
-## Phase 5 — Update Confluence intelligence page
+## Phase 5 — Create weekly Confluence intelligence page
 
-Use Atlassian MCP to update (or create if it doesn't exist) a Confluence page titled **"Customer Intelligence — Restaurant Product"** in the EatClub Product space.
+Use Atlassian MCP to create a **new Confluence page** each run under the following parent:
 
-This is the primary output of every run. It is a living document — not a report, not a summary. It accumulates and sharpens over time. Every run updates it in place.
+- **Space**: `RE`
+- **Parent page ID**: `799408130` (Crilly — Repo)
+- **Page title**: `Customer Intelligence — {YYYY-MM-DD}` (date of this run)
 
-**Page structure — maintain exactly this structure on every update:**
+Each run creates a fresh page. This means the Crilly — Repo parent page becomes an index of weekly intelligence snapshots — easy to scan historically, easy to share a specific week with a stakeholder.
+
+**Page content — use exactly this structure:**
 
 ---
 
@@ -565,14 +569,23 @@ CS tickets are processed as their own pre-synthesis task. Every ticket represent
 
 **Step 1 — Pull tickets from the last 48 hours**
 
-Query the HubSpot helpdesk for all tickets created or updated in the last 48 hours. For each ticket capture:
-- Ticket ID and subject
-- Venue / company name and associated AM
-- Existing category / pipeline stage already applied by CS team
-- Ticket body and any CS agent notes
-- Resolution status (open / in progress / closed)
-- Time to first response and time to resolution if closed
-- Whether this is a new ticket or an update to an existing one
+Query HubSpot MCP for TICKET objects created or updated in the last 48 hours.
+
+Pull these properties on every ticket:
+- `subject` — ticket name/summary
+- `hs_pipeline` — which pipeline (Support Pipeline or URGENT Account Manager Follow-Up)
+- `hs_pipeline_stage` — current stage (New / In Progress / Closed)
+- `hs_ticket_priority` — priority level
+- `hs_ticket_category` — sub categories (CS team's primary categorisation — "main reason customer reached out")
+- `category` — category field
+- `product_experience__categories` — product experience category
+- `churn__category` — churn category if logged
+- `hs_createdate` — when ticket was created
+- `hs_lastmodifieddate` — when last updated
+- Associated company name (venue identifier)
+- Associated owner (which AM or CS agent is handling it)
+
+Also note: tickets in the **URGENT Account Manager Follow-Up** pipeline are already escalated — treat these as highest-priority signals regardless of other scoring.
 
 **Step 2 — Respect existing CS categorisation as the starting taxonomy**
 
@@ -702,11 +715,19 @@ What needs Adam's judgment this period — interview questions to run, decisions
 
 ---
 
-#### 📋 Run log
+#### 📋 Run details
 
-| Date | Signals | New cards | Updated cards | Hidden signals | Drift flags | Notes |
-|---|---|---|---|---|---|---|
-| {date} | {n} | {n} | {n} | {n} | {n} | |
+| Field | Value |
+|---|---|
+| Date | {date} |
+| Period covered | {start} → {end} |
+| Total signals | {n} |
+| Helpdesk tickets | {n} |
+| Hidden signals | {n} |
+| Drift flags | {n} |
+| Mixpanel status | ✅ / ⚠️ / ❌ |
+| New problem cards | {n} |
+| Updated problem cards | {n} |
 
 ---
 

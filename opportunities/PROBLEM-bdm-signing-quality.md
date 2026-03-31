@@ -24,7 +24,18 @@ Venues are being signed with unsustainable deal structures (35% × unlimited off
 
 ## Signal log
 
-### 2026-W14
+### 2026-W14b (Mar 30)
+| Signal | Source | Mom Test quality | Notes |
+|---|---|---|---|
+| Little B by Bruno&Co: Reduced deals to 20% last year because "regulars using the deal and only ordering coffee." AOV $15. AM pitched NCI and loyalty — not interested. "Doesn't see the value and says EC doesn't fit the current business model." Churn. | Slack #churned_or_changed (Mar 30, Jessie Helyar) | STRONG | Specific business reason: regulars exploiting deals for low-AOV items. NCI/loyalty rejected. ICP issue — low-AOV cafe. |
+| Little Rice Bowl: Old $4 commission account. "Decided to focus on boosting sales internally." Pitched loyalty — not interested. "Not interested in new strategies with EC." Churn. | Slack #churned_or_changed (Mar 30, Jessie Helyar) | STRONG | Venue explicitly choosing internal growth over EatClub — value proposition not compelling enough |
+| That Viet Place: Was churn-saved 1st week of March by AM + Sam, but "continued to disable all deals, TA only, sent 3 texts to cancel over weekend." AM says "Poor ICP not worth keeping TA only." Churn. | Slack #churned_or_changed (Mar 30, Matthew Behan) | STRONG | FAILED CHURN SAVE — venue was already identified as at-risk, saved, then churned anyway. ICP issue confirmed by AM. |
+| Gami Chicken & Beer - Ed Square: Churn (no reason given) | Slack #churned_or_changed (Mar 30, Tania Marinopoulos) | WEAK | No detail but adds to churn volume |
+| Granola — Onboarding Process Analysis meeting: Limited visibility between contract signing → first transaction. Photo quality major issue (wrong/low quality images, Google Maps copyright). Menu digitization requires 9 Manila staff manually. Go-live preferences create back-and-forth when BDMs complete instead of venues. | Granola (Mar 30) | STRONG | Institutional meeting explicitly mapping post-contract onboarding friction. Photos, menus, verification all manual + error-prone. |
+| Old Quarter - Pho Ly Quoc Su: Churn — venue sold to new owners. AM sent text re: tablet return. | Slack #churned_or_changed (Mar 30, Aaron Pantazis) | WEAK | Natural churn (ownership change) — not ICP issue |
+| Bema Burgers - Paddington: Churn — ghost kitchen. "New venue signed from the group to replace. Much better venue for us." | Slack #churned_or_changed (Mar 30, Matthew Behan) | MEDIUM | Strategic replacement — BDM initially signed wrong venue type from group |
+
+### 2026-W14a (Mar 28-30 — prior run)
 | Signal | Source | Mom Test quality | Notes |
 |---|---|---|---|
 | Pizza Da Italia: Early churn — venue uncontactable on same details used to sign up, only made $260 in 3+ weeks before pausing | Slack #churned_or_changed (Mar 30, Tomas McGay) | STRONG | Classic early churn: low revenue, went dark. Sign-up quality issue. |
@@ -49,10 +60,11 @@ Venues are being signed with unsustainable deal structures (35% × unlimited off
 
 | Week | Signal count | Sources | Heat | Notes |
 |---|---|---|---|---|
-| 2026-W14 | 2 | Slack #churned_or_changed | 10/12 | New churn signals validate signing quality problem. New churn reason type: brand/ICP mismatch (Ambra) |
+| 2026-W14b | 7 | Slack #churned_or_changed, Granola | 12/12 | HIGHEST HEAT — 3 explicit churn-with-reasons (Little B, Little Rice Bowl, That Viet Place), 1 failed churn save, Granola meeting confirms systemic onboarding gaps |
+| 2026-W14a | 2 | Slack #churned_or_changed | 10/12 | New churn signals validate signing quality problem. New churn reason type: brand/ICP mismatch (Ambra) |
 | 2026-W13 | 9 | AM transcript, Granola, Slack #urgent | 10/12 | First run — high signal, strong quality |
 
-**Current status**: 🔴 Rising
+**Current status**: 🔴🔴 CRITICAL — Heat 12/12. Failed churn save (That Viet Place) + 3 explicit ICP/value churn reasons + Granola meeting mapping full onboarding bottleneck chain
 
 ---
 
@@ -66,6 +78,9 @@ Venues are being signed with unsustainable deal structures (35% × unlimited off
 | ESL venue owners | Nicole's Mandarin-speaking venue portfolio | Subset of new signings |
 | Premium/cocktail bar venues (ICP mismatch) | Ambra Spirits — brand position conflicts with discount model | Unknown — new segment identified |
 | Low-revenue venues that go dark quickly | Pizza Da Italia — $260 in 3+ weeks | Unknown |
+| Low-AOV cafes (regulars exploiting deals) | Little B — $15 AOV, regulars ordering just coffee | Unknown — but "regulars using deal" cited as reason |
+| Venues choosing internal growth over EC | Little Rice Bowl — "decided to focus on boosting sales internally" | Unknown |
+| Ghost kitchens / wrong venue type from group | Bema Burgers — ghost kitchen replaced by better venue | Unknown |
 
 ---
 

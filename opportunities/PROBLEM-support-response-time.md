@@ -24,7 +24,15 @@ When venues need operational support — terminal exclusions, refunds, menu upda
 
 ## Signal log
 
-### 2026-W14
+### 2026-W14b (Mar 30)
+| Signal | Source | Mom Test quality | Notes |
+|---|---|---|---|
+| SD-700: Petit Bistro — venue can't edit offers, AM Elliot can't edit offers either, tried creating new offer — also failed. Technical failure in partner portal. | Jira SD (New, Mar 30) | STRONG | Both venue AND AM blocked from basic operation. No workaround available. |
+| SD-703: Customer was able to redeem offer (RIA) when venue was in HDS — system allowed booking at venue that should have been disabled | Jira SD (New, Mar 30) | STRONG | System bug — erodes trust when venues discover customers booked during explicit downtime |
+| UK refund request missed by support team — Jeroen had to flag to Blessie who found it unprocessed | Slack #ecpayuk-ops (Mar 30) | STRONG | Refund process gap — items falling through cracks |
+| SD-701: Pop-up message needed for Sushi E (Merivale) — flagged as "ASAP, this is Merivale" | Jira SD (New, Mar 30) | MEDIUM | High-value client request getting premium urgency treatment |
+
+### 2026-W14a (Mar 28-30 — prior run)
 | Signal | Source | Mom Test quality | Notes |
 |---|---|---|---|
 | Alyra Cafe: Owner upset — following up on refund, complaining about customers using offers for incorrect methods, has billing questions. CS flagged as ASAP to AM Nader. | Slack #urgent (Mar 30, Jesstoni Santiago) | STRONG | Multi-faceted venue frustration — refund delay + billing confusion + offer misuse. CS routing urgently to AM. |
@@ -49,7 +57,8 @@ When venues need operational support — terminal exclusions, refunds, menu upda
 
 | Week | Signal count | Sources | Heat | Notes |
 |---|---|---|---|---|
-| 2026-W14 | 1 | Slack #urgent | 9/12 | Alyra Cafe adds to pattern. Heat maintained. |
+| 2026-W14b | 4 | Jira SD, Slack #ecpayuk-ops | 9/12 | SD-700 (broken self-serve), SD-703 (HDS bug), missed refund, Merivale ASAP request. Heat maintained. |
+| 2026-W14a | 1 | Slack #urgent | 9/12 | Alyra Cafe adds to pattern. Heat maintained. |
 | 2026-W13 | 10 | AM transcript, Granola, Slack #urgent, Confluence | 9/12 | First run — multi-source, strong quality |
 
 **Current status**: 🔴 Rising
