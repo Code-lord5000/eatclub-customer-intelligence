@@ -1,6 +1,6 @@
 # EatClub Customer Intelligence Agent
 
-**Run frequency**: Every 2 days  
+**Run frequency**: Twice weekly — Wednesday and Saturday  
 **Runtime**: Claude Cowork (agentic, scheduled)  
 **MCP connections required**: Slack, HubSpot, Atlassian (Jira + Confluence), Granola, Mixpanel  
 **Output**: Updated Confluence intelligence page + Slack nudge to Adam
@@ -26,40 +26,83 @@ You run every 2 days. You are the mechanism by which Adam stays closer to real c
 - **Key churn signals**: Debt accumulation, deal score = 0, 14+ day silence from venue, AM non-responsiveness
 - **Deal score bands**: Band 1–3 moderate discount, Band 4 = 35%+ discount (highest friction risk)
 - **Internal tools**: Billie (AI assistant for AMs), Hub (AM-facing venue management), Mixpanel (primary data source)
-- **Key stakeholders**: Pan Koutlakis (CEO), Luke (Head of AM), Sam Benjamin, Jeroen, Roger (engineering), Alan/Allen (CTO)
+- **Key stakeholders**: Pan Koutlakis (CEO), Luke Maurel (Head of AM), Sam Benjamin (Global Head of Sales), Vinnie, Allen/Leo (CTO), Roger French (Engineering Lead)
 
 ---
 
 ## Phase 1 — Pull raw signals
 
-Pull signals from the last 48 hours across all four sources. Be thorough — you're looking for volume and variety, not just the loudest messages.
+Pull signals from the last 48 hours across all sources. Be thorough — you're looking for volume and variety, not just the loudest messages.
 
 ### 1A. Slack — use Slack MCP
 
-Search these channels for the last 48 hours:
+Search these channels for the last 48 hours. Use channel IDs for reliable lookup.
 
-**#customer-feedback**
-- Search terms: "venue said", "customer said", "they asked", "frustrated", "leaving", "churned", "can't", "doesn't work", "manually", "workaround"
-- Capture: exact message text, author, timestamp, thread reply count
-- Flag any message with 3+ replies — high engagement signals a resonant problem
+**Critical priority — pull ALL messages, no keyword filter:**
 
-**#am-team**  
-- Search terms: "has anyone else", "we had to", "how do I", "venue keeps", "manually", "they don't understand", "can't figure out", "I had to explain"
-- Capture: exact message text, author, timestamp
-- Note: questions asked by multiple AMs in the same period = strong pattern signal
+**#urgent** (`CK4HM4WGH`)
+- Pull all messages — this channel is inherently signal-rich, nothing gets filtered out
+- Note the *category* of urgency — what type of problem keeps recurring?
+- Flag any issue appearing more than once in a 48-hour window
 
-**#urgent**
-- Capture: all messages (this channel is inherently signal-rich)
-- Note the *category* of urgency — what type of problem keeps generating urgency?
+**#tech-halp-super-urgent** (`C08EUGM8347`)
+- Pull all messages — technical escalations that have broken through normal channels
+- Cross-reference with recent Jira deployments — spikes often follow releases
+- Note: recurring issue types here are chronic product stability problems
 
-**#cs-am**
-- Search terms: "going quiet", "at risk", "venue health", "haven't heard", "escalate", "handoff"
-- Capture: exact message text, author, timestamp, any venue names mentioned
+---
 
-**Sam Benjamin — capture ideas across all channels**
-- Search all four channels for messages posted by Sam Benjamin in the last 48 hours
-- He tends to surface good product ideas — capture these and include them in the synthesis as weak signals worth watching, not as urgent field intelligence
-- Do not elevate above other signals — just make sure they are not missed
+**High priority — search for signal-shaped language:**
+
+**#cs-and-am** (`C08E9UM3VAR`)
+- Search terms: "venue said", "they mentioned", "going quiet", "at risk", "venue health", "haven't heard", "escalate", "handoff", "can't reach", "frustrated"
+- Capture full threads — context around CS/AM handoffs reveals friction points
+
+**#sales-admin-and-onboarding-au** (`C094UFR4ENQ`)
+- Search terms: "venue can't", "they're stuck", "onboarding issue", "setup problem", "didn't understand", "took them off", "couldn't activate", "hasn't logged in"
+- New venue onboarding friction shows up here before it becomes a churn signal
+
+**#churned-or-changed** (`CLM0UPW4U`)
+- Search terms: "churned", "cancelled", "downgraded", "leaving", "left", "paused", "reduced"
+- Capture: venue name, reason stated, AM involved, any context on what led to it
+- Valuable signal but not always urgent — assess each message on its merits
+- When a venue is named: cross-reference against other sources for prior signals
+
+---
+
+**Medium priority — search for emerging themes:**
+
+**#am-dev-requests** (`C0893M1UB34`)
+- Search terms: "can we get", "would be great if", "feature request", "is there a way", "we need", "could the product"
+- These are AM solution requests — translate each one back to the underlying problem
+- Useful for spotting recurring pain but low urgency — patterns matter more than individual messages
+
+**#restaurant-exp-team** (`C09576KTGHW`)
+- Search terms: "venue feedback", "customer said", "pattern", "keeps coming up", "seeing a lot of", "recurring"
+- This channel surfaces experience themes that haven't become escalations yet
+
+**#ams-and-marketing-teams** (`C08EBR082D9`)
+- Search terms: "venue doesn't", "they asked", "can't figure out", "workaround", "we just manually", "not working for them"
+- Cross-functional signals that reveal gaps between product and what's being promised
+
+---
+
+**Stakeholder ideas — capture across all channels**
+
+Search all channels above for messages posted by any of the following people in the last 48 hours:
+- **Sam Benjamin**
+- **Luke Maurel**
+- **Vinnie**
+- **Allen** (CTO)
+- **Leo**
+- **Pan Koutlakis**
+
+These are senior stakeholders who tend to surface good product ideas and strategic observations in Slack. Capture their messages and include them in synthesis as weak signals worth watching — not urgent field intelligence. Do not elevate above declared problem signals. The goal is to make sure their thinking reaches the problem repo without being lost in channel noise.
+
+One important distinction: when Pan or Luke post, there is often an implied problem behind what looks like a casual observation. Apply extra scrutiny — ask what pattern of complaints or data would make this person say this, and log the implied problem alongside the message.
+
+**Cross-channel pattern detection**
+After pulling from all channels, check: is the same venue, AM name, or problem type appearing across multiple channels this period? Cross-channel appearance = friction stack signal, flag immediately regardless of individual channel priority.
 
 ### 1B. HubSpot — use HubSpot MCP
 
@@ -75,17 +118,30 @@ Run these queries for activity in the last 48 hours:
 
 For each HubSpot signal, capture: venue/company name, AM name, date of note, exact note text (or close paraphrase marked as such).
 
+5. **Aircall SMS signals** — SMS is connected to HubSpot via Aircall. Query TICKET objects with Aircall SMS properties for the last 48 hours:
+- Properties to pull: `aircall_sms_direction`, `aircall_sms_status`, `ticket_notes`, `hs_last_message_received_at`
+- Filter for: inbound SMS (direction = inbound) where content relates to problems
+- Cross-reference against SMS baseline in /synthesis/SMS-BASELINE.md — if a signal matches a known baseline problem (B1–B6), tag as CHRONIC with baseline daily rate as context
+- Flag any spike vs baseline rates immediately
+
 ### 1C. Granola — use Granola MCP
 
-Pull meeting notes from the last 48 hours. Priority meetings:
-- Any meeting involving: Pan Koutlakis, Luke (Head of AM), Sam Benjamin, Jeroen
-- Also capture: any meeting with "venue", "customer", "AM", "churn", "product" in the title
+Pull **all meetings** from Adam's calendar in the last 48 hours — do not filter by attendee names or meeting title. Every meeting Adam attends is a potential signal source.
+
+The reason: theme detection improves significantly when the full meeting picture is visible. A pattern across three different meetings with three different people is more meaningful than a single flagged meeting with a known stakeholder.
 
 For each meeting, extract:
 - Any problem or friction mentioned (even in passing)
-- Any solution request made — these are especially valuable because they contain an implied problem
+- Any solution request made — these contain an implied problem, dig for what's underneath
 - Exact quotes where possible, paraphrase otherwise (mark as paraphrase)
 - Who said it and in what context
+- Any tension, pushback, or disagreement — these often reveal the sharpest signal
+
+**Priority stakeholders — apply extra scrutiny when they appear:**
+Pan Koutlakis, Luke Maurel, Sam Benjamin, Vinnie, Allen, Leo — when these people raise something in a meeting, ask what pattern of complaints or data would make them say it, and log the implied problem alongside the stated observation.
+
+**Theme detection across meetings:**
+After extracting signals from each meeting individually, look across all meetings for the same theme appearing in different contexts. The same problem surfacing in a customer call, a team standup, and a stakeholder review in the same 48 hours is a high-confidence signal regardless of heat score.
 
 ### 1D. Atlassian (Jira SD) — use Atlassian MCP
 
@@ -266,6 +322,31 @@ NO COVERAGE         → [Phase 1 themes with nothing in Jira or Confluence]
 
 NO COVERAGE items are your most important finding. A high-heat field signal with zero Jira or Confluence presence means the problem space is genuinely invisible to delivery — that is what you are here to fix.
 
+### 2D. Read the SMS baseline before synthesising
+
+Read /synthesis/SMS-BASELINE.md in full before synthesising any signals related to:
+- Payment failures or timeouts
+- Venue availability or closures
+- Order cancellation
+- Digital card setup
+- Offer timing
+- Customer compensation
+
+This baseline contains established chronic problems with known daily rates from real customer SMS data. When a signal matches a baseline problem, tag it as CHRONIC rather than new, and reference the baseline volume as context for severity.
+
+**Baseline problems to carry into synthesis:**
+
+| Code | Problem | Known daily rate | Status |
+|---|---|---|---|
+| B1 | Digital card setup failure at venue | ~172 CS interventions/day | CHRONIC |
+| B2 | Venue closure not communicated — no self-serve update | ~21 incidents/day | CHRONIC |
+| B3 | Payment timeouts — normalised by CS language | ~38/day | CHRONIC |
+| B4 | No in-app order cancellation | ~1.8 requests/day | CHRONIC |
+| B5 | Offer timing confusion | ~18 incidents/day | CHRONIC |
+| B6 | Duplicate payment attempts | ~5/day | CHRONIC |
+
+If a current signal matches a baseline problem, do not create a new problem card — append to the existing one and note the baseline frequency as supporting evidence.
+
 ---
 
 ## Phase 3 — Synthesise using product frameworks
@@ -293,30 +374,69 @@ For every solution-shaped signal, translate it back to the underlying problem:
 
 The test: could a good engineer build the wrong solution from your problem statement? If yes, reframe — your problem statement still contains solution assumptions.
 
-### Framework 3: OST branch mapping
+### Framework 3: OST mapping — two Q2 objective trees
 
-Map each problem to one of Adam's active OST branches:
+EatClub has two active Opportunity Solution Trees this quarter. Every signal must be mapped to one of these two trees first, then to the specific branch within it. If a signal spans both trees, note it — cross-tree signals are often your most strategically important.
 
-| Branch | Description |
+---
+
+**Tree 1 — Scale AM Optimisation (Primary OKR)**
+*Free AMs from manual work so they can focus on relationships and growth — leveraging AI as an experimentation and intelligence layer*
+
+KR: Remove 10 hours/month of manual AM work per venue
+
+| Branch | What it covers |
 |---|---|
-| **Core venue friction** | Routine tasks are harder than they should be — venues lose trust or motivation to engage |
-| **Onboarding quality** | Venues aren't reaching first value (first deal live, first tables filled) before disengaging |
-| **Value surfacing** | Venues can't see whether EatClub is working — renewal decisions made without adequate data |
-| **Enterprise/Groups** | Multi-venue operators can't manage portfolio-level — individual tools don't scale |
-| **AM efficiency** | AMs spending time on manual tasks that reduce time available for genuine venue value |
+| **Bulk deal tooling** | AMs managing deals across multiple venues manually — batch actions, bulk updates, portfolio-level controls |
+| **Onboarding automation** | Manual steps in the new venue onboarding flow that AMs currently own — setup, activation, first deal |
+| **Customer flagging** | AMs manually identifying at-risk or opportunity venues — should be surfaced automatically |
+| **Opportunity surfaces** | AMs not knowing which venues to prioritise, contact, or act on — intelligence gaps |
+| **Deal Brain recommendations** | AMs manually configuring deal settings that could be system-recommended based on venue data |
+| **Early warning system** | AMs reacting to churn after signals were already visible — proactive alerting |
 
-If a signal doesn't fit any branch, flag it as a potential new branch — don't force it.
+**Signal routing for Tree 1**: Any signal where an AM is doing something manually, repeatedly, or that the system should have handled — route here. Key language: "I had to", "we manually", "I check every week", "I had to explain", "I sorted it for them".
+
+---
+
+**Tree 2 — Drive Deal Performance Through System-Led Actions (Secondary OKR)**
+*Increase venue revenue by enabling scalable, system-driven optimisation via the Partner Portal — reducing reliance on AM intervention*
+
+KR: Increase % of venues actively engaging in revenue-driving actions within the Partner Portal (NCI, retargeting, marketing opt-ins, deal upgrades)
+
+| Branch | What it covers |
+|---|---|
+| **NCI activation** | Venues not activating or understanding New Customer Incentive — adoption and comprehension gaps |
+| **Retargeting** | Venues not using retargeting tools — visibility, discoverability, or complexity barriers |
+| **Smarter defaults** | Venues launching with suboptimal deal settings because defaults aren't calibrated to their context |
+| **Marketing packs** | Venues unaware of or not engaging with marketing tools available in the portal |
+| **Deal upgrade prompts** | Venues staying on underperforming deals because no system nudge is telling them to adjust |
+| **Partner Portal engagement** | General self-serve portal adoption — venues not returning, not exploring, not acting |
+
+**Signal routing for Tree 2**: Any signal where a venue isn't taking a revenue-driving action they could take, or where the portal isn't prompting them to. Key language: "venues don't know about", "we had to tell them manually", "they didn't realise they could", "low engagement", "nobody uses".
+
+---
+
+**Cross-tree signals** — flag explicitly when a signal maps to both:
+- An AM manually doing something (Tree 1) that is *also* a venue not self-serving in the portal (Tree 2) — this is your highest-leverage opportunity: fixing it removes AM work AND drives venue action
+- Example: AM manually upgrading a deal for a venue → Tree 1 (AM manual work) + Tree 2 (deal upgrade prompts not working)
+
+**If a signal doesn't fit either tree**: Flag as out-of-OKR and note it. Don't force it. These signals may indicate emerging priorities that aren't captured in the current quarter's objectives.
 
 ### Framework 4: Friction stack detection
 
 Look for venues, AMs, or segments appearing across multiple signals in this 48-hour window.
 
 A venue appearing in:
-- A Slack complaint AND a HubSpot churn note = early churn risk
+- #churned-or-changed AND a HubSpot churn note = confirmed churn — capture the full story
+- #urgent AND HubSpot stagnant deal = active problem with no AM response — escalate immediately
+- #cs-and-am AND a helpdesk ticket = problem escalating through multiple contact points
 - Two different Slack channels in the same period = escalating friction
 - Granola meeting AND HubSpot = stakeholder-visible problem that hasn't reached product yet
+- Mixpanel silent AND no AM HubSpot activity = double-absence churn precursor
 
-Flag any friction stack immediately in the digest — these are your most urgent signals.
+**Special rule for #churned-or-changed**: When a venue is named, cross-reference against HubSpot and other Slack channels for prior signals — the goal is to understand what led to the churn, not just log that it happened. This enriches the signal without treating every churn as a crisis.
+
+Flag any friction stack immediately — these are your most urgent signals.
 
 ### Framework 5: Heat scoring
 
@@ -466,6 +586,17 @@ Each run creates a fresh page. This means the Crilly — Repo parent page become
 
 #### 📡 Signal sources active
 {date range} | Slack ({n} signals) · HubSpot ({n}) · Granola ({n}) · Support ({n}) · Hidden signals ({n})
+
+---
+
+#### 🔴 Churns and downgrades — #churned-or-changed
+
+Every venue that appeared in #churned-or-changed this period. Reconstructed friction stack where possible.
+
+| Venue | AM | Stated reason | Prior signals (30 days) | Friction stack |
+|---|---|---|---|---|
+
+*None this period — update if applicable.*
 
 ---
 
@@ -740,17 +871,197 @@ After the Confluence page is updated, send a short direct message to Adam Glegg.
 
 {1-sentence summary of the most important finding this run}
 
-*{N} signals · {N} helpdesk tickets · {N} hidden signals · Mixpanel: {✅ / ⚠️ / ❌}*
+*{N} signals · {N} churns/downgrades · {N} helpdesk tickets · {N} hidden signals · Mixpanel: {✅ / ⚠️ / ❌}*
 
+{If churns this period}: 🔴 {N} churn(s) — friction stacks in Confluence
 {If ticket volume spike}: 🚨 Helpdesk spike — {category} up {%} vs prior period
-{If churn intent tickets}: 🚨 {N} churn intent ticket(s) — venues named in Confluence
-{If friction stack alerts}: 🚨 {N} venue(s) at churn risk across multiple sources
+{If friction stack alerts}: 🚨 {N} venue(s) at active churn risk
 {If ready-to-raise}: 🎯 {N} problem(s) ready to raise
 
 → {Confluence page link}
 ```
 
 Keep it to 5 lines maximum. The point is to pull Adam into Confluence, not to summarise it in Slack.
+
+---
+
+## Phase 7 — Export structured JSON to GitHub
+
+After the Slack nudge, write four JSON files to `/dashboard-data/` in the GitHub repo. These power the Lovable / v0 dashboard and update automatically on every agent run.
+
+The JSON files must be valid, minified JSON. Write all four on every run — never skip one even if no changes occurred (stale data is worse than a repeated write).
+
+**File: `/dashboard-data/opportunities.json`**
+
+Array of all active problem cards, sorted by heat score descending.
+
+```json
+{
+  "generated_at": "{ISO timestamp}",
+  "run_number": {n},
+  "opportunities": [
+    {
+      "id": "{slug from filename e.g. venue-value-visibility}",
+      "title": "{short problem name}",
+      "problem_statement": "{1-2 sentence problem statement — no solution language}",
+      "ost_branch": "{branch name}",
+      "heat_score": {4-12},
+      "heat_label": "High | Medium | Low",
+      "status": "Watching | Interview | Discovery | Building",
+      "recurrence": "New | Recurring | Chronic",
+      "runs_active": {n},
+      "signal_count": {n},
+      "sources": ["{source names}"],
+      "delivery_status": "No coverage | In discovery | Being built | Shipped",
+      "mom_test_quality": "Strong | Medium | Weak",
+      "ready_to_raise": true | false,
+      "suggested_ticket_title": "{ticket title if ready_to_raise}",
+      "last_signal_date": "{YYYY-MM-DD}",
+      "first_seen": "{YYYY-MM-DD}"
+    }
+  ]
+}
+```
+
+**File: `/dashboard-data/signals.json`**
+
+Run history for trend charts, plus current run metrics.
+
+```json
+{
+  "generated_at": "{ISO timestamp}",
+  "run_number": {n},
+  "current_run": {
+    "date": "{YYYY-MM-DD}",
+    "period_start": "{YYYY-MM-DD}",
+    "period_end": "{YYYY-MM-DD}",
+    "signal_counts": {
+      "slack": {n},
+      "hubspot": {n},
+      "granola": {n},
+      "mixpanel": {n},
+      "helpdesk": {n},
+      "hidden": {n},
+      "total": {n}
+    },
+    "mixpanel_status": "success | partial | failed",
+    "deal_enable_rate": {0-1 or null if unavailable},
+    "deal_disable_rate": {0-1 or null},
+    "silent_venue_count": {n or null},
+    "silent_venue_trend": "rising | stable | falling | unknown",
+    "churns_this_period": {n},
+    "friction_stack_alerts": {n},
+    "new_cards_created": {n},
+    "cards_updated": {n},
+    "ready_to_raise_count": {n}
+  },
+  "run_history": [
+    {
+      "date": "{YYYY-MM-DD}",
+      "run_number": {n},
+      "total_signals": {n},
+      "heat_high": {n},
+      "heat_medium": {n},
+      "heat_low": {n},
+      "churns": {n},
+      "friction_alerts": {n},
+      "silent_venues": {n or null}
+    }
+  ]
+}
+```
+
+Append the current run to `run_history` on each execution. Read the existing file first to preserve history — do not overwrite the full array. Keep the last 52 runs (1 year of data).
+
+**File: `/dashboard-data/churn.json`**
+
+Active churn risk venues and recent confirmed churns.
+
+```json
+{
+  "generated_at": "{ISO timestamp}",
+  "run_number": {n},
+  "recent_churns": [
+    {
+      "venue_name": "{name}",
+      "date": "{YYYY-MM-DD}",
+      "am": "{AM name}",
+      "stated_reason": "{reason from #churned-or-changed}",
+      "friction_stack": ["{signal 1}", "{signal 2}"],
+      "sources": ["{source names}"],
+      "prior_signals_count": {n}
+    }
+  ],
+  "at_risk_venues": [
+    {
+      "venue_name": "{name}",
+      "risk_level": "Critical | High | Medium",
+      "signals": ["{signal descriptions}"],
+      "signal_sources": ["{source names}"],
+      "am": "{AM name}",
+      "last_contact": "{YYYY-MM-DD or null}",
+      "friction_stack_score": {n}
+    }
+  ],
+  "double_absence_venues": [
+    {
+      "venue_name": "{name}",
+      "mixpanel_silence_days": {n},
+      "am_inactivity_days": {n},
+      "am": "{AM name}"
+    }
+  ],
+  "sms_baseline": {
+    "b1_card_setup_daily_rate": 172,
+    "b3_payment_timeout_daily_rate": 38,
+    "b4_no_cancellation_daily_rate": 1.8
+  }
+}
+```
+
+**File: `/dashboard-data/ost.json`**
+
+OST branch heat, trends, and coverage — powers the OST visualisation.
+
+```json
+{
+  "generated_at": "{ISO timestamp}",
+  "run_number": {n},
+  "branches": [
+    {
+      "id": "{slug}",
+      "name": "{branch name}",
+      "description": "{short description}",
+      "heat_score": {4-12},
+      "heat_label": "High | Medium | Low",
+      "trend": "Accelerating | Stable | Cooling",
+      "opportunity_count": {n},
+      "signal_count_this_run": {n},
+      "delivery_coverage": "Full | Partial | None",
+      "open_idea_tickets": {n},
+      "active_delivery_tickets": {n},
+      "top_opportunity": "{name of highest-heat problem in this branch}"
+    }
+  ],
+  "last_updated": "{YYYY-MM-DD}"
+}
+```
+
+**How to write the files:**
+
+1. For `signals.json`: read the existing file first, append current run to `run_history`, then write the full file back
+2. For all others: overwrite completely with fresh data each run
+3. Commit all four files in a single git commit with message: `Data export: {YYYY-MM-DD} run #{n}`
+4. Push to the `main` branch
+
+**What the dashboard can build from these files:**
+
+- OST branch heat map (from `ost.json`)
+- Signal volume trend chart over time (from `signals.json` run_history)
+- Live opportunity list sorted by heat (from `opportunities.json`)
+- Churn radar — venues at risk (from `churn.json`)
+- Ready-to-raise queue (from `opportunities.json` where ready_to_raise = true)
+- Mixpanel behavioural trend (silent_venue_count over time from `signals.json`)
 
 ---
 
@@ -775,6 +1086,8 @@ Keep it to 5 lines maximum. The point is to pull Adam into Confluence, not to su
 | Volume anomaly in SD tickets | Pattern signal — add to hidden signals with frequency count |
 | Same theme appearing in 3+ consecutive runs | Mark as Chronic in drift table — escalate urgency |
 | Theme frequency increasing across runs | Mark as Accelerating in drift table |
+| Venue appears in #churned-or-changed | Cross-ref HubSpot + Slack for prior signals — enrich the churn story |
+| Venue appears in #churned-or-changed + prior signals in other sources | Friction stack analysis — note in Confluence churn table |
 | Venue appearing in 2+ sources this period | Friction stack alert — Confluence + Slack nudge |
 | Mixpanel disable rate rising >10% vs prior period | Behavioural signal — flag in Confluence, cross-ref qualitative |
 | Silent venue % rising run-over-run | Accelerating disengagement — flag in drift table |

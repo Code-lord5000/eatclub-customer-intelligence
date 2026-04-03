@@ -24,6 +24,16 @@ Venues cannot easily manage their deals, menus, and operational settings through
 
 ## Signal log
 
+### 2026-W15 (Apr 1 — Run 4)
+| Signal | Source | Mom Test quality | Notes |
+|---|---|---|---|
+| Ngon Brisbane: Requested recurring offers permanently removed. Will "create offers manually moving forward." | Slack #urgent (Mar 31) | STRONG | WORKAROUND — venue bypassing recurring offer feature entirely. Product feature being avoided. |
+| Partner Portal RCI limitation: Can't choose specific time slots for RCI offers. Kane: "if its RCI - venue has to do it through partner portal" but portal can't select specific times. | Slack (Mar 31, Kane Russell) | STRONG | Self-serve gap — venues and AMs both blocked on basic time-based deal control. |
+| GT's Bar Noosa: Double dipping issues. No Square/Lightspeed integration. | Slack #churned_or_changed (Mar 31) | MEDIUM | Integration gap blocking deal control for venue without POS. |
+| Continuing high volume of ECPay bot deal edit/delete alerts — Saigon Alley, Sassy Cocktail Bar, LoukouMADNESS, and others requesting changes via portal | Slack #urgent (Mar 31-Apr 1) | MEDIUM | Sustained high volume of portal-initiated changes. |
+| **Mixpanel: Offer disabled events UP 48% over 7 days (449→667/day)**. Offer edited stable (273-383/day). Offer deleted low (0-56/day). | Mixpanel Partner Portal (3834354) | HIGH confidence | BEHAVIOURAL CONFIRMATION — rising disable rate validates qualitative signals. Venues are increasingly disabling offers rather than editing them. |
+| HubSpot: 1 "Change/Delete Offer" ticket + 4 "Offers" tickets in 48hrs | HubSpot tickets | MEDIUM | CS ticket pipeline for deal changes continuing. |
+
 ### 2026-W14b (Mar 30)
 | Signal | Source | Mom Test quality | Notes |
 |---|---|---|---|
@@ -64,11 +74,12 @@ Venues cannot easily manage their deals, menus, and operational settings through
 
 | Week | Signal count | Sources | Heat | Notes |
 |---|---|---|---|---|
+| 2026-W15 | 6 | Slack #urgent, #churned, Mixpanel, HubSpot | 11/12 | MIXPANEL CONFIRMED — offer disables UP 48% (449→667/day). Ngon bypassing recurring offers entirely. RCI time slot limitation. |
 | 2026-W14b | 11 | Slack #urgent, #churned_or_changed, Jira SD | 10/12 | ESCALATING — SD-700 confirms self-serve is technically broken. 11 signals, 3 sources. |
 | 2026-W14a | 3 | Slack #urgent | 8/12 | Steady volume — deal change requests continuing |
 | 2026-W13 | 8 | Slack #urgent, Jira SD, Granola | 8/12 | First run — high volume, medium quality |
 
-**Current status**: 🔴 Rising — SD-700 confirms self-serve is broken, not just limited. Heat rising to 10/12.
+**Current status**: 🔴🔴 CRITICAL — Heat 11/12 sustained. Mixpanel CONFIRMS rising disable rate (48% increase over 7 days). Venues bypassing recurring offers entirely (Ngon). RCI time slots not functional. IDEA-356 still Concept only.
 
 ---
 

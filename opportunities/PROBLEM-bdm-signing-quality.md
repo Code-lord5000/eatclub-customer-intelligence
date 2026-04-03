@@ -24,6 +24,23 @@ Venues are being signed with unsustainable deal structures (35% × unlimited off
 
 ## Signal log
 
+### 2026-W15 (Apr 1 — Run 4)
+| Signal | Source | Mom Test quality | Notes |
+|---|---|---|---|
+| Ice Bar/Mirror Bar: POOR ICP — "experience venues" with entry fees (45 min sessions). Majority redemptions unclaimed — customers discovered entry fee upon arrival. Pippa tried everything to save. Refused integration, no workaround found. | Slack #churned_or_changed (Mar 31, Pippa) | STRONG | Perfect ICP failure: discount model fundamentally incompatible with experience-venue business model. Failed save despite AM effort. |
+| Taxiboat: 3rd time venue churned/cancelled. Owner screening calls. "Not happy with EC's policies." BDM Kane advised blacklist. | Slack #churned_or_changed (Mar 31) | STRONG | Repeat churn — BDM should never have re-signed. Systemic re-signing of bad fits. |
+| Pokkoi Kitchen: FAILED SAVE — was performing well. F2F meeting cancelled last minute. BDM & Emma escalation both unsuccessful. Owner unresponsive. | Slack #churned_or_changed (Mar 31) | STRONG | Failed save on performing venue — churn not caused by product issues but owner disengagement despite good metrics. |
+| X74: Owner adamant about cancelling. Cost of living pressures (fuel, items increasing). Cannot afford EatClub. May rejoin in 6 months. | Slack #churned_or_changed (Mar 31) | STRONG | External pressure churn — venue can't sustain platform cost. Not ICP issue per se, but signing process didn't assess financial resilience. |
+| GT's Bar Noosa: Owner biggest issue is reporting customers but not receiving responses. Runs own specials Mon-Thu. No Square/Lightspeed. Double dipping. Early churn per Kane. | Slack #churned_or_changed (Mar 31, Kane) | STRONG | Multiple friction: no integration + double dipping + support gap + own specials competing. Should not have been signed without integration path. |
+| Kumbira Cafe: SETTLEMENT MISUNDERSTANDING — part-owner thinks EC taking all money. BDM Dylan explained multiple times. Also doesn't want weekend deals (naturally busy). Awaiting partner decision. | Slack #churned_or_changed (Mar 31) | STRONG | BDM failed to adequately explain settlement. Partner not aligned at signing. Classic onboarding gap. |
+| Subway Prahran: Pricing dispute. Saved Nov with loyalty + 1x15% deal/day. Generating little revenue. Owner refuses to increase deals unless inflated pricing allowed. Not willing to work on solutions. | Slack #churned_or_changed (Mar 31) | STRONG | Post-save deterioration — venue wants to game pricing to make deals work. Fundamental misalignment. |
+| Bright Star Cafe Bondi: Early churn. Venue closed for weeks, owner unresponsive to calls/texts. Not ICP. | Slack #churned_or_changed (Mar 31) | MEDIUM | Silent early churn — venue went dark immediately. |
+| Burgertory Tullamarine: Early churn. Franchise fees increasing, selling. Not answering calls/emails/texts all month. | Slack #churned_or_changed (Mar 31) | MEDIUM | External pressure — franchise model + selling. |
+| Mr. Wu Dumpling Bar: Debt collectors. Weeks of chasing with no callbacks. Escalated to collections. | Slack #churned_or_changed (Mar 31) | MEDIUM | Venue in financial distress — never should have been on platform. |
+| 8+ venue sales/closures this period: Magic of India (sold), Hot Yum Pot (sold), Bomba (shut down), FlameNFork (sold), Fresh Cafe (sold), Isla Bar (closed), Goodhope (sold), Mr Burch (sold) | Slack #churned_or_changed (Mar 31) | MEDIUM | Volume anomaly — 2nd consecutive run with 8+ closures. Easter period or accelerating venue mortality? |
+| Granola: Onboarding efficiency crisis — ~30hrs/week manual process, ~$200k annual FTE cost. Banking details don't auto-populate, map markers error-prone, opening hours verification 3 conflicting sources. Photo curation entirely subjective. | Granola (Mar 30-31) | STRONG | Institutional mapping of full cost of manual onboarding. $200k annual = quantified business case. |
+| Granola: Menu digitization bottleneck — 6 offshore staff, complex menus take full day per venue, 10% incorrect. Charlie has scraping solution not integrated. | Granola (Mar 30-31) | STRONG | AI menu scanning identified as first AI implementation priority. |
+
 ### 2026-W14b (Mar 30)
 | Signal | Source | Mom Test quality | Notes |
 |---|---|---|---|
@@ -60,11 +77,13 @@ Venues are being signed with unsustainable deal structures (35% × unlimited off
 
 | Week | Signal count | Sources | Heat | Notes |
 |---|---|---|---|---|
+| 2026-W15 post-Easter (Apr 1–4) | 0 new | — | 12/12 (held) | EASTER SILENCE — no Slack signals. Heat sustained by prior run momentum, not new evidence. First run without new signals. Watch for return to pattern next week. Onboarding HubSpot connector now in active delivery. |
+| 2026-W15 | 14 | Slack #churned_or_changed, Granola, HubSpot | 12/12 | SUSTAINED CRITICAL — 28 churned/churning venues. 2 failed saves (Pokkoi, prior That Viet Place). ICP failures: Ice Bar/Mirror Bar (experience venues), GT's Bar (no integration). Settlement misunderstanding (Kumbira). $200k onboarding cost quantified in Granola. 8+ venue closures/sales. |
 | 2026-W14b | 7 | Slack #churned_or_changed, Granola | 12/12 | HIGHEST HEAT — 3 explicit churn-with-reasons (Little B, Little Rice Bowl, That Viet Place), 1 failed churn save, Granola meeting confirms systemic onboarding gaps |
 | 2026-W14a | 2 | Slack #churned_or_changed | 10/12 | New churn signals validate signing quality problem. New churn reason type: brand/ICP mismatch (Ambra) |
 | 2026-W13 | 9 | AM transcript, Granola, Slack #urgent | 10/12 | First run — high signal, strong quality |
 
-**Current status**: 🔴🔴 CRITICAL — Heat 12/12. Failed churn save (That Viet Place) + 3 explicit ICP/value churn reasons + Granola meeting mapping full onboarding bottleneck chain
+**Current status**: 🔴🔴 CRITICAL — Heat 12/12 sustained, now 6th consecutive run. Easter signal drought (Run 5) does not indicate improvement — Slack was silent across all topics. Onboarding automation (HubSpot connector) now in active delivery (Allen/Claude, Apr 2) — first delivery movement. IDEA ticket still not raised. LONGEST-RUNNING DELIVERY GAP IN REPO.
 
 ---
 

@@ -24,6 +24,14 @@ Customers cannot reliably set up or use the EatClub payment card — encounterin
 
 ## Signal log
 
+### 2026-W15 post-Easter (Apr 1–4 — Run 5)
+| Signal | Source | Mom Test quality | Notes |
+|---|---|---|---|
+| Kavita: EC Card declined at restaurant — had to pay full price and wants 20% refund. Receipt attached. | HubSpot ticket (Apr 3) | STRONG | Classic in-venue card failure — consumer absorbs cost, EC absorbs refund liability |
+| Grace Arrow Smith at Northbridge Brewing Company: EFTPOS tap not approved on machine BUT account debited $78.90 (~11am Apr 2) | HubSpot ticket (Apr 3) | STRONG | 🆕 NEW FAILURE MODE — debit-without-EFTPOS-approval. Settlement/reconciliation failure, not auth decline. Higher severity than standard decline. Pull Stripe logs for similar events. |
+| Consumer: deleted EC card from Google Wallet, can't find way to add it back. Also requesting 30% discount refund. | HubSpot ticket (Apr 3) | MEDIUM | Google Wallet re-add path missing or broken. Second wallet-specific issue in 4 runs. |
+| Consumer: "trying to use the app but can't add a card to my wallet or even have a card appear" | HubSpot ticket (Apr 3) | MEDIUM | Card setup failure on fresh attempt — consistent with SD-572/165 pattern |
+
 ### 2026-W14b (Mar 30)
 | Signal | Source | Mom Test quality | Notes |
 |---|---|---|---|
@@ -55,10 +63,11 @@ Customers cannot reliably set up or use the EatClub payment card — encounterin
 
 | Week | Signal count | Sources | Heat | Notes |
 |---|---|---|---|---|
+| 2026-W15 post-Easter | 4 | HubSpot | 9/12 | Stable. NEW failure mode: EFTPOS debit-without-approval (Grace Arrow Smith, Apr 2). 4 signals over Easter weekend (suppressed volume). Google Wallet re-add broken. |
 | 2026-W14b | 7 | Jira SD, Slack #ecpayuk-ops, Slack #urgent | 9/12 | Continuing — new UK payment failures, Eat Thai disabled, missed refund. 4 SD tickets still blocked. |
 | 2026-W14a | 10+ | Jira SD, Slack #ecpayuk-ops | 9/12 | First identification — high volume, multi-source |
 
-**Current status**: 🔴 Rising — 4 of 7 active SD tickets are card setup issues, ALL blocked internally
+**Current status**: 🔴 Chronic, new failure mode — EFTPOS debit-without-approval is a settlement/reconciliation failure distinct from auth declines. 4 of 7 SD tickets still blocked internally. Google Wallet re-add path broken.
 
 ---
 
@@ -108,5 +117,5 @@ Customers cannot reliably set up or use the EatClub payment card — encounterin
 - [ ] IDEA ticket raised → {IDEA-XXX}
 - [ ] In delivery
 
-**Last updated**: 2026-03-30
+**Last updated**: 2026-04-04
 **Owner**: Adam Glegg
