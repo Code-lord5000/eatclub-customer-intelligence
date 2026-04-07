@@ -1,1 +1,43 @@
-{"generated_at":"2025-04-04T00:00:00Z","run_number":0,"current_run":{"date":"2025-04-04","period_start":"2025-04-02","period_end":"2025-04-04","signal_counts":{"slack":0,"hubspot":0,"granola":0,"mixpanel":0,"helpdesk":0,"hidden":0,"total":0},"mixpanel_status":"unknown","deal_enable_rate":null,"deal_disable_rate":null,"silent_venue_count":null,"silent_venue_trend":"unknown","churns_this_period":0,"friction_stack_alerts":0,"new_cards_created":0,"cards_updated":0,"ready_to_raise_count":0},"run_history":[]}
+{
+  "generated_at": "2026-04-08T10:00:00Z",
+  "run_number": 1,
+  "current_run": {
+    "date": "2026-04-08",
+    "period_start": "2026-03-30",
+    "period_end": "2026-04-08",
+    "signal_counts": {
+      "slack": 0,
+      "hubspot": 0,
+      "granola": 31,
+      "mixpanel": 0,
+      "helpdesk": 0,
+      "hidden": 0,
+      "total": 31
+    },
+    "mixpanel_status": "unavailable",
+    "deal_enable_rate": null,
+    "deal_disable_rate": null,
+    "silent_venue_count": null,
+    "silent_venue_trend": "unknown",
+    "churns_this_period": 0,
+    "friction_stack_alerts": 2,
+    "new_cards_created": 2,
+    "cards_updated": 0,
+    "ready_to_raise_count": 2,
+    "data_notes": "Slack returned no results this cycle. HubSpot API unavailable. All 31 signals from 10 Granola meeting transcripts (Mar 30-Apr 8)."
+  },
+  "run_history": [
+    {
+      "run_number": 1,
+      "date": "2026-04-08",
+      "period_start": "2026-03-30",
+      "period_end": "2026-04-08",
+      "total_signals": 31,
+      "granola_signals": 31,
+      "slack_signals": 0,
+      "hubspot_signals": 0,
+      "new_cards": 2,
+      "friction_alerts": 2
+    }
+  ]
+}
