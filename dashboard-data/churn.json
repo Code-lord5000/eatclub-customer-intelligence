@@ -1,1 +1,52 @@
-{"generated_at":"2025-04-04T00:00:00Z","run_number":0,"recent_churns":[],"at_risk_venues":[],"double_absence_venues":[],"sms_baseline":{"b1_card_setup_daily_rate":172,"b3_payment_timeout_daily_rate":38,"b4_no_cancellation_daily_rate":1.8}}
+{
+  "generated_at": "2026-04-08T10:00:00Z",
+  "run_number": 1,
+  "recent_churns": [],
+  "at_risk_venues": [],
+  "double_absence_venues": [],
+  "friction_stack_alerts": [
+    {
+      "id": "stack-1",
+      "name": "Onboarding pipeline — 6-stage manual gauntlet",
+      "severity": "high",
+      "description": "Every venue passes through 6 manual stages: form data to HubSpot to Hub to menu digitisation to hours reconciliation to map pin. Multiple failure points before first transaction. Affects all ~400 venues/month.",
+      "venues_affected": "~400/month (all incoming venues)",
+      "recommended_action": "Flag to Luke Maurel. Prioritise OPP-001 as first unlock.",
+      "source": "Karen walkthrough Mar 31 + Adam Product Trio Weekly Apr 1"
+    },
+    {
+      "id": "stack-2",
+      "name": "IAO (online ordering) venues — high-churn segment",
+      "severity": "medium",
+      "description": "Jeroen analysis: IAO churn rate is 2x dine-in churn. Indian restaurants and pizza shops churn 22% higher. These groups likely overlap and may be silently stacking friction without raising support tickets.",
+      "venues_affected": "IAO venue segment",
+      "recommended_action": "Flag to Luke Maurel. Commission targeted audit of IAO venue health metrics before end of April.",
+      "source": "Jeroen/Adam Mar 30"
+    }
+  ],
+  "churn_signals": [
+    {
+      "signal": "IAO churn rate 2x dine-in churn",
+      "source": "Jeroen analysis (Granola: Jeroen/Adam Mar 30)",
+      "quality": "MEDIUM — directional, not yet verified",
+      "segment": "IAO venues"
+    },
+    {
+      "signal": "Indian restaurants and pizza shops churn 22% higher than average",
+      "source": "Adam analysis (Granola: Jeroen/Adam Mar 30)",
+      "quality": "MEDIUM — directional, not yet verified",
+      "segment": "Cuisine type"
+    },
+    {
+      "signal": "Slow go-live from manual onboarding delays first transaction, increasing pre-activation churn risk",
+      "source": "Karen walkthrough (Granola: Adam/Luke Mar 31)",
+      "quality": "STRONG",
+      "segment": "All new venues"
+    }
+  ],
+  "sms_baseline": {
+    "b1_card_setup_daily_rate": 172,
+    "b3_payment_timeout_daily_rate": 38,
+    "b4_no_cancellation_daily_rate": 1.8
+  }
+}
