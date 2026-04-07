@@ -1,1 +1,51 @@
-{"generated_at":"2025-04-04T00:00:00Z","run_number":0,"opportunities":[]}
+{
+  "generated_at": "2026-04-08T10:00:00Z",
+  "run_number": 1,
+  "opportunities": [
+    {
+      "id": "OPP-001",
+      "title": "Automate venue data flow from sign-up to Hub to HubSpot",
+      "status": "Discovery",
+      "heat": "high",
+      "heat_label": "High",
+      "ost_branch": "Onboarding journey quality",
+      "signal_count": 9,
+      "mom_test_quality": "STRONG",
+      "problem_summary": "After sign-up, an offshore team manually copies every form field into HubSpot, then into Hub, then types the full menu from a PDF, reconciles opening hours across 3 sources, places the map pin by hand, and curates photos. At ~400 venues/month this costs $200k+/year in FTE for work that is almost entirely transcription.",
+      "opportunity_sizing": "~400 venues/month affected. Estimated $200k+/year FTE saving from automating the data flow alone.",
+      "recommended_next_step": "Raise Jira IDEA ticket. Assign to Vaishali. Bring Karen into refinement as SME.",
+      "created_date": "2026-04-08",
+      "owner": "Vaishali"
+    },
+    {
+      "id": "OPP-002",
+      "title": "Menu digitisation automation agent",
+      "status": "Discovery",
+      "heat": "high",
+      "heat_label": "High",
+      "ost_branch": "Onboarding journey quality",
+      "signal_count": 6,
+      "mom_test_quality": "STRONG",
+      "problem_summary": "Every venue requires a fully digitised menu. Offshore staff manually reads PDF menus and types word-by-word into the menu portal. Complex menus (pizza with toppings, per-size pricing) can take a full day per venue. Jeroen has a PoC; Cam has a Google scraper — both solving the same problem independently.",
+      "opportunity_sizing": "~400 venues/month onboarding + ongoing updates for existing base. 10 min to 8 hrs per venue. 10% error rate creating rework.",
+      "recommended_next_step": "Convene Jeroen, Cam, and Adam for a 45-min session to align on approach before further independent building. Raise Jira IDEA ticket once approach is agreed.",
+      "created_date": "2026-04-08",
+      "owner": "TBD — pending Jeroen/Cam/Adam alignment"
+    },
+    {
+      "id": "OPP-003",
+      "title": "AI tool governance framework",
+      "status": "Watch",
+      "heat": "medium-high",
+      "heat_label": "Medium-High",
+      "ost_branch": "Cross-cutting",
+      "signal_count": 6,
+      "mom_test_quality": "MEDIUM",
+      "problem_summary": "Multiple people (Sam, Jeroen, Adam, Brian, Jess) are independently building AI tools with no governance, no shared code repo, no architecture alignment. Sam's Billy tool is running 507 Claude instances/day in production with no automated tests.",
+      "opportunity_sizing": "Current: 507 Claude API calls/day in uncontrolled production. Risk: 10+ isolated tools in 9-12 months.",
+      "recommended_next_step": "Escalate to leadership. Convene Adam, Jeroen, Sam, Allen, Brian before end of April to agree a shared AI infrastructure policy.",
+      "created_date": "2026-04-08",
+      "owner": "Adam (escalation to leadership)"
+    }
+  ]
+}
