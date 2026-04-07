@@ -1,1 +1,225 @@
-{"generated_at":"2025-04-04T00:00:00Z","run_number":0,"trees":[{"id":"tree-1","name":"Scale AM Optimisation","okr_type":"Primary","desired_outcome":"Free AMs from manual work so they can focus on relationships and growth","key_result":"Remove 10 hrs/month of manual AM work per venue","branches":[{"id":"bulk-deal-tooling","name":"Bulk deal tooling","description":"AMs managing deals across venues manually","heat_score":0,"heat_label":"Unknown","trend":"Unknown","opportunity_count":0,"signal_count_this_run":0,"delivery_coverage":"Unknown","open_idea_tickets":0,"active_delivery_tickets":0,"top_opportunity":""},{"id":"onboarding-automation","name":"Onboarding automation","description":"Manual steps in new venue onboarding AMs currently own","heat_score":0,"heat_label":"Unknown","trend":"Unknown","opportunity_count":0,"signal_count_this_run":0,"delivery_coverage":"Unknown","open_idea_tickets":0,"active_delivery_tickets":0,"top_opportunity":""},{"id":"customer-flagging","name":"Customer flagging","description":"AMs manually identifying at-risk or opportunity venues","heat_score":0,"heat_label":"Unknown","trend":"Unknown","opportunity_count":0,"signal_count_this_run":0,"delivery_coverage":"Unknown","open_idea_tickets":0,"active_delivery_tickets":0,"top_opportunity":""},{"id":"opportunity-surfaces","name":"Opportunity surfaces","description":"AMs not knowing which venues to prioritise or act on","heat_score":0,"heat_label":"Unknown","trend":"Unknown","opportunity_count":0,"signal_count_this_run":0,"delivery_coverage":"Unknown","open_idea_tickets":0,"active_delivery_tickets":0,"top_opportunity":""},{"id":"deal-brain-recommendations","name":"Deal Brain recommendations","description":"AMs manually configuring deals that could be system-recommended","heat_score":0,"heat_label":"Unknown","trend":"Unknown","opportunity_count":0,"signal_count_this_run":0,"delivery_coverage":"Unknown","open_idea_tickets":0,"active_delivery_tickets":0,"top_opportunity":""},{"id":"early-warning-system","name":"Early warning system","description":"AMs reacting to churn after signals were already visible","heat_score":0,"heat_label":"Unknown","trend":"Unknown","opportunity_count":0,"signal_count_this_run":0,"delivery_coverage":"Unknown","open_idea_tickets":0,"active_delivery_tickets":0,"top_opportunity":""}]},{"id":"tree-2","name":"Drive Deal Performance Through System-Led Actions","okr_type":"Secondary","desired_outcome":"Increase venue revenue via scalable system-driven optimisation in Partner Portal","key_result":"Increase % of venues actively engaging in revenue-driving actions within Partner Portal","branches":[{"id":"nci-activation","name":"NCI activation","description":"Venues not activating or understanding New Customer Incentive","heat_score":0,"heat_label":"Unknown","trend":"Unknown","opportunity_count":0,"signal_count_this_run":0,"delivery_coverage":"Unknown","open_idea_tickets":0,"active_delivery_tickets":0,"top_opportunity":""},{"id":"retargeting","name":"Retargeting","description":"Venues not using retargeting tools","heat_score":0,"heat_label":"Unknown","trend":"Unknown","opportunity_count":0,"signal_count_this_run":0,"delivery_coverage":"Unknown","open_idea_tickets":0,"active_delivery_tickets":0,"top_opportunity":""},{"id":"smarter-defaults","name":"Smarter defaults","description":"Venues launching with suboptimal deal settings","heat_score":0,"heat_label":"Unknown","trend":"Unknown","opportunity_count":0,"signal_count_this_run":0,"delivery_coverage":"Unknown","open_idea_tickets":0,"active_delivery_tickets":0,"top_opportunity":""},{"id":"marketing-packs","name":"Marketing packs","description":"Venues unaware of or not engaging with marketing tools","heat_score":0,"heat_label":"Unknown","trend":"Unknown","opportunity_count":0,"signal_count_this_run":0,"delivery_coverage":"Unknown","open_idea_tickets":0,"active_delivery_tickets":0,"top_opportunity":""},{"id":"deal-upgrade-prompts","name":"Deal upgrade prompts","description":"Venues on underperforming deals with no system nudge to adjust","heat_score":0,"heat_label":"Unknown","trend":"Unknown","opportunity_count":0,"signal_count_this_run":0,"delivery_coverage":"Unknown","open_idea_tickets":0,"active_delivery_tickets":0,"top_opportunity":""},{"id":"partner-portal-engagement","name":"Partner Portal engagement","description":"General self-serve portal adoption","heat_score":0,"heat_label":"Unknown","trend":"Unknown","opportunity_count":0,"signal_count_this_run":0,"delivery_coverage":"Unknown","open_idea_tickets":0,"active_delivery_tickets":0,"top_opportunity":""}]}],"cross_tree_signals":[],"out_of_okr_signals":[],"last_updated":"2025-04-04"}
+{
+  "generated_at": "2026-04-08T10:00:00Z",
+  "run_number": 1,
+  "trees": [
+    {
+      "id": "tree-1",
+      "name": "Scale AM Optimisation",
+      "okr_type": "Primary",
+      "desired_outcome": "Free AMs from manual work so they can focus on relationships and growth",
+      "key_result": "Remove 10 hrs/month of manual AM work per venue",
+      "branches": [
+        {
+          "id": "bulk-deal-tooling",
+          "name": "Bulk deal tooling",
+          "description": "AMs managing deals across venues manually",
+          "heat_score": 2,
+          "heat_label": "Low",
+          "trend": "Stable",
+          "opportunity_count": 0,
+          "signal_count_this_run": 0,
+          "delivery_coverage": "Unknown",
+          "open_idea_tickets": 0,
+          "active_delivery_tickets": 0,
+          "top_opportunity": ""
+        },
+        {
+          "id": "onboarding-automation",
+          "name": "Onboarding automation",
+          "description": "Manual steps in new venue onboarding AMs currently own",
+          "heat_score": 9,
+          "heat_label": "High",
+          "trend": "Intensifying",
+          "opportunity_count": 2,
+          "signal_count_this_run": 9,
+          "delivery_coverage": "None — no automation in place",
+          "open_idea_tickets": 0,
+          "active_delivery_tickets": 0,
+          "top_opportunity": "OPP-001: Automate venue data flow from sign-up to Hub to HubSpot (~$200k+/yr FTE saving)"
+        },
+        {
+          "id": "customer-flagging",
+          "name": "Customer flagging",
+          "description": "AMs manually identifying at-risk or opportunity venues",
+          "heat_score": 5,
+          "heat_label": "Medium",
+          "trend": "Up",
+          "opportunity_count": 0,
+          "signal_count_this_run": 2,
+          "delivery_coverage": "Unknown",
+          "open_idea_tickets": 0,
+          "active_delivery_tickets": 0,
+          "top_opportunity": "IAO venues churn 2x dine-in rate — segment at risk, no flagging mechanism in place"
+        },
+        {
+          "id": "opportunity-surfaces",
+          "name": "Opportunity surfaces",
+          "description": "AMs not knowing which venues to prioritise or act on",
+          "heat_score": 3,
+          "heat_label": "Low-Medium",
+          "trend": "Stable",
+          "opportunity_count": 0,
+          "signal_count_this_run": 1,
+          "delivery_coverage": "Unknown",
+          "open_idea_tickets": 0,
+          "active_delivery_tickets": 0,
+          "top_opportunity": "Single venue dashboard (deal score + engagement + debt + last AM contact)"
+        },
+        {
+          "id": "deal-brain-recommendations",
+          "name": "Deal Brain recommendations",
+          "description": "AMs manually configuring deals that could be system-recommended",
+          "heat_score": 1,
+          "heat_label": "Unknown",
+          "trend": "Unknown",
+          "opportunity_count": 0,
+          "signal_count_this_run": 0,
+          "delivery_coverage": "Unknown",
+          "open_idea_tickets": 0,
+          "active_delivery_tickets": 0,
+          "top_opportunity": ""
+        },
+        {
+          "id": "early-warning-system",
+          "name": "Early warning system",
+          "description": "AMs reacting to churn after signals were already visible",
+          "heat_score": 6,
+          "heat_label": "Medium-High",
+          "trend": "Up",
+          "opportunity_count": 0,
+          "signal_count_this_run": 3,
+          "delivery_coverage": "Partial — Jeroen opening hours agent (600-700 venues); Billy in early use",
+          "open_idea_tickets": 0,
+          "active_delivery_tickets": 1,
+          "top_opportunity": "IAO churn segment identification + proactive AM alert before 14-day silence threshold"
+        }
+      ]
+    },
+    {
+      "id": "tree-2",
+      "name": "Drive Deal Performance Through System-Led Actions",
+      "okr_type": "Secondary",
+      "desired_outcome": "Increase venue revenue via scalable system-driven optimisation in Partner Portal",
+      "key_result": "Increase % of venues actively engaging in revenue-driving actions within Partner Portal",
+      "branches": [
+        {
+          "id": "nci-activation",
+          "name": "NCI activation",
+          "description": "Venues not activating or understanding New Customer Incentive",
+          "heat_score": 0,
+          "heat_label": "Unknown",
+          "trend": "Unknown",
+          "opportunity_count": 0,
+          "signal_count_this_run": 0,
+          "delivery_coverage": "Unknown",
+          "open_idea_tickets": 0,
+          "active_delivery_tickets": 0,
+          "top_opportunity": ""
+        },
+        {
+          "id": "retargeting",
+          "name": "Retargeting",
+          "description": "Venues not using retargeting tools",
+          "heat_score": 0,
+          "heat_label": "Unknown",
+          "trend": "Unknown",
+          "opportunity_count": 0,
+          "signal_count_this_run": 0,
+          "delivery_coverage": "Unknown",
+          "open_idea_tickets": 0,
+          "active_delivery_tickets": 0,
+          "top_opportunity": ""
+        },
+        {
+          "id": "smarter-defaults",
+          "name": "Smarter defaults",
+          "description": "Venues launching with suboptimal deal settings",
+          "heat_score": 3,
+          "heat_label": "Low-Medium",
+          "trend": "Unknown",
+          "opportunity_count": 0,
+          "signal_count_this_run": 1,
+          "delivery_coverage": "Unknown",
+          "open_idea_tickets": 0,
+          "active_delivery_tickets": 0,
+          "top_opportunity": "Group sign-up: 50 venues launching with no group-level default deal setting"
+        },
+        {
+          "id": "marketing-packs",
+          "name": "Marketing packs",
+          "description": "Venues unaware of or not engaging with marketing tools",
+          "heat_score": 0,
+          "heat_label": "Unknown",
+          "trend": "Unknown",
+          "opportunity_count": 0,
+          "signal_count_this_run": 0,
+          "delivery_coverage": "Unknown",
+          "open_idea_tickets": 0,
+          "active_delivery_tickets": 0,
+          "top_opportunity": ""
+        },
+        {
+          "id": "deal-upgrade-prompts",
+          "name": "Deal upgrade prompts",
+          "description": "Venues on underperforming deals with no system nudge to adjust",
+          "heat_score": 0,
+          "heat_label": "Unknown",
+          "trend": "Unknown",
+          "opportunity_count": 0,
+          "signal_count_this_run": 0,
+          "delivery_coverage": "Unknown",
+          "open_idea_tickets": 0,
+          "active_delivery_tickets": 0,
+          "top_opportunity": ""
+        },
+        {
+          "id": "partner-portal-engagement",
+          "name": "Partner Portal engagement",
+          "description": "General self-serve portal adoption",
+          "heat_score": 2,
+          "heat_label": "Low",
+          "trend": "Unknown",
+          "opportunity_count": 0,
+          "signal_count_this_run": 1,
+          "delivery_coverage": "Unknown",
+          "open_idea_tickets": 0,
+          "active_delivery_tickets": 0,
+          "top_opportunity": "Bookings needs settlement integration and AM training before Partner Portal push"
+        }
+      ]
+    }
+  ],
+  "cross_tree_signals": [
+    {
+      "signal": "AI tool sprawl: Sam Billy (507 Claude instances/day), Jeroen 3 agents, Crilly all running independently with no shared governance",
+      "heat": "medium-high",
+      "affects_trees": ["tree-1", "tree-2"],
+      "recommended_action": "Escalate to leadership. Convene Adam, Jeroen, Sam, Allen, Brian before end of April."
+    },
+    {
+      "signal": "EatClub Bookings launched without settlement, AM training, or PM ownership — AMs struggling to sell vs OpenTable",
+      "heat": "medium",
+      "affects_trees": ["tree-1", "tree-2"],
+      "recommended_action": "Pause aggressive selling target. Build settlement integration and run AM training session first."
+    },
+    {
+      "signal": "Metrics Hub broken: dashboards pulling from different sources, no A/B testing framework",
+      "heat": "low-medium",
+      "affects_trees": ["tree-1", "tree-2"],
+      "recommended_action": "Watch — dependency on Databricks going live mid-April (Kaushal Patel)"
+    }
+  ],
+  "out_of_okr_signals": [
+    {
+      "signal": "Group sign-up: no enterprise onboarding infrastructure — Sam Benjamin #1 Q2 priority, third crack at it",
+      "heat": "high",
+      "notes": "Strong commercial priority. Warrants its own branch or tree addition given Q2 focus."
+    },
+    {
+      "signal": "City rollout process: Sam messaged at 5:30am Leeds/Cardiff/Liverpool going tomorrow with no regression checklist",
+      "heat": "medium",
+      "notes": "Engineering process gap creating reliability risk."
+    }
+  ],
+  "last_updated": "2026-04-08"
+}
