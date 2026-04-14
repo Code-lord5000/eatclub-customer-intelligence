@@ -1,0 +1,123 @@
+{
+  "last_updated": "2026-04-13",
+  "agents": {
+
+    "slack": {
+      "last_run": "2026-W16",
+      "last_message_timestamps": {
+        "CLM0UPW4U": "",
+        "C09D1CS6D1N": "",
+        "C08E9UM3VAR": "",
+        "C08EUGM8347": "",
+        "C094UFR4ENQ": "",
+        "C0A9A3CPSLB": "",
+        "C0A9S7B6J3H": "",
+        "C099KA8RHV3": ""
+      },
+      "signals_raised_last_run": [
+        "Ramen Ippudo 8-venue cascade churn",
+        "Lumen Alley deal settings reverting — second occurrence",
+        "La Botte Pizza T&C abuse, owner threatening to leave",
+        "The Nuns Pool — AM on vacation, no action taken",
+        "Garibaldi Pizzeria — Angie urgently contacting multiple channels"
+      ],
+      "rising_themes": [
+        "deal-settings-reverting",
+        "customer-quality-tnc-abuse",
+        "am-vacation-coverage-gap"
+      ],
+      "chronic_themes": [
+        "double-dipping-burpengary",
+        "manual-am-work-hub-limitations"
+      ],
+      "venues_to_watch": [
+        "Lumen Alley Coffee & Bagels",
+        "La Botte Pizza - Pascoe Vale",
+        "The Nuns Pool",
+        "Garibaldi Pizzeria",
+        "Masala Flames Indian Cuisine"
+      ],
+      "instructions": "On each run: 1) Read the timestamps above and only pull messages NEWER than those timestamps. 2) If a timestamp is empty, pull the last 50 messages. 3) Check all signals_raised_last_run — if any appear again, flag as RISING and increment recurrence. 4) Update timestamps and signals after each run."
+    },
+
+    "granola": {
+      "last_run": "2026-W16",
+      "seen_meeting_ids": [],
+      "signals_raised_last_run": [
+        "PH hub moving forward — Allen, Roy, Calvin, Vaishali",
+        "Sprint planning W16 — Restaurant team",
+        "EatClub x Vault x Mastercard billing optimisation",
+        "Bookings landing page changes — Obee integration"
+      ],
+      "recurring_topics": [
+        "Partner Portal engagement",
+        "deal score visibility",
+        "UK market setup",
+        "Mastercard/Vault payment partnership"
+      ],
+      "trigger_topics": [
+        "churn", "venue leaving", "deal score", "partner portal",
+        "integration", "POS", "double dipping", "AI deal generator",
+        "fee waiver", "debt", "NCI", "retargeting", "Slack alert",
+        "friction", "AM workload", "venue complaint"
+      ],
+      "instructions": "On each run: 1) Check seen_meeting_ids — skip any meeting already processed. 2) Only surface signals that match trigger_topics. 3) If a topic from recurring_topics appears, flag with existing context. 4) Update seen_meeting_ids and signals_raised_last_run after each run."
+    },
+
+    "hubspot": {
+      "last_run": "2026-W16",
+      "seen_ticket_ids": [],
+      "baseline_metrics": {
+        "total_open_tickets": 347636,
+        "support_pipeline_tickets_this_week": 0,
+        "urgent_am_followup_tickets_this_week": 0
+      },
+      "signals_raised_last_run": [
+        "Masala Flames — iOS deal visibility bug, 5 months",
+        "Alexander Mediterranean — $266 debt, 14+ day silence",
+        "Multiple 30-day optimisation tickets raised this week"
+      ],
+      "venues_flagged": [
+        "Masala Flames Indian Cuisine — rest_id: 6A3A7879-EACD-4ACF-BA44-770D4608CF9C",
+        "Alexander Mediterranean Restaurant — rest_id: 7D4929E5-5BD1-4A10-9808-B95244B38A95",
+        "Lumen Alley Coffee & Bagels — rest_id: B0A4E510-B0D2-4892-A311-5066FCA654F4",
+        "La Botte Pizza - Pascoe Vale — rest_id: DB6BD926-E4E9-4884-919A-725DD772E9BC"
+      ],
+      "cross_reference_key": "unique_identifier field on DEAL object = restID (UUID format)",
+      "instructions": "On each run: 1) Skip any ticket_id already in seen_ticket_ids. 2) Pull new tickets from Support Pipeline and URGENT AM Follow-Up pipelines only. 3) Cross-reference venue names against venues_flagged list — if match, escalate heat score. 4) Use unique_identifier on DEAL object to link to restID. 5) Update seen_ticket_ids and signals after each run."
+    },
+
+    "mixpanel": {
+      "last_run": "2026-W16",
+      "project_id": "3834354",
+      "region": "eu",
+      "baseline_events": {
+        "Partner Portal Login": {
+          "w15_count": 0,
+          "w16_count": 0,
+          "trend": "UNKNOWN — first live run pending"
+        },
+        "Deal Edit": {
+          "w15_count": 0,
+          "w16_count": 0,
+          "trend": "UNKNOWN — first live run pending"
+        },
+        "NCI Activation": {
+          "w15_count": 0,
+          "w16_count": 0,
+          "trend": "UNKNOWN — first live run pending"
+        },
+        "Page View - Partner Portal": {
+          "w15_count": 0,
+          "w16_count": 0,
+          "trend": "UNKNOWN — first live run pending"
+        }
+      },
+      "zero_engagement_venues": [],
+      "high_engagement_venues": [],
+      "okr2_signals": [],
+      "instructions": "On each run: 1) Query baseline_events and compare to previous week counts. 2) Flag any venue named in other agent signals that shows zero Partner Portal logins — this is HIGH priority. 3) Flag any NCI activation as a POSITIVE OKR2 signal. 4) Update all counts and trends after each run. 5) Never surface venues not already flagged by Slack, Granola, or HubSpot collectors."
+    }
+
+  }
+}

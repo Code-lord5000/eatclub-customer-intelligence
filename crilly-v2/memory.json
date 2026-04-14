@@ -1,0 +1,50 @@
+{
+  "last_updated": "2026-04-13",
+  "last_run_week": "W16",
+  "chronic_themes": [
+    {
+      "theme_id": "T001",
+      "theme": "Deal score zero venues accumulating",
+      "first_seen": "2026-W14",
+      "last_seen": "2026-W16",
+      "recurrence_count": 3,
+      "lifecycle": "CHRONIC",
+      "heat_score": 9,
+      "okr": "OKR1",
+      "notes": "397 venues at score=0 as of W16, up from 284 in W15 (+113). No system alert exists. Tom McGay has 28 zero-score accounts.",
+      "jira_raised": false
+    },
+    {
+      "theme_id": "T002",
+      "theme": "Double dipping — Burpengary cluster",
+      "first_seen": "2026-W11",
+      "last_seen": "2026-W16",
+      "recurrence_count": 5,
+      "lifecycle": "CHRONIC",
+      "heat_score": 8,
+      "okr": "OKR3",
+      "notes": "RedCat integration talking point not resolving it. Now cited in confirmed competitor loss (Spread Deli).",
+      "jira_raised": false
+    },
+    {
+      "theme_id": "T003",
+      "theme": "POS integration gap as competitive loss",
+      "first_seen": "2026-W15",
+      "last_seen": "2026-W16",
+      "recurrence_count": 2,
+      "lifecycle": "RISING",
+      "heat_score": 8,
+      "okr": "OKR3",
+      "notes": "Spread Deli moved to First Table for Lightspeed + Now Book It. Life of Chi churned — Ipos no integration.",
+      "jira_raised": false
+    },
+    {
+      "theme_id": "T004",
+      "theme": "Group cascade churn — Ramen Ippudo",
+      "first_seen": "2026-W16",
+      "last_seen": "2026-W16",
+      "recurrence_count": 1,
+      "lifecycle": "NEW",
+      "heat_score": 9,
+cat ~/PM/customer-repo/crilly-v2/memory.json | head -10
+eof
