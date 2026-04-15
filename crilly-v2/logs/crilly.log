@@ -1,0 +1,15 @@
+Done. W16 synthesis written, committed, and pushed.
+
+**What was available vs W15**: Same source gap (no Slack, Granola, HubSpot, SMS, Mixpanel), but the structured CSVs were high signal-density this week.
+
+**Top 5 themes surfaced:**
+
+1. **Group cascade churn** (CHRONIC) — Ramen Ippudo, 8 venues simultaneous. Combined with W15's Chahoud/Gemelli, 15+ venues lost in 2 weeks. Escalate to Pan/Luke — needs executive outreach to Ippudo corporate.
+
+2. **POS integration gap as competitive loss** (RISING) — Spread Deli explicitly moved to First Table for Lightspeed + Now Book It integration. Life of Chi churned because Ipos has no integration. Both cases screened at sign-up would have been caught earlier.
+
+3. **Silent disengagement accelerating** (RISING) — 397 venues at deal score = 0, up from 284 last week (+113). No system alert triggers for AMs. Tom Mcgay has 28 zero-score accounts in his book alone.
+
+4. **AI deal generator creating a financial trap** (NEW) — Silver Fox Cafe used the feature in good faith, deals set too high, venue can't pay. First time this signal type has appeared — needs guardrails review before broader rollout.
+
+5. **Double dipping** (CHRONIC, 5+ weeks) — Burpengary cluster persists, RedCat integration talking point isn't resolving it, and it's now cited in a confirmed competitor loss (Spread Deli).

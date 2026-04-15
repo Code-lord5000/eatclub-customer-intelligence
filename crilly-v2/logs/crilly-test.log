@@ -1,0 +1,19 @@
+Done. Here's what was produced:
+
+**2026-W16b-synthesis.md** — pushed to main.
+
+**Note on Granola**: No Granola MCP tool was available this session. The synthesis runs on Slack only (4 channels). Pair with W16 (churn/deal score CSV run) for full coverage this week.
+
+**6 themes identified:**
+
+1. **🔴 Deal settings reverting/ignoring venue choices** (RISING) — Easter cluster: Rice Paper Scissors, Taketori, Lumen Alley (2nd occurrence), Ombre Italian. Engineering post-mortem needed. Lumen Alley is a confirmed churn where this was a contributing factor.
+
+2. **🔴 Customer quality / T&C abuse** (CHRONIC) — 6 venues across 2 channels. Plat Coffee and Lumen Alley churned citing it; La Botte Pizza is active risk having already dropped deal depth. CS is manually calling individual customers — not scalable.
+
+3. **🟡 Sold-business / insolvency spike** (RISING) — Jak's Group (7 venues, liquidation) + 7 pause-alerts citing sold business. Watch for trend vs Easter spike.
+
+4. **🟡 Manual AM work from Hub gaps** (CHRONIC) — Party size, NCI, fee waivers, hours — all requiring Slack requests. Direct OKR 1 evidence.
+
+5. **🟡 AM vacation coverage gaps** (NEW) — 3+ CS agents unable to route tickets; The Nuns' Pool is an active escalation requiring same-day response.
+
+6. **🟡 iOS deal visibility bug — Masala Flames** (CHRONIC) — 5 months invisible on iOS, "Partner Signup not found" error likely affects a class of venues.

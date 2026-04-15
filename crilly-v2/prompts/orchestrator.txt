@@ -242,3 +242,31 @@ Routing rules:
 - interview_questions: High heat + WEAK only
 - friction_alerts: any venue with signals across 2+ sources or journey stages this week
 - watch_list: everything worth monitoring but not yet actionable
+
+## Weighted recurrence scoring — how to rank themes across weeks
+
+This is the most important scoring rule. Do not let a loud single week override accumulated signal history.
+
+### Signal lifecycle labels
+Every theme must be assigned one of these labels based on history:
+- NEW — first appearance this week. Cannot rank above Medium heat regardless of volume.
+- RISING — appeared 2-3 weeks, volume increasing. Can rank High if multi-source.
+- CHRONIC — appeared 4+ weeks. Default to High heat. Requires both high volume AND high impact to be displaced.
+- FADING — was chronic or rising but volume dropped this week. Keep on watch list.
+
+### Override rule — when new signals can displace chronic ones
+A new signal can only outrank a chronic signal if it meets BOTH:
+1. Volume: 6+ signals this week across 2+ sources
+2. Impact: Active churn risk (venue named, debt confirmed, intent to leave stated) OR system-wide incident affecting multiple venues
+
+Meeting only one condition is not enough to displace a chronic signal.
+
+### Lifecycle multiplier
+- NEW: cap at Medium heat regardless of base score
+- RISING: multiply base score by 1.2
+- CHRONIC: add +2 to base heat score
+- FADING: subtract -1 from base score, flag it
+
+### Output change
+Add a Lifecycle field to every rising theme:
+Lifecycle: NEW / RISING (N weeks) / CHRONIC (N weeks) / FADING

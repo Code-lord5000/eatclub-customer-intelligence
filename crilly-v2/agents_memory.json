@@ -1,41 +1,55 @@
 {
-  "last_updated": "2026-04-13",
+  "last_updated": "2026-04-16",
   "agents": {
 
     "slack": {
       "last_run": "2026-W16",
       "last_message_timestamps": {
-        "CLM0UPW4U": "",
-        "C09D1CS6D1N": "",
-        "C08E9UM3VAR": "",
-        "C08EUGM8347": "",
-        "C094UFR4ENQ": "",
-        "C0A9A3CPSLB": "",
-        "C0A9S7B6J3H": "",
-        "C099KA8RHV3": ""
+        "CLM0UPW4U": "1776259319.755519",
+        "C09D1CS6D1N": "1776262653.532219",
+        "C08E9UM3VAR": "1776237985.898339",
+        "C08EUGM8347": "1776242630.868939",
+        "C094UFR4ENQ": "1775105292.361179",
+        "C0A9A3CPSLB": "1776046888.100529",
+        "C0A9S7B6J3H": "1776266240.770729",
+        "C099KA8RHV3": "1776251857.854669"
       },
       "signals_raised_last_run": [
-        "Ramen Ippudo 8-venue cascade churn",
-        "Lumen Alley deal settings reverting — second occurrence",
-        "La Botte Pizza T&C abuse, owner threatening to leave",
-        "The Nuns Pool — AM on vacation, no action taken",
-        "Garibaldi Pizzeria — Angie urgently contacting multiple channels"
+        "Deal settings reverting — Lumen Alley (2nd), Taketori Fusion, Rice Paper Scissors, Ombre Italian",
+        "Partner Portal self-serve gap — 8+ manual config requests in ops channel",
+        "Masala Flames iOS bug 5+ months — two AMs reporting independently",
+        "AM vacation coverage gap — Friends & Flowers Cafe cancel unattended",
+        "The Last Jar — 4th cancel request, T&C/dine-in abuse",
+        "Garibaldi Pizzeria — Angie multi-channel urgent, 2nd consecutive week",
+        "Life of Chi churn — double dipping + Ipos integration gap co-occurrence",
+        "Onboarding expectation gap — Sushi Mami, Honest Crust, Fress Restaurant",
+        "QBR stats showing $0 for active venues — trust/accuracy issue",
+        "Delhi Darbar billing bug — membershipBillingDay:0 error",
+        "UK venue charged before go-live — £298.66 billing error",
+        "3DS Android rollout halted — card addition blocked"
       ],
       "rising_themes": [
         "deal-settings-reverting",
-        "customer-quality-tnc-abuse",
-        "am-vacation-coverage-gap"
+        "am-vacation-coverage-gap",
+        "onboarding-expectation-gap",
+        "customer-tnc-abuse",
+        "uk-billing-bugs"
       ],
       "chronic_themes": [
+        "partner-portal-self-serve-gap",
         "double-dipping-burpengary",
+        "masala-flames-ios-bug",
         "manual-am-work-hub-limitations"
       ],
       "venues_to_watch": [
-        "Lumen Alley Coffee & Bagels",
-        "La Botte Pizza - Pascoe Vale",
-        "The Nuns Pool",
         "Garibaldi Pizzeria",
-        "Masala Flames Indian Cuisine"
+        "The Last Jar — EC9FABAF-1C92-4C45-8C6F-79B836A09D20",
+        "Masala Flames Indian Cuisine — 6A3A7879-EACD-4ACF-BA44-770D4608CF9C",
+        "Lumen Alley Coffee & Bagels — B0A4E510-B0D2-4892-A311-5066FCA654F4",
+        "Friends & Flowers Cafe",
+        "Yum Yum Tree Victoria Park — 7831FFCB-CFC7-4B48-A98B-564D4B4E29E2",
+        "Delhi Darbar Surfers Paradise — B6D9E9C6-5C0D-486D-B5A4-43B9C81D66A5",
+        "Everest MoMo Station — D82CAAD0-0004-494F-914C-1B02AE42F771"
       ],
       "instructions": "On each run: 1) Read the timestamps above and only pull messages NEWER than those timestamps. 2) If a timestamp is empty, pull the last 50 messages. 3) Check all signals_raised_last_run — if any appear again, flag as RISING and increment recurrence. 4) Update timestamps and signals after each run."
     },
@@ -44,22 +58,22 @@
       "last_run": "2026-W16",
       "seen_meeting_ids": [],
       "signals_raised_last_run": [
-        "PH hub moving forward — Allen, Roy, Calvin, Vaishali",
-        "Sprint planning W16 — Restaurant team",
-        "EatClub x Vault x Mastercard billing optimisation",
-        "Bookings landing page changes — Obee integration"
+        "NOTE: Granola MCP not available in W16 run — no meeting data collected"
       ],
       "recurring_topics": [
         "Partner Portal engagement",
         "deal score visibility",
         "UK market setup",
-        "Mastercard/Vault payment partnership"
+        "Mastercard/Vault payment partnership",
+        "AM self-serve tooling",
+        "deal settings reverting investigation"
       ],
       "trigger_topics": [
         "churn", "venue leaving", "deal score", "partner portal",
         "integration", "POS", "double dipping", "AI deal generator",
         "fee waiver", "debt", "NCI", "retargeting", "Slack alert",
-        "friction", "AM workload", "venue complaint"
+        "friction", "AM workload", "venue complaint", "deal revert",
+        "vacation coverage", "onboarding expectation"
       ],
       "instructions": "On each run: 1) Check seen_meeting_ids — skip any meeting already processed. 2) Only surface signals that match trigger_topics. 3) If a topic from recurring_topics appears, flag with existing context. 4) Update seen_meeting_ids and signals_raised_last_run after each run."
     },
@@ -67,56 +81,91 @@
     "hubspot": {
       "last_run": "2026-W16",
       "seen_ticket_ids": [],
+      "api_status": "403 MISSING_SCOPES — tickets API unavailable. Requires admin to grant tickets read scope to MCP OAuth config.",
       "baseline_metrics": {
         "total_open_tickets": 347636,
         "support_pipeline_tickets_this_week": 0,
         "urgent_am_followup_tickets_this_week": 0
       },
       "signals_raised_last_run": [
-        "Masala Flames — iOS deal visibility bug, 5 months",
-        "Alexander Mediterranean — $266 debt, 14+ day silence",
-        "Multiple 30-day optimisation tickets raised this week"
+        "NOTE: HubSpot tickets unavailable W16 — 403 scope error",
+        "Masala Flames — iOS deal visibility bug, 5 months (from prior run)",
+        "Alexander Mediterranean — $266 debt, 14+ day silence (from prior run)",
+        "Multiple 30-day optimisation tickets raised this week (from prior run)"
       ],
       "venues_flagged": [
         "Masala Flames Indian Cuisine — rest_id: 6A3A7879-EACD-4ACF-BA44-770D4608CF9C",
         "Alexander Mediterranean Restaurant — rest_id: 7D4929E5-5BD1-4A10-9808-B95244B38A95",
         "Lumen Alley Coffee & Bagels — rest_id: B0A4E510-B0D2-4892-A311-5066FCA654F4",
-        "La Botte Pizza - Pascoe Vale — rest_id: DB6BD926-E4E9-4884-919A-725DD772E9BC"
+        "La Botte Pizza - Pascoe Vale — rest_id: DB6BD926-E4E9-4884-919A-725DD772E9BC",
+        "The Last Jar — rest_id: EC9FABAF-1C92-4C45-8C6F-79B836A09D20",
+        "Delhi Darbar Surfers Paradise — rest_id: B6D9E9C6-5C0D-486D-B5A4-43B9C81D66A5"
       ],
       "cross_reference_key": "unique_identifier field on DEAL object = restID (UUID format)",
-      "instructions": "On each run: 1) Skip any ticket_id already in seen_ticket_ids. 2) Pull new tickets from Support Pipeline and URGENT AM Follow-Up pipelines only. 3) Cross-reference venue names against venues_flagged list — if match, escalate heat score. 4) Use unique_identifier on DEAL object to link to restID. 5) Update seen_ticket_ids and signals after each run."
+      "instructions": "On each run: 1) Skip any ticket_id already in seen_ticket_ids. 2) Pull new tickets from Support Pipeline and URGENT AM Follow-Up pipelines only. 3) Cross-reference venue names against venues_flagged list — if match, escalate heat score. 4) Use unique_identifier on DEAL object to link to restID. 5) Update seen_ticket_ids and signals after each run. NOTE: API currently returns 403 — resolve scope issue before next run."
     },
 
     "mixpanel": {
       "last_run": "2026-W16",
       "project_id": "3834354",
       "region": "eu",
+      "api_status": "aggregate_event_counts returning 400 — event parameter format issue. Top events list works.",
+      "correct_event_names": {
+        "deal_edit": "Offer edited",
+        "partner_portal_login": "UNKNOWN — not in top 20 events list (may be 'Redirected to onboarding tour' or session start)",
+        "nci_activation": "UNKNOWN — not confirmed in top 20 events",
+        "page_view_partner_portal": "Page view - offers/active"
+      },
+      "confirmed_top_events": [
+        "date_filter_changed",
+        "HDS entry modal review holiday hours",
+        "HDS entry modal shown",
+        "Insight Time Window Adjusted",
+        "Nav link clicked - manage-offers",
+        "Nav link clicked - offer-performance",
+        "Nav link clicked - settlements",
+        "Nav link clicked - transactions",
+        "Offer disabled",
+        "Offer edited",
+        "Page view - insights",
+        "Page view - offers",
+        "Page view - offers/active",
+        "Page view - offers/edit/:dealId",
+        "Page view - profile/holiday-hours",
+        "Page view - settlements",
+        "Page view - tour",
+        "Page view - transactions",
+        "Redirected to onboarding tour",
+        "Tour next button clicked"
+      ],
       "baseline_events": {
-        "Partner Portal Login": {
+        "Offer edited": {
           "w15_count": 0,
-          "w16_count": 0,
-          "trend": "UNKNOWN — first live run pending"
+          "w16_count": "UNAVAILABLE — API format error",
+          "trend": "UNKNOWN — first live run with correct event name"
         },
-        "Deal Edit": {
+        "Page view - offers/active": {
           "w15_count": 0,
-          "w16_count": 0,
-          "trend": "UNKNOWN — first live run pending"
+          "w16_count": "UNAVAILABLE — API format error",
+          "trend": "UNKNOWN"
         },
-        "NCI Activation": {
+        "Offer disabled": {
           "w15_count": 0,
-          "w16_count": 0,
-          "trend": "UNKNOWN — first live run pending"
+          "w16_count": "UNAVAILABLE — API format error",
+          "trend": "UNKNOWN"
         },
-        "Page View - Partner Portal": {
+        "Page view - profile/holiday-hours": {
           "w15_count": 0,
-          "w16_count": 0,
-          "trend": "UNKNOWN — first live run pending"
+          "w16_count": "UNAVAILABLE — API format error",
+          "trend": "UNKNOWN — note: holiday hours page view correlates with deal revert theme"
         }
       },
       "zero_engagement_venues": [],
       "high_engagement_venues": [],
-      "okr2_signals": [],
-      "instructions": "On each run: 1) Query baseline_events and compare to previous week counts. 2) Flag any venue named in other agent signals that shows zero Partner Portal logins — this is HIGH priority. 3) Flag any NCI activation as a POSITIVE OKR2 signal. 4) Update all counts and trends after each run. 5) Never surface venues not already flagged by Slack, Granola, or HubSpot collectors."
+      "okr2_signals": [
+        "Confirmed: Offer edited, Page view - offers/active, Nav link clicked - offer-performance all in top 20 events — Partner Portal IS being used"
+      ],
+      "instructions": "On each run: 1) Use correct Mixpanel event names from confirmed_top_events list, not the names in baseline_events. 2) aggregate_event_counts requires event as a JSON array string — try wrapping in brackets. 3) Query baseline_events and compare to previous week counts. 4) Flag any venue named in other agent signals that shows zero Partner Portal logins. 5) Update all counts and trends after each run."
     }
 
   }

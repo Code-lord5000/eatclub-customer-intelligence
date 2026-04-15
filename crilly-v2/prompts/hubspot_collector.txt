@@ -43,3 +43,5 @@ Quality ratings:
 - WEAK: Vague, anecdotal, unverified
 
 Return only the JSON array. No preamble.
+
+Important: When pulling deal records, always include the unique_identifier field. This is the restID — the primary cross-reference key linking HubSpot to Hub, Mixpanel, and churn data. Include it in every signal output as "rest_id".

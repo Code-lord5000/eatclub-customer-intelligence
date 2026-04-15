@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-13",
+  "last_updated": "2026-04-16",
   "last_run_week": "W16",
   "chronic_themes": [
     {
@@ -11,19 +11,19 @@
       "lifecycle": "CHRONIC",
       "heat_score": 9,
       "okr": "OKR1",
-      "notes": "397 venues at score=0 as of W16, up from 284 in W15 (+113). No system alert exists. Tom McGay has 28 zero-score accounts.",
+      "notes": "397 venues at score=0 as of W16, up from 284 in W15 (+113). No system alert exists. Tom McGay has 28 zero-score accounts. Second Wife (2E087C25) confirmed this week as zero-transaction venue. HubSpot unavailable W16 — count unverifiable.",
       "jira_raised": false
     },
     {
       "theme_id": "T002",
-      "theme": "Double dipping — Burpengary cluster",
+      "theme": "Double dipping — Burpengary cluster + general",
       "first_seen": "2026-W11",
       "last_seen": "2026-W16",
-      "recurrence_count": 5,
+      "recurrence_count": 6,
       "lifecycle": "CHRONIC",
       "heat_score": 8,
       "okr": "OKR3",
-      "notes": "RedCat integration talking point not resolving it. Now cited in confirmed competitor loss (Spread Deli).",
+      "notes": "Life of Chi (BE069D4E) churned W16 explicitly citing double dipping + Ipos no integration. First confirmed T002+T003 co-occurrence in a single churn. RedCat talking point not resolving it.",
       "jira_raised": false
     },
     {
@@ -31,11 +31,11 @@
       "theme": "POS integration gap as competitive loss",
       "first_seen": "2026-W15",
       "last_seen": "2026-W16",
-      "recurrence_count": 2,
+      "recurrence_count": 3,
       "lifecycle": "RISING",
       "heat_score": 8,
       "okr": "OKR3",
-      "notes": "Spread Deli moved to First Table for Lightspeed + Now Book It. Life of Chi churned — Ipos no integration.",
+      "notes": "Spread Deli (W15): moved to First Table for Lightspeed + Now Book It. Life of Chi (W16): Ipos no integration cited alongside double dipping. T002 and T003 confirmed co-occurring in same churn.",
       "jira_raised": false
     },
     {
@@ -46,5 +46,183 @@
       "recurrence_count": 1,
       "lifecycle": "NEW",
       "heat_score": 9,
-cat ~/PM/customer-repo/crilly-v2/memory.json | head -10
-eof
+      "okr": "OKR3",
+      "notes": "8-venue cascade churn. No new signals W16 (no HubSpot/Granola). Monitoring.",
+      "jira_raised": false
+    },
+    {
+      "theme_id": "T005",
+      "theme": "Deal settings silently reverting",
+      "first_seen": "2026-W15",
+      "last_seen": "2026-W16",
+      "recurrence_count": 3,
+      "lifecycle": "RISING",
+      "heat_score": 8,
+      "okr": "OKR1",
+      "notes": "W16: Lumen Alley (2nd occurrence), Taketori Fusion, Rice Paper Scissors Fitzroy, Ombre Italian Newstead (TA with offers off). Holiday hours pop-up interaction appears to be a specific trigger. Jira ticket needed.",
+      "jira_raised": false
+    },
+    {
+      "theme_id": "T006",
+      "theme": "AM vacation coverage gap enabling churn",
+      "first_seen": "2026-W15",
+      "last_seen": "2026-W16",
+      "recurrence_count": 2,
+      "lifecycle": "RISING",
+      "heat_score": 7,
+      "okr": "OKR1",
+      "notes": "W15: The Nuns Pool unacted while AM on vacation. W16: Friends & Flowers Cafe cancel request unassigned, 4+ tickets with no owner. No automated OOO routing in HubSpot.",
+      "jira_raised": false
+    },
+    {
+      "theme_id": "T007",
+      "theme": "Partner Portal self-serve gap — AMs manually doing venue config",
+      "first_seen": "2026-W12",
+      "last_seen": "2026-W16",
+      "recurrence_count": 5,
+      "lifecycle": "CHRONIC",
+      "heat_score": 9,
+      "okr": "OKR1",
+      "notes": "W16: 8+ distinct manual requests via ops channels. NCI boost, seat times, guest limits, no-show buffer, boost removal. Limerick Arms (B7F15903) explicitly stated can't enable NCI boost on portal. Most direct OKR1 opportunity.",
+      "jira_raised": false
+    },
+    {
+      "theme_id": "T008",
+      "theme": "Masala Flames iOS dine-in visibility bug",
+      "first_seen": "2025-W44",
+      "last_seen": "2026-W16",
+      "recurrence_count": 6,
+      "lifecycle": "CHRONIC",
+      "heat_score": 9,
+      "okr": "OKR3",
+      "notes": "5+ months unresolved. Two AMs reported independently in W16 without referencing each other — no engineering owner visible. ECPAY enabling is suspected fix. restID: 6A3A7879-EACD-4ACF-BA44-770D4608CF9C. ESCALATE.",
+      "jira_raised": false
+    },
+    {
+      "theme_id": "T009",
+      "theme": "Onboarding expectation gap — late-stage churn",
+      "first_seen": "2026-W15",
+      "last_seen": "2026-W16",
+      "recurrence_count": 2,
+      "lifecycle": "RISING",
+      "heat_score": 7,
+      "okr": "OKR3",
+      "notes": "W16: Sushi Mami (discount on total bill), Honest Crust (brand calibre promise), Fress (burger giveaway miscomm), Persian Kebab (no perceived value). Discount-applies-to-total-bill is the most common specific misalignment.",
+      "jira_raised": false
+    },
+    {
+      "theme_id": "T010",
+      "theme": "Customer T&C abuse creating venue friction",
+      "first_seen": "2026-W15",
+      "last_seen": "2026-W16",
+      "recurrence_count": 2,
+      "lifecycle": "RISING",
+      "heat_score": 7,
+      "okr": "OKR3",
+      "notes": "W16: 6+ dine-in for takeaway incidents, max pax breaches, time-window violations. The Last Jar (EC9FABAF) now at 4th cancel attempt citing this. Forno 88: $643 takeaway fraud attempt. Venue frustration escalating.",
+      "jira_raised": false
+    }
+  ],
+  "venue_watch_list": [
+    {
+      "venue": "Garibaldi Pizzeria",
+      "rest_id": "UNKNOWN — needs lookup",
+      "status": "CRITICAL",
+      "notes": "Angie urgently contacting multiple channels W15+W16. CS escalation. Flag to Luke immediately.",
+      "first_flagged": "2026-W15",
+      "last_seen": "2026-W16"
+    },
+    {
+      "venue": "The Last Jar",
+      "rest_id": "EC9FABAF-1C92-4C45-8C6F-79B836A09D20",
+      "status": "CRITICAL",
+      "notes": "4th cancel request from Bryony. T&C abuse: dine-in for takeaway, booking walk-outs. 3 prior retain attempts failed.",
+      "first_flagged": "2026-W16",
+      "last_seen": "2026-W16"
+    },
+    {
+      "venue": "Masala Flames Indian Cuisine",
+      "rest_id": "6A3A7879-EACD-4ACF-BA44-770D4608CF9C",
+      "status": "ESCALATING",
+      "notes": "iOS visibility bug 5+ months. Two AMs independently W16. Engineering owner needed. ECPAY suspected fix.",
+      "first_flagged": "2026-W14",
+      "last_seen": "2026-W16"
+    },
+    {
+      "venue": "Lumen Alley Coffee & Bagels",
+      "rest_id": "B0A4E510-B0D2-4892-A311-5066FCA654F4",
+      "status": "ESCALATING",
+      "notes": "Deal revert 2nd occurrence W15+W16. Trust in platform configuration broken.",
+      "first_flagged": "2026-W15",
+      "last_seen": "2026-W16"
+    },
+    {
+      "venue": "La Botte Pizza - Pascoe Vale",
+      "rest_id": "DB6BD926-E4E9-4884-919A-725DD772E9BC",
+      "status": "WATCH",
+      "notes": "T&C abuse from prior weeks. Monitor.",
+      "first_flagged": "2026-W15",
+      "last_seen": "2026-W15"
+    },
+    {
+      "venue": "Alexander Mediterranean Restaurant",
+      "rest_id": "7D4929E5-5BD1-4A10-9808-B95244B38A95",
+      "status": "WATCH",
+      "notes": "$266 debt, 14+ day silence from prior week.",
+      "first_flagged": "2026-W16",
+      "last_seen": "2026-W16"
+    },
+    {
+      "venue": "Yum Yum Tree Victoria Park",
+      "rest_id": "7831FFCB-CFC7-4B48-A98B-564D4B4E29E2",
+      "status": "WATCH",
+      "notes": "Pause request W16. 'No one bothered to call me.' AM non-responsive complaint on record.",
+      "first_flagged": "2026-W16",
+      "last_seen": "2026-W16"
+    },
+    {
+      "venue": "Everest MoMo Station",
+      "rest_id": "D82CAAD0-0004-494F-914C-1B02AE42F771",
+      "status": "WATCH",
+      "notes": "Cancel email March 18 not actioned. Now disputing $148.08 charge.",
+      "first_flagged": "2026-W16",
+      "last_seen": "2026-W16"
+    },
+    {
+      "venue": "Delhi Darbar - Surfers Paradise",
+      "rest_id": "B6D9E9C6-5C0D-486D-B5A4-43B9C81D66A5",
+      "status": "WATCH",
+      "notes": "Billing bug: Invalid membershipBillingDay 0. Pause requested W16.",
+      "first_flagged": "2026-W16",
+      "last_seen": "2026-W16"
+    }
+  ],
+  "jira_tickets_raised": [],
+  "saved_venues": {
+    "run_amuk": {
+      "rest_id": "1CB984DA-21A3-4169-870A-6ADDD45F3F33",
+      "notes": "Pause save — $49/m for 3 months removed as part of retention."
+    }
+  },
+  "okr_baselines": {
+    "OKR1": {
+      "target": "Remove 10 hours/month of manual AM work per venue",
+      "baseline_am_venue_ratio": 175,
+      "target_ratio": 350
+    },
+    "OKR2": {
+      "target": "Increase % of venues actively engaging in revenue-driving actions in Partner Portal",
+      "partner_portal_events_confirmed": ["Offer edited", "Page view - offers/active", "Nav link clicked - offer-performance"]
+    },
+    "OKR3": {
+      "target": "Reduce churn rate from ~8% toward 4%",
+      "current_churn_estimate": "~8%"
+    }
+  },
+  "data_quality_flags": {
+    "memory_json_corruption": "File was truncated at line 49 in previous run — repaired W16-04-16",
+    "hubspot_scope_error": "403 MISSING_SCOPES on tickets API — requires admin fix",
+    "mixpanel_event_name_mismatch": "agents_memory event names do not match actual Mixpanel event names — see notes",
+    "granola_mcp_unavailable": "Not available in current tool environment"
+  }
+}
