@@ -66,7 +66,7 @@ def run_session(name, agent_id, message):
 
         # Get events
         events = curl("GET", f"https://api.anthropic.com/v1/sessions/{session_id}/events")
-        for event in events.get("events", []):
+        for event in events.get("data", []):
             if event.get("type") == "agent.message":
                 for block in event.get("content", []):
                     if block.get("type") == "text":
@@ -104,7 +104,7 @@ def run_orchestrator(signals):
     return run_session("orchestrator", AGENT_IDS["orchestrator"], message)
 
 def save_synthesis(output):
-    week = datetime.now().strftime("%Y-W%W")
+    week = datetime.now().isocalendar()[0].__str__() + "-W" + str(datetime.now().isocalendar()[1]).zfill(2)
     try:
         routing_start = output.index("```routing")
         synthesis = output[:routing_start].strip()
@@ -126,7 +126,7 @@ def handle_routing(output):
         print(f"Could not parse routing block: {e}")
         return
 
-    week = datetime.now().strftime("%Y-W%W")
+    week = datetime.now().isocalendar()[0].__str__() + "-W" + str(datetime.now().isocalendar()[1]).zfill(2)
 
     for ticket in routing.get("jira_tickets", []):
         print(f"TODO Jira: [{ticket.get('okr','')}] {ticket['theme']}")

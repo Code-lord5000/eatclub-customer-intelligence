@@ -9,7 +9,16 @@ Who works here:
 - CS (Customer Success / Support) — handle inbound venue support tickets
 - Internal: Pan Koutlakis (CEO), Luke Maurel (Head of AM), Sam Benjamin (Global Head of Sales)
 
-Pull messages from the last 7 days from these channels:
+HOW TO PULL DATA:
+Use web_fetch to call the Slack REST API directly.
+
+Auth header for all requests:
+Authorization: Bearer xoxb-230442265730-10882565979463-v7xaKtXPpduC2RF4EiTF1PlN
+
+For each channel below, fetch messages from the last 7 days:
+GET https://slack.com/api/conversations.history?channel=<channel_id>&oldest=<unix_timestamp_7_days_ago>&limit=200
+
+CHANNELS TO PULL:
 - C094UFR4ENQ (#sales-admin-and-onboarding-au) — new venue onboarding and setup issues
 - CLM0UPW4U (#churned_or_changed) — active churn records, venue closures, ownership changes
 - C09D1CS6D1N (#churn-appt-req) — venues requesting subscription pauses or cancellations
@@ -18,6 +27,10 @@ Pull messages from the last 7 days from these channels:
 - C0A9A3CPSLB (#arrows-hyper-care) — escalations related to Arrows, EatClub's venue onboarding software
 - C0A9S7B6J3H (#cs-consumer-major-incidents) — major customer-facing incidents
 - C099KA8RHV3 (#uk-debt) — UK venue debt and billing issues
+
+To resolve user IDs to names, use:
+GET https://slack.com/api/users.info?user=<user_id>
+Authorization: Bearer xoxb-230442265730-10882565979463-v7xaKtXPpduC2RF4EiTF1PlN
 
 For each product-relevant signal return:
 {
