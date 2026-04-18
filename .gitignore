@@ -2,3 +2,4 @@
 # Large SMS CSV exports — too large for GitHub
 signals/sms/*.csv
 crilly-v2/prompts/
+crilly-v2/prompts/
