@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-BASE="$HOME/PM/customer-repo 2/crilly-v2"
+BASE="$HOME/PM/customer-repo/crilly-v2"
 
 create_agent() {
   local name=$1

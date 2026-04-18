@@ -115,7 +115,7 @@ def save_synthesis(output):
     path.parent.mkdir(exist_ok=True)
     path.write_text(synthesis)
     print(f"Synthesis saved: {path}")
-    os.system(f'cd ~/PM/customer-repo\\ 2 && git add synthesis/ && git commit -m "chore: weekly synthesis {week}" && git push origin main')
+    os.system(f'cd ~/PM/customer-repo && git add synthesis/ && git commit -m "chore: weekly synthesis {week}" && git push origin main')
 
 def handle_routing(output):
     try:

@@ -13,3 +13,38 @@ Done. W16 synthesis written, committed, and pushed.
 4. **AI deal generator creating a financial trap** (NEW) — Silver Fox Cafe used the feature in good faith, deals set too high, venue can't pay. First time this signal type has appeared — needs guardrails review before broader rollout.
 
 5. **Double dipping** (CHRONIC, 5+ weeks) — Burpengary cluster persists, RedCat integration talking point isn't resolving it, and it's now cited in a confirmed competitor loss (Spread Deli).
+W16 run complete. Here's what was done and what matters:
+
+---
+
+## W16 Run Summary
+
+**Synthesis saved:** `synthesis/2026-W16-synthesis.md`
+**Committed & pushed:** `a487ae6` — "Crilly W16 automated run"
+**memory.json:** Repaired (file was corrupted/truncated at line 49) and updated with 10 themes
+**agents_memory.json:** Updated with W16 timestamps for all 8 Slack channels and corrected Mixpanel event name mapping
+
+---
+
+## Top signals this week
+
+**🔴 ESCALATE NOW to Luke:**
+- **Garibaldi Pizzeria** — Angie urgently contacting multiple channels for the 2nd consecutive week. restID unknown, needs lookup.
+- **The Last Jar** (EC9FABAF) — 4th cancel attempt from Bryony. Not a save-by-discount case — root cause is T&C platform abuse.
+
+**🟠 ESCALATE to Engineering:**
+- **Masala Flames iOS bug** (6A3A7879) — 5+ months unresolved. Two AMs reported independently in the same week without referencing each other. No engineering owner visible. Suspected fix: enable ECPAY.
+- **Deal settings reverting** — 4 venues in one week (Lumen Alley 2nd occurrence, Taketori Fusion, Rice Paper Scissors, Ombre Italian). Holiday hours pop-up appears to be the trigger.
+
+**📋 Top Jira tickets needed:**
+1. NCI boost + seat/guest config in Partner Portal self-serve (8+ manual ops requests per week — biggest OKR1 lever)
+2. Deal settings revert investigation (holiday hours interaction)
+3. AM vacation OOO routing in HubSpot (one workflow = one class of preventable churn)
+
+---
+
+## Data gaps to fix before next run
+- **HubSpot**: 403 scope error — needs `tickets` read scope added to MCP OAuth config
+- **Mixpanel**: aggregate_event_counts broken (event param format) + event names in memory don't match actual names (e.g. "Deal Edit" → "Offer edited")
+- **Granola**: MCP not configured in current environment
+- **SMS CSVs** are gitignored — they need to stay local, process signals from them manually
