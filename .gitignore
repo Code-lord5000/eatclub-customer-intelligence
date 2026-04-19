@@ -3,3 +3,5 @@
 signals/sms/*.csv
 crilly-v2/prompts/
 crilly-v2/prompts/
+.env
+crilly-v2/prompts/
