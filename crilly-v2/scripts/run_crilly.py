@@ -90,13 +90,17 @@ def run_collectors():
     # Load CSV files for agents that need them
     signals_base = Path.home() / "PM/customer-repo/signals"
 
-    def load_latest_csv(folder):
+    def load_latest_csv(folder, max_age_days=None):
         folder_path = signals_base / folder
         if not folder_path.exists():
             return "No CSV file found."
         files = sorted(folder_path.glob("*.csv"), key=os.path.getmtime, reverse=True)
         if not files:
             return "No CSV file found."
+        if max_age_days:
+            import time
+            if (time.time() - os.path.getmtime(files[0])) / 86400 > max_age_days:
+                return None
         return files[0].read_text(errors="replace")
 
     churn_csv = load_latest_csv("churn")
