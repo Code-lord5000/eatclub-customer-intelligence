@@ -56,13 +56,19 @@ def run_session(name, agent_id, message):
             "events": [{"type": "user.message", "content": [{"type": "text", "text": message}]}]
         })
 
-        # Poll until idle
+        # Poll until idle — wait for running first, then idle
+        import time
         output = []
-        while True:
+        time.sleep(5)  # Give session time to start running
+        seen_running = False
+        for _ in range(120):  # Max 10 minutes
             status = curl("GET", f"https://api.anthropic.com/v1/sessions/{session_id}")
-            if status.get("status") == "idle":
+            current = status.get("status")
+            if current == "running":
+                seen_running = True
+            if current == "idle" and seen_running:
                 break
-            import time; time.sleep(5)
+            time.sleep(5)
 
         # Get events
         events = curl("GET", f"https://api.anthropic.com/v1/sessions/{session_id}/events")
@@ -81,13 +87,29 @@ def run_session(name, agent_id, message):
         return "[]"
 
 def run_collectors():
+    # Load CSV files for agents that need them
+    signals_base = Path.home() / "PM/customer-repo/signals"
+
+    def load_latest_csv(folder):
+        folder_path = signals_base / folder
+        if not folder_path.exists():
+            return "No CSV file found."
+        files = sorted(folder_path.glob("*.csv"), key=os.path.getmtime, reverse=True)
+        if not files:
+            return "No CSV file found."
+        return files[0].read_text(errors="replace")
+
+    churn_csv = load_latest_csv("churn")
+    dealscore_csv = load_latest_csv("dealscore")
+    sms_csv = load_latest_csv("sms", max_age_days=7)  # Only process fresh SMS exports
+
     prompts = {
         "slack":     "Pull Slack signals from the last 7 days. Return structured JSON array only.",
         "granola":   "Pull Granola meeting signals from the last 7 days. Return structured JSON array only.",
         "hubspot":   "Pull HubSpot CS tickets and AM notes from the last 7 days. Return structured JSON array only.",
-        "sms":       "Pull SMS signals from the CSV provided. Return structured JSON array only.",
-        "churn":     "Pull churn data from the CSV provided. Return structured JSON array including summary block.",
-        "dealscore": "Pull deal score data from the CSV provided. Return structured JSON array including summary block.",
+        "sms":       (f"Check this SMS data for NEW signals not already in the B1-B6 baseline (double dipping, deal score confusion, billing disputes, silence, debt, AM manual work). Only surface genuinely new signals. Return structured JSON array only.\n\n{sms_csv}" if sms_csv else "No fresh SMS export this run — B1-B6 baseline already in memory.json. Return empty array []."),
+        "churn":     f"Pull churn data from this CSV data. Return structured JSON array including summary block.\n\n{churn_csv}",
+        "dealscore": f"Pull deal score data from this CSV data. Return structured JSON array including summary block.\n\n{dealscore_csv}",
         "mixpanel":  "Pull Partner Portal engagement data from the last 7 days. Return structured JSON array including summary block.",
     }
     print("Running collectors in parallel...")

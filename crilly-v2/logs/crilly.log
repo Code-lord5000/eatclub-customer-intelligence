@@ -48,3 +48,9 @@ W16 run complete. Here's what was done and what matters:
 - **Mixpanel**: aggregate_event_counts broken (event param format) + event names in memory don't match actual names (e.g. "Deal Edit" → "Offer edited")
 - **Granola**: MCP not configured in current environment
 - **SMS CSVs** are gitignored — they need to stay local, process signals from them manually
+Traceback (most recent call last):
+  File "/Users/adam/PM/customer-repo/crilly-v2/scripts/run_crilly.py", line 9, in <module>
+    API_KEY = os.environ["ANTHROPIC_API_KEY"]
+              ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 679, in __getitem__
+KeyError: 'ANTHROPIC_API_KEY'
