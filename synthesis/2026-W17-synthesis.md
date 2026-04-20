@@ -1,30 +1,23 @@
-Let me process all signals through the six frameworks and produce the full weekly synthesis.The full synthesis is written. Here's the executive summary:
+The Week 16 synthesis is complete and saved to `/mnt/session/outputs/crilly-synthesis-w16-2026.md`.
+
+Here's what I built from the 33 signals across Granola and HubSpot:
 
 ---
 
-## Week of 14–20 April — 72 signals processed across 3 sources
+**5 themes identified, ranked by heat:**
 
-### 🔥 Five themes, sorted by heat:
+| # | Theme | Heat | Signals | Sources | Primary OKR |
+|---|---|---|---|---|---|
+| 1 | Early churn is a pipeline problem (wrong venues → broken handover → no product comprehension) | 🔴 HIGH | 9 | 2 | OKR 3 |
+| 2 | Venues can't see or trust deal value → margin panic → churn | 🔴 HIGH | 9 | 2 | OKR 2 + 3 |
+| 3 | AM capacity consumed by manual work the system should handle | 🔴 HIGH | 5+ | 2 | OKR 1 |
+| 4 | Commission/billing opacity as discrete churn accelerator | 🟡 MEDIUM | 4 | 1 | OKR 3 |
+| 5 | Product-Sales coordination breakdown blocking delivery | 🟡 MEDIUM | 5 | 1 | Meta-blocker |
 
-| # | Theme | Heat | Signals | Sources | OKR | Action |
-|---|-------|------|---------|---------|-----|--------|
-| 1 | **Venues can't understand or verify what they're being charged** | 🔴 HIGH | 14 | 3 | OKR 3 + OKR 1 | Discovery ticket |
-| 2 | **Consumer abuse goes unenforced — AMs manually mediate every incident** | 🔴 HIGH | 7 | 2 | OKR 1 + OKR 3 | Discovery ticket |
-| 3 | **40% of churn is early churn — onboarding handover and deal setup are the root** | 🔴 HIGH | 13 | 2 | OKR 3 + OKR 1 | Discovery ticket |
-| 4 | **Debt accumulates with no guardrails — 15+ venues live while financially disengaged** | 🔴 HIGH | 8 (15+ venues) | 1 | OKR 3 + OKR 1 | Escalate + Discovery |
-| 5 | **Product and sales building in parallel without coordination** | 🟡 MEDIUM | 7 | 1 | OKR 1/2 risk | Watch |
+**Key calls to make:**
 
-### ⚠️ Friction alerts requiring immediate action:
+- **The Famished Wolf Kensington** is the highest-priority friction stack venue — Simon gave a 41-minute window into exactly how a venue owner evaluates deal ROI, and EatClub is losing the argument. May 18 follow-up is too late.
+- **Angela Ho's shadow ICP pipeline** is a product opportunity hiding in a BDM's downloads folder — 6-criteria scoring that the platform should absorb, not rebuild.
+- **Theme 5 (Product-Sales coordination)** won't appear in any backlog but is the single largest risk to Q2 OKR delivery velocity. Needs leadership alignment, not a Jira ticket.
 
-- **Garibaldi Pizzeria** — URGENT HubSpot ticket, owner unreachable since November 2025, not honouring deals, negative Google reviews. 3-stage friction stack.
-- **Kate Hunt's venue** (name unknown) — offerless dining confusion + AM non-responsive + consumer abuse cited + explicit cancellation language. 4-signal stack in one ticket. **Need to identify this AM and venue immediately.**
-- **Clapton Table** — churned venue erroneously reactivated AND on the UK debt watch list. System integrity failure.
-- **Piccolo Me Erskineville** — sold business still generating billed transactions. Needs urgent churn processing.
-
-### 💡 The biggest insight this week:
-
-**Settlement confusion is the connective tissue across three of the five themes.** Themes 1, 3, and 4 all stem from the same root: EatClub has no venue-facing financial transparency layer. Every billing question routes through a human. If one thing could be built to move both OKR 1 (AM time) and OKR 3 (churn) simultaneously, it's settlement visibility in Partner Portal.
-
-### What's missing:
-
-SMS, Churn CSV, Deal Score CSV, and Mixpanel data were not available this week. The churn CSV would validate the 40% early churn stat. Mixpanel would show whether Partner Portal engagement is trending. These four sources are needed to complete the picture — especially for OKR 2 where the data gap is widest.
+**5 sources still missing** (Slack, SMS, Churn CSV, Deal Score CSV, Mixpanel) — the synthesis is directionally strong but cross-referencing and heat confidence will sharpen significantly once those come in.
