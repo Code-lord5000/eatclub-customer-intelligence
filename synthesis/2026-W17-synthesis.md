@@ -1,37 +1,30 @@
-The W16 synthesis is complete. Here's the executive summary:
+Let me process all signals through the six frameworks and produce the full weekly synthesis.The full synthesis is written. Here's the executive summary:
 
 ---
 
-## 5 themes, 28 signals, 2 sources — and a critical coverage gap
+## Week of 14–20 April — 72 signals processed across 3 sources
 
-**Available:** Granola (19 signals), HubSpot (9 signals)
-**Missing:** Slack, SMS, Churn CSV, Deal Score CSV, Mixpanel — 5 of 7 sources dark
-
-### The headline finding
-
-**40% of all EatClub churn is early churn — venues leaving within 40–60 days.** Adam Glegg named this as the single largest churn category, driven by three compounding failures: venues don't understand the product, BDMs aren't handing over to AMs properly, and venues drop their deals almost immediately after going live. This is Theme 1, and it's the most important signal in the data.
-
-### The 5 themes, ranked by heat
+### 🔥 Five themes, sorted by heat:
 
 | # | Theme | Heat | Signals | Sources | OKR | Action |
-|---|---|---|---|---|---|---|
-| 1 | Venues churn in 60 days because they never understood the product | 🔴 HIGH | 4 | 1 | OKR 3 | Discovery ticket |
-| 2 | Deal config is unintelligible to venues and BDMs | 🔴 HIGH | 5 | 2 | OKR 2 | Discovery ticket |
-| 3 | Manual deal changes = ~6 min each, no bulk action | 🔴 HIGH | 2 | 1 | OKR 1 | Discovery ticket |
-| 4 | BDMs signing wrong venues — no ICP filter or pitch data | 🔴 HIGH | 4 | 1 | OKR 3 | Discovery ticket |
-| 5 | Venues can't see long-term value vs Uber Eats | 🟡 MED | 5 | 1 | OKR 3 | Watch + Interview |
+|---|-------|------|---------|---------|-----|--------|
+| 1 | **Venues can't understand or verify what they're being charged** | 🔴 HIGH | 14 | 3 | OKR 3 + OKR 1 | Discovery ticket |
+| 2 | **Consumer abuse goes unenforced — AMs manually mediate every incident** | 🔴 HIGH | 7 | 2 | OKR 1 + OKR 3 | Discovery ticket |
+| 3 | **40% of churn is early churn — onboarding handover and deal setup are the root** | 🔴 HIGH | 13 | 2 | OKR 3 + OKR 1 | Discovery ticket |
+| 4 | **Debt accumulates with no guardrails — 15+ venues live while financially disengaged** | 🔴 HIGH | 8 (15+ venues) | 1 | OKR 3 + OKR 1 | Escalate + Discovery |
+| 5 | **Product and sales building in parallel without coordination** | 🟡 MEDIUM | 7 | 1 | OKR 1/2 risk | Watch |
 
-### Immediate flags for Luke
+### ⚠️ Friction alerts requiring immediate action:
 
-- **The Famished Wolf** — operator Simon is reassessing in 4 weeks (May 18). Margin pressure, Uber Eats comparison, explicit doubt about customer retention. This has a timer on it.
-- **La Cabra Mexican** and **Dishoom/Essence of India Kinross** — both submitted cancellation requests this week. May already be lost. Confirm against churn data.
+- **Garibaldi Pizzeria** — URGENT HubSpot ticket, owner unreachable since November 2025, not honouring deals, negative Google reviews. 3-stage friction stack.
+- **Kate Hunt's venue** (name unknown) — offerless dining confusion + AM non-responsive + consumer abuse cited + explicit cancellation language. 4-signal stack in one ticket. **Need to identify this AM and venue immediately.**
+- **Clapton Table** — churned venue erroneously reactivated AND on the UK debt watch list. System integrity failure.
+- **Piccolo Me Erskineville** — sold business still generating billed transactions. Needs urgent churn processing.
 
-### Biggest single OKR unlock
+### 💡 The biggest insight this week:
 
-Sam Benjamin's "10 deal changes = 1 hour of AM time" gives OKR 1 a concrete target. If an AM handles ~100 deal changes/month, one workflow improvement could hit the entire 10-hour/month savings target. Scope it.
+**Settlement confusion is the connective tissue across three of the five themes.** Themes 1, 3, and 4 all stem from the same root: EatClub has no venue-facing financial transparency layer. Every billing question routes through a human. If one thing could be built to move both OKR 1 (AM time) and OKR 3 (churn) simultaneously, it's settlement visibility in Partner Portal.
 
-### To sharpen next week's synthesis
+### What's missing:
 
-Upload the **Churn CSV** and **Deal Score CSV** from Hub — those two files alone would let me cross-reference every HubSpot signal and confirm which venues are actually at score 0 or already gone. Mixpanel credentials would unlock OKR 2 coverage entirely.
-
-The full synthesis (with all signal tables, OST map, friction stack watch, interview questions, and routing block) is in the output file.
+SMS, Churn CSV, Deal Score CSV, and Mixpanel data were not available this week. The churn CSV would validate the 40% early churn stat. Mixpanel would show whether Partner Portal engagement is trending. These four sources are needed to complete the picture — especially for OKR 2 where the data gap is widest.
