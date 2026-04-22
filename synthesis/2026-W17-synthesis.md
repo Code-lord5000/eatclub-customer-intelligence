@@ -1,162 +1,198 @@
-# 🧠 Crilly Weekly Synthesis — Week of 14–20 April 2026
+# Crilly Synthesis — Week of 14–22 April 2026 (Week 1 Baseline)
 
-**Data coverage:** Granola (21 signals), HubSpot (17 signals), Churn history (30 venues), SMS (empty). **Gaps:** Slack signals (not received in structured form), Deal Score CSV (not provided), Mixpanel (no credentials). This is Crilly's baseline synthesis — lifecycle labels are inferred from signal age and leadership context.
+**Data received:** Granola (16 signals) · HubSpot (18 signals) · Churn Hub CSV (30 records, historical Nov 2023–Feb 2024) · SMS (empty)
+**Data gaps:** Slack (mentioned but no structured data delivered) · Deal Score CSV (not provided) · Mixpanel (auth blocked — credentials needed)
+
+> ⚠️ **Week 1 notice:** This is Crilly's first synthesis run. All lifecycle labels are established as baselines using evidence-of-duration rather than prior Crilly reports. Lifecycle tracking begins next week.
 
 ---
 
 ## 🔥 Rising Themes This Week
 
-### 1. Deal economics don't match venue reality — discount depth and structure are structurally unworkable for a significant segment
+### 1. Venues signed too fast — 40% of all churn traces to ICP misfit, broken handovers, and zero product comprehension before first settlement
 
-**Heat: HIGH**
-**Lifecycle: CHRONIC (inferred — churn data confirms this pattern over 18+ months)**
-**Signal count: 14 | Sources: 3 (Granola, HubSpot, Churn)**
-**Recurrence: Chronic**
+**Heat:** HIGH
+**Signal count:** 8 | **Source count:** 3 (Granola, HubSpot, Churn)
+**Lifecycle:** CHRONIC (by evidence — leadership describes as long-standing, churn data confirms pattern across months)
+**Recurrence:** Chronic
 
-**Problem statement:** Venues operating on thin margins ($2–$4/meal) cannot sustain EatClub's minimum discount thresholds (often 25–30%), and the flat daily deal window ignores how venues actually think about capacity — by meal period, staff shift, and cover count. When venues can't configure deals that match their economics, they either run unprofitable deals and churn, or disengage immediately.
+**Problem statement:** Venues are being signed within 20 minutes of first contact by BDMs who cannot verify ICP fit. They receive no structured product education, experience a disconnected handover to AMs, and are blindsided by their first settlement charge — creating a predictable early-churn pipeline that accounts for 40% of all churn in the business.
 
-**Mom Test quality: STRONG.** Sam Benjamin reports a direct pattern from two weeks of live venue conversations: pitching spare capacity per meal period resonates, but the current flat deal structure forces venues into a single discount across hours with wildly different conversion rates. Churn records from Hells Bellz (30% unviable on thin margins), Restaurant 233 ($2/meal margin makes any discount impossible), and Zio Pino (can't go above 20%) confirm this with specific dollar figures. Famished Wolf's AM call documents $4,000 gross from 210 discounted customers over 3 weeks with the owner questioning whether EC customers ever convert to full-paying regulars.
+**Mom Test quality:** STRONG — Sam Benjamin cites the 40% metric directly, describes the exact failure chain (sign → no comprehension → settlement shock → churn), and Adam Glegg corroborates in a separate meeting. BD Dine's cancellation note ("could not find any benefit") is a first-person venue confirmation of the same pattern.
 
-**OKR: OKR 2 (Deal Performance) primary; OKR 3 (Churn) secondary**
-**OST branch:** Deal performance → Venue-led revenue actions; Churn reduction → Friction in core venue experience
-**Journey stage:** Activation → Ongoing engagement → Renewal/churn decision
-**Recommended action: Discovery ticket** — Sam's meal-period-based deal structure proposal needs product scoping immediately. 18,000 deals are configured in a model that leadership acknowledges is wrong.
+**OKR:** OKR 3 (Churn Reduction) primary; OKR 1 (AM Optimisation) secondary — AMs inherit poorly onboarded venues and spend hours on damage control
+**OST branch:** Churn reduction → Onboarding journey quality
+**Journey stage:** Onboarding → Activation (cross-stage friction stack)
+**Recommended action:** Discovery ticket + Escalate to Luke
 
----
-
-### 2. BDM sign quality and handover failure are responsible for 40% of all churn — and the business has no systematic fix
-
-**Heat: HIGH**
-**Lifecycle: CHRONIC (inferred — Adam Glegg cites this as a long-standing pattern with quantified impact)**
-**Signal count: 10 | Sources: 3 (Granola, HubSpot, Churn)**
-**Recurrence: Chronic**
-
-**Problem statement:** 40% of all EatClub churn happens within 40–60 days of sign-up. Venues are being signed that don't fit EatClub's ICP ("a kebab shop in the back of Tumba"), BDMs can close in 10 minutes without the venue truly understanding the product, and there is no structured handover to AMs. Venues get onboarded but the business is never actually up and running. By the time the AM makes contact, the venue has already dropped its deals and decided to leave.
-
-**Mom Test quality: STRONG.** Adam Glegg cited a specific, quantified statistic (40% early churn within 60 days) from a cross-functional workshop involving Sam Benjamin and Luke Maurel. Allen Luo reported that "BDMs lie and do whatever they have to do to get them signed up" and described a specific 90-minute conflict between Sam and Luke about sales targets vs. churn. The Cheeky Beans (HubSpot) submitted a cancellation request two weeks after joining that went unactioned by the BDM for months. Sam Benjamin's proposed deal-locking intervention ("lock deals for two weeks, then the AM calls as the first optimisation") is itself evidence of how broken the current handover is.
-
-**OKR: OKR 3 (Churn) primary; OKR 1 (AM Optimisation) secondary** — bad signs create downstream AM workload
-**OST branch:** Churn reduction → Onboarding journey quality; AM optimisation → System automation opportunities
-**Journey stage:** Onboarding → Activation (the gap between sign and first successful deal is where venues die)
-**Recommended action: Escalate to Luke + Sam** — This requires a joint Sales/AM process intervention. The two-week deal lock proposal should be evaluated as a near-term fix. Longer term, ICP scoring at sign-up and a structured BDM→AM handover protocol need product support.
+**Key signals:**
+| Signal | Source | Quality |
+|---|---|---|
+| "40% of all our churn is early churn — they get signed up and leave within 40–60 days. One reason is ICP." | Granola / Sam Benjamin | STRONG |
+| "BDMs aren't handing over to AMs very well — there's a disconnect and that falls over." | Granola / Sam Benjamin | STRONG |
+| "20 minutes later they're signed up and live. How do you get people to remember what we are when a week later they get the settlement and freak out?" | Granola / Sam Benjamin | STRONG |
+| "40% early churn... signing a kebab shop in the back of Tumba, a BDM sells them the dream" | Granola / Adam Glegg | STRONG |
+| "Fix the current terrible facilitation of a very fast sign-up" | Granola / Adam Glegg | MEDIUM |
+| BD Dine: "Could you please cancel... I could not find any benefit." | HubSpot / Venue (restID: C27A8D5B) | STRONG |
+| Formal onboarding withdrawal before activation: "Please treat any setup process as cancelled with immediate effect." | HubSpot / Venue (unknown) | MEDIUM |
 
 ---
 
-### 3. AMs are spending hours on deal configuration and venue settings that should be self-serve
+### 2. Flat discount economics are structurally unviable for a large venue segment — 43% of historical churns are price-driven
 
-**Heat: HIGH**
-**Lifecycle: CHRONIC (inferred — Sam Benjamin describes 50 AMs globally affected, Adam Glegg flagged 5 venues this week alone)**
-**Signal count: 7 | Sources: 2 (Granola, HubSpot)**
-**Recurrence: Chronic**
+**Heat:** HIGH
+**Signal count:** 16+ | **Source count:** 3 (Churn, Granola, HubSpot)
+**Lifecycle:** CHRONIC (by evidence — 13/30 churned venues cite price/margin, spanning 4+ months of data; Sam actively discussing time-of-day pricing fix)
+**Recurrence:** Chronic
 
-**Problem statement:** When a venue needs to change 10 deals, it costs an hour of AM time. Fifty AMs globally are doing manual deal configuration, boost enabling, and venue setting changes instead of revenue-generating activities. Venues cannot manage their own configuration through Partner Portal — they can't enable boosts independently, can't adjust deal structures without AM intervention, and can't modify venue settings. This is the single largest block of recoverable AM time.
+**Problem statement:** A significant segment of venues operates on margins so thin ($2/meal in one documented case) that any percentage-based discount is economically destructive. The current flat 30% model does not account for time-of-day demand variation, venue margin structure, or the difference between filling empty seats vs. discounting seats that would fill organically. These venues are structurally incompatible with the product's pricing model and are churning regardless of AM intervention.
 
-**Mom Test quality: STRONG.** Sam Benjamin provided a specific cost model: "I want to change 10 deals and I take an hour of account manager time. That is super expensive." Adam Glegg flagged 5 specific venues this week where manual AM intervention was happening for things that should be venue self-serve. Adam also reported that Sam has started building AM tools independently without product engagement — including a rebuilt signup form deployed to BDMs — which signals both urgency and frustration with the pace of change.
+**Mom Test quality:** STRONG — Multiple venue owners provide exact margin figures. Restaurant 233's owner stated "$2 per meal profit margin, can't afford discount" after the AM disproved his cannibalisation concern with data. Hells Bellz cited "30% is too much of a hit." Zio Pino stated a hard cap at 20%. Sam Benjamin described the needed fix: blended time-of-day pricing (25% at peak, 45% off-peak).
 
-**OKR: OKR 1 (AM Optimisation) — this is the direct target**
-**OST branch:** AM optimisation → Manual AM task reduction; AM optimisation → Venue self-serve capability
-**Journey stage:** Ongoing engagement (this is a constant operational drain, not episodic)
-**Recommended action: Discovery ticket** — Audit the top 5 AM tasks by time cost. Cross-reference with Partner Portal capability gaps. Sam's independent tool-building is a leading indicator that product needs to own this space before shadow IT becomes the standard.
+**OKR:** OKR 3 (Churn Reduction) primary; OKR 2 (Deal Performance) secondary
+**OST branch:** Churn reduction → Friction in core venue experience; Deal performance → Deal score visibility and trust
+**Journey stage:** Ongoing engagement → Renewal/churn decision
+**Recommended action:** Discovery ticket (pricing model flexibility)
 
----
-
-### 4. Venues go dark and no one knows until it's too late — silence is the most common churn precursor
-
-**Heat: HIGH**
-**Lifecycle: CHRONIC (inferred — Garibaldi Pizzeria has been unreachable since November 2025; churn data shows this as a repeating pattern)**
-**Signal count: 9 | Sources: 2 (HubSpot, Churn)**
-**Recurrence: Chronic**
-
-**Problem statement:** Venues disengage gradually — they stop answering calls, stop logging into Partner Portal, stop honouring deals — but the system has no automated way to detect this pattern before it becomes terminal. By the time an AM notices, the venue has often been dark for weeks or months. Staff at venues sometimes actively block AM contact. The result: venues are listed as active on the platform while operationally they have already left.
-
-**Mom Test quality: STRONG.** Garibaldi Pizzeria has been unreachable since November 2025 — five months of documented silence while the venue accumulated negative Google reviews and stopped honouring EC deals. Crust Pizza Mortdale's staff told a customer "we don't do EatClub anymore" while the venue was still listed as live. I Love Manoush's staff systematically refused to provide the owner's availability. No22 Café required three months of weekly contact attempts before confirming the owner had no intention of returning.
-
-**OKR: OKR 3 (Churn) primary; OKR 1 (AM Optimisation) secondary** — AMs are manually chasing ghosts
-**OST branch:** Churn reduction → Friction in core venue experience; AM optimisation → System automation opportunities
-**Journey stage:** AM relationship → Renewal/churn decision point
-**Recommended action: Discovery ticket** — A "silence score" combining days since last Partner Portal login, days since last AM response, days since last deal redemption, and days since last SMS reply would automate what AMs currently do by gut feel. Sam Benjamin asked the right question: "How do I make sure AMs are going to venues before they churn instead of after?"
+**Key signals:**
+| Signal | Source | Quality |
+|---|---|---|
+| 13/30 historical churns are price-related | Churn Hub CSV | STRONG (pattern) |
+| Restaurant 233: "profit margin is only $2 per meal so he can't afford to provide a discount" | Churn / AM note | STRONG |
+| Hells Bellz: "margins are too thin and 30% is too much of a hit" | Churn / AM note | STRONG |
+| Zio Pino: "did not have enough margin to be offering any higher than 20% deal" | Churn / AM note | STRONG |
+| "Get away from the old deal-at-30% model... 12–2 at 25%, 3–5 at 45%, so the blended average is still 30%" | Granola / Sam Benjamin | STRONG |
+| The Famished Wolf: "margin erosion due to discounts... EatClub customers rarely transition into full-paying regulars" | HubSpot / AM note (Gong) | STRONG |
+| C9 Docklands: "shop has not been using Eatclub effectively... fees deducted from our account regularly" | Churn / Venue verbatim | STRONG |
 
 ---
 
-### 5. Platform integrity failures are causing direct, measurable financial losses to venues
+### 3. Billing opacity and settlement shock are destroying venue trust before value is demonstrated
 
-**Heat: MEDIUM → HIGH (rising)**
-**Lifecycle: RISING (specific high-cost incidents this week; churn data shows the pattern has existed but was latent)**
-**Signal count: 6 | Sources: 2 (HubSpot, Churn)**
-**Recurrence: Recurring**
+**Heat:** HIGH
+**Signal count:** 6 | **Source count:** 3 (HubSpot, Granola, Churn)
+**Lifecycle:** RISING (by evidence — multiple active incidents this week, Sam confirms as known pattern)
+**Recurrence:** Recurring (3+ weeks by evidence)
 
-**Problem statement:** Venues are losing real money due to system-level issues they can't control: Lightspeed integration misconfigurations causing double-discounting ($9,000–$12,000 loss at Brick Lane Market), deals continuing to run while a venue is closed (Kake Da Dhaba), offerless diners consuming capacity without any deal (Kate Hunt's venue), and customers gaming the discount window. These are not perception issues — they are actual financial losses that destroy trust faster than any value demonstration can rebuild it.
+**Problem statement:** Venues receive their first settlement charge with no preparation or context, causing immediate distrust. Ongoing billing issues — including a venue reporting zero payments for 3 months, a $1,983.53 failed debit, suspected double-charging, and fee deductions on dormant accounts — compound into active churn triggers. The billing experience is both a first-impression failure (settlement shock) and an ongoing friction source (opacity of charges and payments).
 
-**Mom Test quality: STRONG.** Brick Lane Market's owner documented a 22% margin hit in cost of goods from double-discounting, estimated at $9,000–$12,000 in losses, in a Gong-recorded call. Kate Hunt (restaurant manager) wrote a detailed complaint documenting offerless dining losses, customers arriving without bookings outside discount windows, and explicitly asked "how are we meant to combat this without cancelling our partnership?" Kake Da Dhaba's owner reported that deals were still being redeemed while the venue was closed and staff were processing takeaway orders on discount — a system integrity failure.
+**Mom Test quality:** STRONG — Himalayan Nepalese owner: "I have not received any money in to my bank past 3 month. This is very serious matter." Belles Hot Chicken finance manager contacts CS with exact outstanding balance. Cairo Nights owner believes they're being double-charged. Sam Benjamin describes the pattern: "week later they get the settlement and freak out."
 
-**OKR: OKR 3 (Churn) — platform trust erosion is a direct churn accelerant**
+**OKR:** OKR 3 (Churn Reduction) primary
 **OST branch:** Churn reduction → Friction in core venue experience
-**Journey stage:** Ongoing engagement → Renewal/churn decision (these incidents flip the churn switch immediately)
-**Recommended action: Escalate (Brick Lane) + Discovery ticket (offerless dining / deal-while-closed)** — The Brick Lane integration issue needs immediate resolution and financial reconciliation. The pattern of deals running during closures and offerless dining losses needs a systematic product investigation.
+**Journey stage:** Activation (first settlement) + Ongoing engagement (billing disputes)
+**Recommended action:** Discovery ticket + immediate CS escalation for Himalayan Nepalese and Belles Hot Chicken
+
+**Key signals:**
+| Signal | Source | Quality |
+|---|---|---|
+| Himalayan Nepalese: "not received any money in to my bank past 3 month... someone need to call me asap" | HubSpot / CS ticket | STRONG |
+| Belles Hot Chicken: "$1,983.53 outstanding... insufficient fund... could you please retry payment asap" | HubSpot / CS ticket | STRONG |
+| Cairo Nights: "believes we are taking 2 payments from his old account" | HubSpot / CS ticket | MEDIUM |
+| "20 minutes later they're signed up... week later they get the settlement and freak out" | Granola / Sam Benjamin | STRONG |
+| C9 Docklands: "fees deducted from our account regularly... could you clarify?" | Churn / Venue verbatim | STRONG |
+
+---
+
+### 4. Venues cannot understand, configure, or trust deal mechanics — creating AM dependency and underperformance
+
+**Heat:** MEDIUM-HIGH
+**Signal count:** 5 | **Source count:** 2 (Granola, HubSpot)
+**Lifecycle:** RISING (by evidence — Sam describes as systemic, Vaishali reports recurring override incidents)
+**Recurrence:** Recurring
+
+**Problem statement:** The deal model is opaque to venues. They cannot understand whether "5 tables" means 5 total or 5 per window. The deal "looks undynamic — just a very fancy voucher." When venues do attempt to manage deals (e.g., disabling them), internal ops can override the disabling without venue consent, triggering billing disputes and trust destruction. The result: venues either don't engage with deal management at all (driving Partner Portal inactivity) or make changes that underperform because they don't understand the mechanics.
+
+**Mom Test quality:** STRONG — Sam Benjamin provides a specific, testable example of the configuration confusion. Vaishali describes a concrete incident pattern where overrides caused billing disputes. Melroad Pizza reports seeing zero bookings despite being live.
+
+**OKR:** OKR 2 (Deal Performance) primary; OKR 1 (AM Optimisation) secondary — AMs manually configure and explain deals that venues should self-serve
+**OST branch:** Deal performance → Deal score visibility and trust; AM optimisation → Venue self-serve capability
+**Journey stage:** Ongoing engagement
+**Recommended action:** Discovery ticket
+
+**Key signals:**
+| Signal | Source | Quality |
+|---|---|---|
+| "Five tables — total between 12 and 5, or five every two hours? We've never been able to explain this to a venue." | Granola / Sam Benjamin | STRONG |
+| "The deal looks undynamic — just a very fancy voucher." | Granola / Sam Benjamin | STRONG |
+| Ops overriding venue-disabled deals → venue asking for money back | Granola / Vaishali Mangwani | STRONG |
+| Melroad Pizza: "I dont see booking coming for table... dont follow up the customer" | HubSpot / CS ticket (restID: F5751B8E) | MEDIUM |
+| Liyin Rice Roll Master: "concerns about the deals... considering to cancel if service is not compatible" | HubSpot / CS ticket | MEDIUM |
+
+---
+
+### 5. BDMs have no structured pre-call intelligence or in-venue pitch tooling — selling blind drives ICP misfit upstream
+
+**Heat:** MEDIUM
+**Signal count:** 6 | **Source count:** 1 (Granola — but 3 distinct speakers: Sam Benjamin, Angela Ho, Adam Glegg)
+**Lifecycle:** CHRONIC (by evidence — Adam: "the gap has always been"; Angela built Freckle as a long-standing workaround)
+**Recurrence:** Chronic
+
+**Problem statement:** BDMs walk into venues with no data — no lat/long, no AOV, no cuisine category, no comparable venue performance. They google restaurants, open 4 apps during demos, and cannot show tailored social proof. This forces unqualified pitches, drives ICP misfit at sign-up, and is a root cause of Theme 1 (early churn). Angela Ho has independently built a scraping engine (Freckle) to solve for "nine-tenths" of the data gap, confirming both the severity of the problem and the existence of a tractable solution.
+
+**Mom Test quality:** STRONG — Angela built an entire working tool (Freckle) using Outscraper to fill the gap. Sam describes the current 4-app workaround. Adam names the specific missing data fields. All three speakers independently confirm the same gap.
+
+**OKR:** OKR 3 (Churn Reduction) upstream — better qualification reduces early churn
+**OST branch:** Churn reduction → Onboarding journey quality (upstream)
+**Journey stage:** Pre-sign (upstream of onboarding)
+**Recommended action:** Watch (active build in progress — Freckle + sign-up form work visible in Refinement meeting)
+
+> **Heat cap note:** Single source type (Granola only) limits this to Medium despite 6 signals and CHRONIC lifecycle. If BDM-sourced data (Slack, SMS) corroborates next week, this moves to High.
 
 ---
 
 ## 📋 All Signals This Week — Classified
 
-### Granola Signals (April 13–16, 2026)
+### Current-Week Signals (Granola + HubSpot: 34 total)
 
-| Signal summary | Speaker | Who affected | Mom Test | OKR | Theme | OST branch |
-|---|---|---|---|---|---|---|
-| 40% of all churn is early churn within 60 days; ICP mismatch | Adam Glegg | All venues, BDMs | STRONG | OKR 3 | BDM sign quality | Churn → Onboarding quality |
-| BDMs not handing over to AMs; venues onboarded but not running | Adam Glegg | All AMs, new venues | STRONG | OKR 3 | BDM sign quality | Churn → Onboarding quality |
-| Venues don't understand product; drop deals then churn; no sales tools | Adam Glegg | New venues, BDMs | STRONG | OKR 3 | BDM sign quality | Churn → Onboarding quality |
-| No sales tools or venue pitching for BDMs; 10-min sign-up facilitation is terrible | Adam Glegg | BDMs | STRONG | OKR 3 | BDM sign quality | Churn → Onboarding quality |
-| 5 venues flagged for manual AM work that should be self-serve | Adam Glegg | AMs, 5 venues | STRONG | OKR 1 | AM manual work | AM opt → Manual task reduction |
-| Partner Portal rising as a theme alongside venue config and dine visibility | Adam Glegg | Venues | MEDIUM | OKR 2 | Visibility gap | Deal perf → PP engagement |
-| Data isolated across HubSpot, Slack, Granola; no cross-system visibility | Adam Glegg | All internal teams | STRONG | OKR 1 | Visibility gap | AM opt → System automation |
-| BDMs lie to sign venues; no handover; Sam/Luke conflict on targets vs churn | Allen Luo | BDMs, AMs, new venues | STRONG | OKR 3 | BDM sign quality | Churn → Onboarding quality |
-| No clarity on Sam's work; API keys given without product review | Allen Luo | Product, AMs | STRONG | OKR 1 | AM manual work | AM opt → System automation |
-| Venue config can't be self-managed; dine visibility massive problem; boosts need AM | Adam Glegg | AMs, venues | MEDIUM | OKR 1 | AM manual work | AM opt → Venue self-serve |
-| Dine visibility flagged as massive problem in Crilly | Adam Glegg | Venues | MEDIUM | OKR 2 | Visibility gap | Deal perf → Deal score visibility |
-| 10 deal changes = 1 hour AM time; 50 AMs globally doing manual config not revenue work | Sam Benjamin | All AMs | STRONG | OKR 1 | AM manual work | AM opt → Manual task reduction |
-| AMs going to venues after churn instead of before; need proactive signals | Sam Benjamin | AMs, at-risk venues | STRONG | OKR 3 | Venue silence | Churn → Surfacing value through data |
-| Systems don't speak to each other; field teams need live intelligence | Sam Benjamin | AMs, field teams | STRONG | OKR 1 | Visibility gap | AM opt → System automation |
-| Sam rebuilt signup form without product; deploying external-facing changes unilaterally | Adam Glegg | Product, BDMs | STRONG | OKR 1 | AM manual work | AM opt → System automation |
-| Lock deals for first 2 weeks; AM calls at end of lock as first optimisation | Sam Benjamin | New venues, AMs | STRONG | OKR 3 | BDM sign quality | Churn → Onboarding quality |
-| Spare capacity per meal period resonates; "spare capacity" as term doesn't land | Sam Benjamin | Venues, BDMs | STRONG | OKR 2 | Deal economics | Deal perf → Venue-led revenue |
-| Deal structure needs meal-period breakdown; 18,000 deals done wrong way | Sam Benjamin | All venues | STRONG | OKR 2 | Deal economics | Deal perf → Venue-led revenue |
-| Luke requested deal score history investigation | Martin Heal | AMs, venues | MEDIUM | OKR 2 | Visibility gap | Deal perf → Deal score visibility |
-| Onboarding flow has too many steps; could pre-fill services; less BDM/AM touch | Vinni Lazaro | BDMs, AMs, new venues | MEDIUM | OKR 1 | BDM sign quality | AM opt → Manual task reduction |
-| 10-min close demo; empty tables = $0 narrative; Hop Jack prospect example | Sam Benjamin | BDMs | STRONG | OKR 2 | BDM sign quality | Deal perf → Venue-led revenue |
+| # | Signal Summary | Source | Author Team | Who Affected | Mom Test | OKR | Theme | OST Branch |
+|---|---|---|---|---|---|---|---|---|
+| G1 | 40% early churn from ICP misfit | Granola | Leadership (Sam) | All venues + AMs | STRONG | OKR 3 | 1: Early churn | Churn → Onboarding quality |
+| G2 | BDM-to-AM handover failure | Granola | Leadership (Sam) | All venues + AMs | STRONG | OKR 3, 1 | 1: Early churn | Churn → Onboarding quality |
+| G3 | Settlement shock after fast sign-up | Granola | Leadership (Sam) | New venues | STRONG | OKR 3 | 3: Billing opacity | Churn → Core friction |
+| G4 | No BDM sales tools; 4 apps open during demos | Granola | Leadership (Sam) | BDMs | STRONG | OKR 3 upstream | 5: BDM tooling | Churn → Onboarding quality |
+| G5 | Owners hate slide decks; need tailored social proof | Granola | Leadership (Sam) | BDMs + Venues | STRONG | OKR 3 upstream | 5: BDM tooling | Churn → Onboarding quality |
+| G6 | Corroboration: 40% early churn, handover failure | Granola | Leadership (Adam) | All venues + AMs | STRONG | OKR 3 | 1: Early churn | Churn → Onboarding quality |
+| G7 | Ops overriding venue-disabled deals → billing disputes | Granola | Unknown (Vaishali) | Venues | STRONG | OKR 2, 3 | 4: Deal confusion | Deal perf → Trust |
+| G8 | Holiday hours last-minute; no ownership of process | Granola | Unknown (Vaishali) | Eng/Ops | MEDIUM | OKR 1 | (Standalone) | AM opt → Automation |
+| G9 | Manual venue profile: 400/mo, 133hrs, $200k/yr | Granola | Unknown (Justin) | Ops (Karen's team) | MEDIUM | OKR 1 | (Standalone) | AM opt → Automation |
+| G10 | Churn radar / deal performance dashboard desired | Granola | Unknown (Justin) | AMs + Leadership | MEDIUM | OKR 1, 3 | (Standalone) | AM opt → System automation |
+| G11 | Deal scheduling confusion (tables per window) | Granola | Leadership (Sam) | Venues | STRONG | OKR 2 | 4: Deal confusion | Deal perf → Trust |
+| G12 | Time-of-day pricing not reflected in deal score | Granola | Leadership (Sam) | Venues | STRONG | OKR 2 | 2: Discount economics | Deal perf → Trust |
+| G13 | Angela built Freckle scraper for BDM pre-call intel | Granola | BDM (Angela) | BDMs | STRONG | OKR 3 upstream | 5: BDM tooling | Churn → Onboarding quality |
+| G14 | Missing data fields: lat/long, AOV, category | Granola | Leadership (Adam) | BDMs | STRONG | OKR 3 upstream | 5: BDM tooling | Churn → Onboarding quality |
+| G15 | BDMs google venues; no localised data or pitch path | Granola | Leadership (Adam) | BDMs | STRONG | OKR 3 upstream | 5: BDM tooling | Churn → Onboarding quality |
+| G16 | Building pitch → sign-up → 30-day journey fix | Granola | Leadership (Adam) | BDMs + New venues | MEDIUM | OKR 3 | 1: Early churn | Churn → Onboarding quality |
+| H1 | Bar Sopra: Contact left, encouraged cancel | HubSpot CS | CS | Venue (Bar Sopra) | STRONG | OKR 3 | (Churn event) | Churn → Core friction |
+| H2 | NC's Chaat: Restaurant closed | HubSpot CS | CS | Venue (NC's Chaat) | STRONG | OKR 3 | (Business closed) | — |
+| H3 | Belles Hot Chicken: $1,983.53 outstanding debt | HubSpot CS | CS | Venue (Belles) | STRONG | OKR 3 | 3: Billing opacity | Churn → Core friction |
+| H4 | Barchetta Italian: Owner requests immediate cancel | HubSpot CS | CS | Venue (Barchetta) | STRONG | OKR 3 | (Churn event) | — |
+| H5 | Bar Conte: 2 venues terminating, management decision | HubSpot CS | CS | Venue (Bar Conte x2) | STRONG | OKR 3 | (Churn event) | — |
+| H6 | Wok & Wild: Shut down but still live on platform | HubSpot CS | CS | Venue + AM (Libby) | STRONG | OKR 3, 1 | (Process failure) | AM opt → Automation |
+| H7 | Ming's Cuisine: Termination request | HubSpot CS | CS | Venue (restID: 01A8CA17) | STRONG | OKR 3 | (Churn event) | — |
+| H8 | BD Dine: Cancel — "could not find any benefit" | HubSpot CS | CS | Venue (restID: C27A8D5B) | STRONG | OKR 3 | 1: Early churn | Churn → Onboarding quality |
+| H9 | Himalayan Nepalese: No payments 3 months | HubSpot CS | CS | Venue (Himalayan) | STRONG | OKR 3 | 3: Billing opacity | Churn → Core friction |
+| H10 | Cairo Nights: Believes double-charged | HubSpot CS | CS | Venue (Cairo Nights) | MEDIUM | OKR 3 | 3: Billing opacity | Churn → Core friction |
+| H11 | Monsoon Palace: Closed, unresponsive, no tx since Feb | HubSpot CS | CS | Venue (Monsoon) | STRONG | OKR 3 | (Silence/churn) | — |
+| H12 | Liyin Rice Roll: Considering cancel, service concerns | HubSpot CS | CS | Venue (Liyin) | MEDIUM | OKR 3, 2 | 4: Deal confusion | Deal perf → Trust |
+| H13 | Melroad Pizza: Zero bookings, lost app access | HubSpot CS | CS | Venue (restID: F5751B8E) | MEDIUM | OKR 2, 3 | 4: Deal confusion | Deal perf → Trust |
+| H14 | Unknown venue: Onboarding withdrawal pre-activation | HubSpot CS | CS | Unknown venue | MEDIUM | OKR 3 | 1: Early churn | Churn → Onboarding quality |
+| H15 | Famished Wolf: Margin erosion, conditional 30-day review | HubSpot AM | AM | Venue (Famished Wolf) | STRONG | OKR 3, 2 | 2: Discount economics | Churn → Core friction |
+| H16 | Unknown venue: Owner annoyed by follow-up, wants termination | HubSpot AM | AM | Unknown venue | MEDIUM | OKR 3 | (Churn event) | — |
+| H17 | Unknown venue: Close account process executed (voucher-only) | HubSpot AM | AM | Unknown venue | MEDIUM | OKR 3 | (Churn event) | — |
+| H18 | Unknown venue: Full offboarding executed (bookings, events, etc.) | HubSpot AM | AM | Unknown venue | MEDIUM | OKR 3 | (Churn event) | — |
 
-### HubSpot Signals (April 13–20, 2026)
+### Historical Churn Pattern Signals (Hub CSV: 30 records)
 
-| Signal summary | Type | Venue | Churn signal | Mom Test | OKR | Theme |
-|---|---|---|---|---|---|---|
-| Unresponsive rep + offerless dining + customers gaming system + threatening cancellation | CS ticket | (Kate Hunt, unnamed) | Intent to leave | STRONG | OKR 3 | Platform integrity |
-| 5+ months unreachable; negative Google reviews; not honouring deals | CS ticket | Garibaldi Pizzeria | Silence | STRONG | OKR 3 | Venue silence |
-| Immediate cancellation due to cost concerns; all deals self-disabled | CS ticket | Oh! Dumplings | Intent to leave | STRONG | OKR 3 | Deal economics |
-| Indefinite disablement requested; possible temp closure | CS ticket | Pizza E Vino - Glebe | Intent to leave | MEDIUM | OKR 3 | Venue silence |
-| Confirmed churn: deals running while closed, costs increasing, refused retention | CS ticket | Kake Da Dhaba | Intent to leave | STRONG | OKR 3 | Platform integrity |
-| Business sold; last day Friday | CS ticket | Leega Korean BBQ | Intent to leave | STRONG | — | N/A (business sold) |
-| Pause or cancel; undergoing restaurant changes | CS ticket | Sekka Dining | Intent to leave | MEDIUM | OKR 3 | Venue silence |
-| Cancellation request from Feb ignored by BDM; saved this week | CS ticket | The Cheeky Beans | At risk | MEDIUM | OKR 3 | BDM sign quality |
-| Cancellation requested; no detail | CS ticket | Mr Chu Contemporary | Intent to leave | MEDIUM | OKR 3 | Venue silence |
-| Cancel all 25% offers; expenses too high | CS ticket | (Bishal, unnamed) | Intent to leave | WEAK | OKR 3 | Deal economics |
-| Pause requested; platform feels "cheap"; wants AM call | CS ticket | Thien Nga Richmond | At risk | STRONG | OKR 3 | Deal economics |
-| Staff refusing EC orders; "haven't done EC for weeks" | CS ticket | Crust Pizza Mortdale | Silence | STRONG | OKR 3 | Venue silence |
-| Pause requested; no context | CS ticket | Oramesti Indonesian | At risk | WEAK | OKR 3 | Venue silence |
-| Explicit opt-out: "take me out" | CS ticket | Dishoom | Intent to leave | STRONG | OKR 3 | Venue silence |
-| Double payment complaint; no response from anyone | CS ticket | (unnamed) | Debt | MEDIUM | OKR 3 | Platform integrity |
-| Declining performance post-discount change; $4k/3wk margin concern; questioning value | AM note | Famished Wolf | At risk | STRONG | OKR 3 | Deal economics |
-| Lightspeed double-discounting; $9-12k loss; 22% margin hit | AM note | Brick Lane Market | Debt | STRONG | OKR 3 | Platform integrity |
-
-### Churn History (Nov 2023 – Feb 2024) — Pattern Validation
-
-| Category | Count | Key pattern |
+| Category | Count | Key Pattern |
 |---|---|---|
-| Price / margin | 13 (43%) | Dominant driver. Specific margins cited: $2/meal, 30% unviable, can't exceed 20%. Recurring theme: discount depth exceeds what the venue's economics can support. |
-| Business closed | 5 (17%) | Mix of permanent closures and temporary events (renovations, landlord disputes) recorded as full churns. |
-| No engagement | 4 (13%) | Owners requested pauses then went completely silent. Staff blocked AM contact at multiple venues. |
-| Other | 4 (13%) | Includes EC-initiated removal, seasonal over-trading, and EC customer behaviour complaints. |
-| Product / operational | 2 (7%) | Business model changes (functions-only pivot) making EC structurally incompatible. |
-| Sold | 1 (3%) | Ownership change with no re-onboarding follow-up. |
-| Notes quality | 13 WEAK / 7 MEDIUM / 10 STRONG | 43% of churns have zero or near-zero documentation. Critical gap for learning. |
+| Price / margin | 13 (43%) | Margins too thin for any discount; 30% specifically cited as unviable; hard caps at 20% |
+| Business closed | 5 (17%) | Mix of permanent closures and temporary (renovations, landlord disputes) miscategorised as churn |
+| Other | 6 (20%) | Includes "rude EatClub customers" complaints, seasonal capacity fullness, functions-only pivots |
+| Product fit | 3 (10%) | Out of area, low volume — coverage gaps |
+| No engagement | 2 (7%) | Passive withdrawal: pause requests → silence → churn |
+| Sold / ownership change | 1 (3%) | No re-onboarding under new ownership attempted |
+| **Notes quality:** | 9 STRONG, 9 MEDIUM, 12 WEAK | **40% of churn records have empty or useless notes** — the churn record itself is a data quality problem |
 
 ---
 
@@ -164,61 +200,76 @@
 
 ### AM Optimisation (OKR 1)
 
-| Branch | Status | Evidence this week |
+| Branch | Status | Evidence |
 |---|---|---|
-| **Manual AM task reduction** | 🔴 Strengthened heavily | Sam Benjamin quantified cost (10 deals = 1 hour). Adam Glegg flagged 5 venues. 50 AMs globally affected. This is the single most concrete OKR 1 opportunity. |
-| **Venue self-serve capability** | 🔴 Strengthened | Boosts, deal config, venue settings all require AM. Partner Portal rising as a theme. Multiple CS tickets direct venues to Partner Portal for actions they should already be able to do. |
-| **System automation opportunities** | 🟡 New sub-branch | Sam building tools without product (signup form, AM tools). Data silos across HubSpot/Slack/Granola. Allen Luo flagged API key governance risk. This is both an opportunity (automate what Sam is doing manually) and a risk (shadow IT). |
+| **Manual AM task reduction** | Signal present but unvalidated | Justin cites 133 hrs/month on manual venue profiles ($200k/yr) — figures attributed to Crilly's prior synthesis, not primary measurement. Needs validation. |
+| **Venue self-serve capability** | Strengthened | Deal confusion (Theme 4) confirms venues cannot self-serve deal config. Melroad Pizza lost app access entirely. Wok & Wild's closure not reflected on platform despite AM notification. |
+| **System automation opportunities** | Strengthened | Manual profile population (G9), holiday hours last-minute chaos (G8), and venue offboarding still requiring multi-step manual checklist (H17, H18) all point to automation gaps. |
 
 ### Deal Performance (OKR 2)
 
-| Branch | Status | Evidence this week |
+| Branch | Status | Evidence |
 |---|---|---|
-| **Partner Portal engagement** | 🟡 Rising signal | Flagged in Crilly as a theme. CS tickets show venues being directed to PP but no evidence they complete actions. No Mixpanel data to confirm. |
-| **Venue-led revenue actions** | 🔴 Strengthened | Meal-period deal structure would enable venues to optimise by service window. Current flat structure forces bad configs. 18,000 deals are misconfigured per Sam. |
-| **Deal score visibility and trust** | 🟡 Weak signal | Luke requested deal score history investigation via Martin Heal. No venue-level signal on deal score confusion this week. Need Mixpanel data. |
+| **Partner Portal engagement** | No direct data (Mixpanel blocked) | Melroad Pizza reports zero bookings and lost app access. BD Dine found "no benefit." Proxy signals suggest low engagement but cannot measure without Mixpanel. |
+| **Venue-led revenue actions** | Weakened | Deal configuration is too confusing for venues to act independently (Theme 4). Ops overriding venue actions (G7) actively undermines venue agency. |
+| **Deal score visibility and trust** | Strengthened as a problem | Sam's time-of-day pricing analysis (G12) reveals the deal score doesn't reflect demand reality. Famished Wolf's margin concern shows venues don't trust the economics. |
 
 ### Churn Reduction (OKR 3)
 
-| Branch | Status | Evidence this week |
+| Branch | Status | Evidence |
 |---|---|---|
-| **Friction in core venue experience** | 🔴 Critical | Platform integrity failures (double-discounting, offerless dining, deals while closed) are direct financial losses. 6 signals across HubSpot and churn. |
-| **Onboarding journey quality** | 🔴 Strengthened heavily | 40% early churn stat. BDM sign quality. Handover failure. Deal-locking proposal. 10 signals from leadership workshops. |
-| **Surfacing product value through data** | 🟡 Rising | Famished Wolf owner can't tell if EC customers convert. C9 Docklands paid fees for months without using platform. Venues can't see what EC is worth. |
-| **Product fit for enterprise / Groups** | ⚪ No signal | No Group-level or enterprise-specific signals this week. |
+| **Friction in core venue experience** | Strong — dominant signal this week | Billing opacity (Theme 3), discount economics (Theme 2), deal confusion (Theme 4) all compound into the core venue experience. 8 active cancellations or churn events in HubSpot this week. |
+| **Product fit for enterprise / Groups** | New signal | C9 Chocolate & Gelato: 3 locations churned within 2 weeks (Jan 25–Feb 9). Schnitz: 2 locations churned same day (Feb 2). Bar Conte: 2 venues terminating same week. Group venues appear to churn in clusters — no group-level account management or pricing visible. |
+| **Onboarding journey quality** | Strong — root cause of early churn | 40% early churn figure (Theme 1). Active build in progress (sign-up form, Freckle, 30-day journey). |
+| **Surfacing product value through data** | Moderate | BD Dine: "could not find any benefit" — value was never demonstrated. Famished Wolf: AM used data to disprove cannibalisation, showing data CAN save accounts when applied. But this is manual, not systemic. |
 
 ---
 
 ## ⚠️ Friction Stack Watch
 
-**These venues show compounding signals across 2+ journey stages or sources. Flag to Luke immediately.**
+### CRITICAL — Escalate to Luke
 
-### 🚨 CRITICAL — Active churn in progress
+**Melroad Pizza n Kebab** | restID: `F5751B8E-2DC1-4B5D-927D-C46EE3FB62CD`
+- **Sources:** HubSpot CS ticket
+- **Journey stages:** Activation failure (zero bookings) + Ongoing engagement failure (lost app access) + Deal confusion (wants restructure) + Renewal decision (considering cancel)
+- **Stack:** 4 friction points on a single venue. Cannot see bookings, cannot access the app, does not understand deal mechanics, wants to drop to 20%. This venue is days from churning.
+- **Action needed:** AM call within 24 hours. Restore app access. Walk through deal performance data.
 
-| Venue | restID | Signals | Friction stack | Action |
-|---|---|---|---|---|
-| **Garibaldi Pizzeria** | Unknown | HubSpot: 5+ months unreachable, negative Google reviews, not honouring deals, URGENT ticket | Silence (5 months) → Deal integrity failure → Reputation damage | **Escalate to Luke immediately.** This venue is damaging EC's brand on Google while being completely unreachable. |
-| **Brick Lane Market** | Unknown | HubSpot AM note: Lightspeed double-discounting, $9–12k loss, 22% margin hit | Integration failure → Financial loss → Trust erosion | **Escalate to Luke + Eng.** If the integration issue isn't resolved with financial reconciliation, this venue will churn on pure economics. |
-| **Kate Hunt's venue** (name unknown) | Unknown | HubSpot: Unresponsive rep + offerless dining losses + customers gaming system + explicit cancellation threat | AM relationship failure → Platform integrity → Intent to leave | **Escalate to Luke.** Multiple compounding failures with an articulate operator who has documented everything. |
+**Wok & Wild** | restID: unknown
+- **Sources:** HubSpot CS ticket (AM: Libby Egan)
+- **Journey stages:** Closure decision (shut down) + Process failure (still live on platform despite AM notification)
+- **Stack:** Venue has shut down and notified both CS and AM Libby, but deals remain live and customers are still claiming offers. This is an active brand/trust damage event.
+- **Action needed:** Immediate deal disable. Verify Libby received and actioned the notification.
 
-### ⚠️ HIGH RISK — Churn trajectory active
+**Himalayan Nepalese Restaurant & Cafe — Victoria Park** | restID: unknown
+- **Sources:** HubSpot CS ticket (HIGH priority)
+- **Journey stages:** Ongoing engagement (billing failure) + Renewal decision (owner demanding callback)
+- **Stack:** 3 months of zero payments to the venue. Owner is escalating. If this isn't resolved immediately, this becomes a legal/reputation risk, not just churn.
+- **Action needed:** Finance team escalation. AM call within 24 hours. Payment reconciliation.
 
-| Venue | restID | Signals | Friction stack | Action |
-|---|---|---|---|---|
-| **The Famished Wolf Kensington** | Unknown | HubSpot AM note: Declining revenue, $4k margin concern, questioning if EC customers convert, gave 1-month window | Deal economics → Value perception gap → Conditional stay | AM Orel has next check-in May 18. Need to deliver value evidence before that call or this churns. |
-| **Kake Da Dhaba** | Unknown | HubSpot: Confirmed "venue to be churned." Deals ran while closed, costs increasing, refused retention offer | Platform integrity failure → Cost pressure → Confirmed churn | Already lost. Post-mortem needed — deals running while venue was closed is a system bug. |
-| **Crust Pizza Mortdale** | Unknown | HubSpot: Staff refusing EC orders, venue believes they stopped EC "weeks ago" | Operational disconnect → Silence → Active brand damage | Paused until end of month but venue is operationally gone. Confirm actual status with owner. |
-| **Thien Nga Richmond** | Unknown | HubSpot: Owner says platform is "cheap," requesting AM call to discuss pausing | Value perception → Churn consideration | Owner is still open to conversation — this is saveable if AM acts within 48 hours. |
-| **Dishoom** | Unknown | HubSpot: Owner (Raj) sent explicit opt-out message | Intent to leave — single event, no prior signal visible | Immediate AM outreach required. |
+**Belles Hot Chicken Circular Quay** | restID: unknown
+- **Sources:** HubSpot CS ticket
+- **Journey stages:** Ongoing engagement (debt accumulation) + Payment failure ($1,983.53)
+- **Stack:** Large outstanding balance with failed payment. Finance Manager Wendy Bach has contacted CS directly. Venue-side escalation already in motion.
+- **Action needed:** Payment retry + AM outreach to confirm venue relationship status.
 
-### 👀 WATCH — Incomplete signal, needs follow-up
+### AT RISK — Monitor
 
-| Venue | Signals | Note |
-|---|---|---|
-| The Cheeky Beans | Cancellation request from Feb ignored by BDM; saved this week | Underlying dissatisfaction unresolved. BDM handover failure pattern. |
-| Oh! Dumplings | Immediate cancellation, cost concerns, all deals self-disabled | Active churn. Retention attempt status unknown. |
-| Mr Chu Contemporary | Cancellation requested, no supporting detail | Need to understand the reason before this can be themed. |
-| Sekka Dining | Pause or cancel during restaurant changes | Conditional — will cancel if pause unavailable. |
+**The Famished Wolf Kensington** | restID: unknown
+- **Sources:** HubSpot AM note (Gong call)
+- **Journey stages:** Ongoing engagement (margin concern) + Conditional renewal (30-day reassessment, follow-up May 18)
+- **Stack:** Owner Simon explicitly questions long-term value of EatClub customers. Sales dropped after discount reduction. This is a ticking clock — if the May 18 review doesn't show improvement, they churn.
+- **Action needed:** Ensure AM has a data-backed story ready for May 18. Tag for follow-up in 3 weeks.
+
+**Bar Conte Sydney + Bar Conte Surry Hills** | restID: unknown
+- **Sources:** HubSpot CS ticket
+- **Pattern:** Two venues from same management terminating simultaneously. Group/multi-location churn signal.
+- **Action needed:** Identify whether there are other Bar Conte locations on the platform. Understand if this is a group-level decision that could cascade.
+
+**C9 Chocolate & Gelato (historical pattern)** | restIDs: `4B571921` (Crows Nest), `9AA6452C` (Docklands), `17765D31` (Windsor)
+- **Sources:** Churn Hub CSV
+- **Pattern:** 3 locations churned within 15 days (Jan 25–Feb 9 2024). Docklands cited fee confusion. Crows Nest went silent. Windsor had no notes. This is a confirmed group cascade churn — one bad experience likely triggered a multi-location pull.
+- **Insight:** Group/franchise venues need group-level AM treatment, pricing, and reporting. Currently invisible in the system.
 
 ---
 
@@ -226,35 +277,39 @@
 
 ### What surprised me
 
-**The Sam Benjamin governance issue is louder than it looks.** Two separate sources (Adam Glegg and Allen Luo) independently flagged that Sam is building and deploying external-facing tools — a rebuilt signup form, AM tools, direct API access — without product involvement. This isn't just a process complaint. It means the friction in AM tooling is so acute that the Global Head of Sales is building around the system rather than through it. Product should treat Sam's builds as the highest-fidelity signal of what AMs actually need — then bring them into the roadmap properly before governance becomes a crisis.
+1. **40% is a staggering early-churn number and leadership can name the exact cause chain.** Sam Benjamin articulates the full sequence — ICP misfit → no handover → no comprehension → settlement shock → churn — with specificity that suggests this has been known for a long time. The question is not "what's the problem" but "why hasn't it been solved yet?" The answer appears to be: there was no tooling (Freckle is brand new) and no structured onboarding journey (being built now).
 
-**40% early churn is the number that should change everything.** If four out of ten churning venues leave within 60 days, the single highest-leverage intervention for OKR 3 isn't in retention — it's in sign quality and onboarding. Sam's deal-locking proposal (lock for 2 weeks, AM calls at unlock as first optimisation) is an elegant near-term fix that also creates a structured handover touchpoint. This deserves fast prototyping.
+2. **The churn notes are a data quality crisis in themselves.** 40% of churn records have empty or single-word notes. "Closed down." "Pushed out date." "See hubspot ticket." When Blessie writes "can't see any notes and was before my time," that's the system failing. Every unrecorded churn reason is an unlearnable lesson. This is an OKR 1 issue — the close-account process should force structured reason capture.
 
-**Churn documentation is alarmingly poor.** 43% of historical churns have zero or near-zero notes. We can't learn from churn we don't document. This is itself a product opportunity — structured churn exit forms in Hub or Partner Portal that force specific fields (reason category, venue contact, retention attempts, financial context).
+3. **Group/multi-location churn is invisible.** C9 (3 locations in 15 days), Schnitz (2 same day), Bar Conte (2 this week) — there is no mechanism to detect or respond to group-level churn. A single group decision can remove 2–5 venues in one stroke, but the system treats each as an independent event.
+
+4. **Ops overriding venue-disabled deals is a trust-destroying pattern.** Vaishali's signal (G7) describes a scenario where a venue deliberately disables a deal, EatClub ops re-enables it, and the venue then demands a refund. If this is happening at scale, it undermines the entire premise of venue control in Partner Portal.
+
+5. **The discount model problem has a proposed solution.** Sam's time-of-day blended pricing concept (25% peak / 45% off-peak → 30% blended) is a specific, testable product hypothesis that directly addresses the "flat 30% kills thin-margin venues" problem. This is unusually far along for a signal.
 
 ### What is missing
 
-- **Slack signals** were not received in structured form. These cover 8 channels including churn, debt, incidents — critical for cross-referencing.
-- **Deal Score data** was not provided. Deal score = 0 is defined as a critical churn signal. Without this, I can't identify venues with no active deals.
-- **Mixpanel data** is unavailable (no credentials). Partner Portal engagement is a rising theme but I have zero quantitative data on logins, deal edits, or page views.
-- **restIDs for this week's HubSpot venues** are missing. Without restIDs, I cannot cross-reference these venues against churn history, deal scores, or Mixpanel.
-- **Venue financials** — none of the live signals include venue revenue or deal volume data that would allow sizing the economic impact.
+- **Slack data** was mentioned but not delivered. This is likely the highest-volume signal source and its absence means AM-to-AM patterns, CS escalations, and real-time incident signals are invisible this week.
+- **Deal Score data** was not provided. Without it, I cannot identify venues with score = 0 (critical churn signal per the system definition) or track score changes that predict churn.
+- **Mixpanel data** is blocked. Without Partner Portal engagement data, OKR 2 measurement is entirely proxy-based. Specifically: I cannot tell how many venues are logging in, editing deals, or even seeing their deal scores.
+- **SMS data** is empty. Either no venue-to-AM messages occurred this week (unlikely) or the data pipeline didn't capture them.
+- **restIDs are missing from most HubSpot signals.** Only 3 of 18 HubSpot records include a restID, making cross-referencing with churn data, deal scores, and Mixpanel impossible for 83% of active tickets.
 
-### Interview questions to sharpen weakest signals
+### Interview questions that would sharpen the weakest signals
 
-| Theme | Question | Target |
-|---|---|---|
-| Partner Portal engagement | "Walk me through the last time you logged into Partner Portal. What were you trying to do, and did you finish?" | 3–5 venues that recently changed deal settings |
-| Deal score trust | "When you see your deal score, what action does that number make you take? If it went to zero, what would you do?" | Venues in Band 3–4 |
-| Offerless dining | "Tell me about the last time a customer arrived expecting a deal you didn't recognise. What happened?" | Kate Hunt's venue + 2–3 others flagged for deal integrity |
-| BDM handover | "Think back to when you first started with EatClub. At what point did you feel like you understood how to use the platform?" | Venues signed in last 60 days |
-| AM value | "If your Account Manager disappeared tomorrow, what would you not be able to do?" | Venues with high AM contact frequency |
+| Theme | Question | Target | Why |
+|---|---|---|---|
+| 1: Early churn | "Walk me through what happened between your BDM visit and your first week on EatClub. What surprised you?" | Recently signed venue owners (30-60 days in) | Validates whether settlement shock is universal or specific to certain BDM practices |
+| 2: Discount economics | "What's the lowest discount percentage where you'd still see EatClub as worth it?" | Churned venues citing price/margin | Tests whether a flexible pricing tier could have retained them |
+| 3: Billing opacity | "When you got your first EatClub settlement, did you know it was coming, and did the amount match what you expected?" | Venues in month 1-2 | Isolates whether the problem is timing, amount, or both |
+| 4: Deal confusion | "If I asked you right now to change your deal from 30% to 25% and add a second time slot, could you do it in Partner Portal?" | Active venues | Tests actual self-serve capability vs. assumed capability |
+| G9: Manual profiles | "How many of the 15 data fields per venue could be auto-populated from existing data sources like Google Places, Outscraper, or the BDM sign-up form?" | Karen's offshore team + Engineering | Validates the $200k figure and identifies which fields are actually automatable |
 
-### What would move OKR 1 or OKR 2 most based on this week's signals
+### What would move OKR 1 and OKR 2 most based on this week's signals
 
-**OKR 1 (AM Optimisation):** The single highest-leverage move is making deal configuration self-serve in Partner Portal. Sam quantified it: 10 deals = 1 hour of AM time × 50 AMs globally. If even 30% of deal changes shift to venue self-serve, that's the 10 hours/month target for a large segment of the portfolio. Audit the top 5 AM tasks by time, build self-serve for the top 2, and watch AM capacity unlock.
+**OKR 1 (Scale AM Optimisation):** The highest-leverage action is **structured reason capture at close-account** — force the offboarding process to record venue name, restID, primary reason (from a constrained list), and a 2-sentence owner quote. This costs almost nothing, would immediately fix the 40% empty-notes problem, and generates the training data needed for every churn prediction model downstream. Second: validate and scope the manual venue profile automation (G9) — if 133 hrs/month is real, this is the single largest time-recovery opportunity in the business.
 
-**OKR 2 (Deal Performance):** Meal-period deal structuring. Sam's insight that venues think in service windows (12–2 lunch, 2–3 shoulder, 3–5 afternoon) rather than flat daily windows is the most actionable signal this week. A deal builder that lets venues set discount by meal period would simultaneously improve deal quality (right discount at the right time), increase venue engagement (they configure what makes sense to them), and reduce AM workload (venues own their own structure). This is a three-OKR signal.
+**OKR 2 (Drive Deal Performance):** The highest-leverage action is **deal configuration simplification in Partner Portal** — the current model is too complex for venues to self-serve, so they don't. Sam's own description ("we've never been able to explain this to a venue") is the clearest possible statement that the UX is failing. Until venues can understand and configure their own deals, AMs will remain the bottleneck and Partner Portal engagement will stay low.
 
 ---
 
