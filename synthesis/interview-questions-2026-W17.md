@@ -1,10 +1,10 @@
-## Partner Portal engagement
-- Walk me through the last time you logged into Partner Portal. What were you trying to do, and did you finish?
-- When you need to change something about your EatClub setup, what do you do first — call your AM, or try to do it yourself?
-- Is there anything you wish you could do in Partner Portal that you currently can't?
+## Discount economics viability
+- What's the lowest discount percentage where you'd still see EatClub as worth it?
+- If you could set different discount levels for different times of day, would that change your willingness to stay on the platform?
+- When you decided to leave EatClub, was it the discount percentage, the total cost, or the type of customers — or all three?
 
-## Deal score trust and visibility
-- When you see your deal score, what action does that number make you take?
-- If your deal score dropped to zero, what would you do?
-- How do you currently decide whether your EatClub deals are working for your business?
+## Manual venue profile automation (figure validation)
+- How many of the 15 per-venue data fields could be auto-populated from Google Places, Outscraper, or the sign-up form?
+- What's the actual error rate on manually entered venue profiles?
+- Which fields require human judgment vs. which are pure data lookups?
 
