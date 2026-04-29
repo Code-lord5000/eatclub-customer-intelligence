@@ -259,12 +259,7 @@
       "current_churn_estimate": "~8%"
     }
   },
-  "data_quality_flags": {
-    "memory_json_corruption": "File was truncated at line 49 in previous run \u2014 repaired W16-04-16",
-    "hubspot_scope_error": "403 MISSING_SCOPES on tickets API \u2014 requires admin fix",
-    "mixpanel_event_name_mismatch": "agents_memory event names do not match actual Mixpanel event names \u2014 see notes",
-    "granola_mcp_unavailable": "Not available in current tool environment"
-  },
+  "data_quality_flags": {},
   "staff_directory": {
     "last_synced": "2026-04-27T01:16:52.498186+00:00",
     "source": "hubspot_owners_api",
