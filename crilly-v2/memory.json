@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-16",
+  "last_updated": "2026-04-26",
   "last_run_week": "W16",
   "chronic_themes": [
     {
@@ -10,13 +10,13 @@
       "recurrence_count": 3,
       "lifecycle": "CHRONIC",
       "heat_score": 9,
-      "okr": "OKR1",
-      "notes": "397 venues at score=0 as of W16, up from 284 in W15 (+113). No system alert exists. Tom McGay has 28 zero-score accounts. Second Wife (2E087C25) confirmed this week as zero-transaction venue. HubSpot unavailable W16 — count unverifiable.",
+      "okr": "OKR3",
+      "notes": "397 venues at score=0 as of W16, up from 284 in W15 (+113). No system alert exists. Tom McGay has 28 zero-score accounts. Second Wife (2E087C25) confirmed this week as zero-transaction venue. HubSpot unavailable W16 \u2014 count unverifiable.",
       "jira_raised": false
     },
     {
       "theme_id": "T002",
-      "theme": "Double dipping — Burpengary cluster + general",
+      "theme": "Double dipping \u2014 Burpengary cluster + general",
       "first_seen": "2026-W11",
       "last_seen": "2026-W16",
       "recurrence_count": 6,
@@ -40,7 +40,7 @@
     },
     {
       "theme_id": "T004",
-      "theme": "Group cascade churn — Ramen Ippudo",
+      "theme": "Group cascade churn \u2014 Ramen Ippudo",
       "first_seen": "2026-W16",
       "last_seen": "2026-W16",
       "recurrence_count": 1,
@@ -58,7 +58,7 @@
       "recurrence_count": 3,
       "lifecycle": "RISING",
       "heat_score": 8,
-      "okr": "OKR1",
+      "okr": "OKR2",
       "notes": "W16: Lumen Alley (2nd occurrence), Taketori Fusion, Rice Paper Scissors Fitzroy, Ombre Italian Newstead (TA with offers off). Holiday hours pop-up interaction appears to be a specific trigger. Jira ticket needed.",
       "jira_raised": false
     },
@@ -76,13 +76,13 @@
     },
     {
       "theme_id": "T007",
-      "theme": "Partner Portal self-serve gap — AMs manually doing venue config",
+      "theme": "Partner Portal self-serve gap \u2014 AMs manually doing venue config",
       "first_seen": "2026-W12",
       "last_seen": "2026-W16",
       "recurrence_count": 5,
       "lifecycle": "CHRONIC",
       "heat_score": 9,
-      "okr": "OKR1",
+      "okr": "OKR2",
       "notes": "W16: 8+ distinct manual requests via ops channels. NCI boost, seat times, guest limits, no-show buffer, boost removal. Limerick Arms (B7F15903) explicitly stated can't enable NCI boost on portal. Most direct OKR1 opportunity.",
       "jira_raised": false
     },
@@ -95,12 +95,12 @@
       "lifecycle": "CHRONIC",
       "heat_score": 9,
       "okr": "OKR3",
-      "notes": "5+ months unresolved. Two AMs reported independently in W16 without referencing each other — no engineering owner visible. ECPAY enabling is suspected fix. restID: 6A3A7879-EACD-4ACF-BA44-770D4608CF9C. ESCALATE.",
+      "notes": "5+ months unresolved. Two AMs reported independently in W16 without referencing each other \u2014 no engineering owner visible. ECPAY enabling is suspected fix. restID: 6A3A7879-EACD-4ACF-BA44-770D4608CF9C. ESCALATE.",
       "jira_raised": false
     },
     {
       "theme_id": "T009",
-      "theme": "Onboarding expectation gap — late-stage churn",
+      "theme": "Onboarding expectation gap \u2014 late-stage churn",
       "first_seen": "2026-W15",
       "last_seen": "2026-W16",
       "recurrence_count": 2,
@@ -121,12 +121,48 @@
       "okr": "OKR3",
       "notes": "W16: 6+ dine-in for takeaway incidents, max pax breaches, time-window violations. The Last Jar (EC9FABAF) now at 4th cancel attempt citing this. Forno 88: $643 takeaway fraud attempt. Venue frustration escalating.",
       "jira_raised": false
+    },
+    {
+      "theme_id": "T011",
+      "theme": "Billing disputes and refund confusion",
+      "first_seen": "2026-W17",
+      "last_seen": "2026-W17",
+      "recurrence_count": 0,
+      "lifecycle": "CHRONIC",
+      "heat_score": 7,
+      "okr": "OKR3",
+      "notes": "Venues confused about charges, missed refunds, double charges, billing surprises. Migrated from SMS B-baseline taxonomy. Historical SMS log analysis (~Q3 2024) found chronic high volume of billing-related messages across thousands of events. Examples: Mr Ramen San (Apr 2026, $65.63 refund disputed); Everest MoMo Station ($148.08 charge dispute). Recurrence_count starts at 0 \u2014 to be built from real signals.",
+      "jira_raised": false
+    },
+    {
+      "theme_id": "T012",
+      "theme": "Venue silence \u2014 14+ day no-response",
+      "first_seen": "2026-W17",
+      "last_seen": "2026-W17",
+      "recurrence_count": 0,
+      "lifecycle": "CHRONIC",
+      "heat_score": 8,
+      "okr": "OKR3",
+      "notes": "Venues going silent for 14+ days, often preceding churn. Migrated from SMS B-baseline taxonomy. Distinct from T006 (AM-side coverage gap) \u2014 T012 is venue-side silence. Historical SMS analysis found this as a leading churn predictor. Examples: Alexander Mediterranean ($266 debt with 14+ day silence). Recurrence_count starts at 0.",
+      "jira_raised": false
+    },
+    {
+      "theme_id": "T013",
+      "theme": "Debt accumulation triggering churn risk",
+      "first_seen": "2026-W17",
+      "last_seen": "2026-W17",
+      "recurrence_count": 0,
+      "lifecycle": "CHRONIC",
+      "heat_score": 8,
+      "okr": "OKR3",
+      "notes": "Venues with outstanding balances escalating to churn intent. Migrated from SMS B-baseline taxonomy. Frequently co-occurs with T012 (silence). Historical SMS analysis found debt-and-silence as the classic churn combo. Example: Alexander Mediterranean ($266 debt, watch list, escalating). Recurrence_count starts at 0.",
+      "jira_raised": false
     }
   ],
   "venue_watch_list": [
     {
       "venue": "Garibaldi Pizzeria",
-      "rest_id": "UNKNOWN — needs lookup",
+      "rest_id": "UNKNOWN \u2014 needs lookup",
       "status": "CRITICAL",
       "notes": "Angie urgently contacting multiple channels W15+W16. CS escalation. Flag to Luke immediately.",
       "first_flagged": "2026-W15",
@@ -201,7 +237,7 @@
   "saved_venues": {
     "run_amuk": {
       "rest_id": "1CB984DA-21A3-4169-870A-6ADDD45F3F33",
-      "notes": "Pause save — $49/m for 3 months removed as part of retention."
+      "notes": "Pause save \u2014 $49/m for 3 months removed as part of retention."
     }
   },
   "okr_baselines": {
@@ -212,7 +248,11 @@
     },
     "OKR2": {
       "target": "Increase % of venues actively engaging in revenue-driving actions in Partner Portal",
-      "partner_portal_events_confirmed": ["Offer edited", "Page view - offers/active", "Nav link clicked - offer-performance"]
+      "partner_portal_events_confirmed": [
+        "Offer edited",
+        "Page view - offers/active",
+        "Nav link clicked - offer-performance"
+      ]
     },
     "OKR3": {
       "target": "Reduce churn rate from ~8% toward 4%",
@@ -220,9 +260,349 @@
     }
   },
   "data_quality_flags": {
-    "memory_json_corruption": "File was truncated at line 49 in previous run — repaired W16-04-16",
-    "hubspot_scope_error": "403 MISSING_SCOPES on tickets API — requires admin fix",
-    "mixpanel_event_name_mismatch": "agents_memory event names do not match actual Mixpanel event names — see notes",
+    "memory_json_corruption": "File was truncated at line 49 in previous run \u2014 repaired W16-04-16",
+    "hubspot_scope_error": "403 MISSING_SCOPES on tickets API \u2014 requires admin fix",
+    "mixpanel_event_name_mismatch": "agents_memory event names do not match actual Mixpanel event names \u2014 see notes",
     "granola_mcp_unavailable": "Not available in current tool environment"
+  },
+  "staff_directory": {
+    "last_synced": "2026-04-27T01:16:52.498186+00:00",
+    "source": "hubspot_owners_api",
+    "am_team_filter": "EatClub POM",
+    "bdm_team_filter": "EatClub BDM",
+    "ams": [
+      {
+        "name": "Libby Egan",
+        "email": "libby@eatclub.com.au",
+        "hubspot_owner_id": "530975005"
+      },
+      {
+        "name": "Josephine Fatorma",
+        "email": "josephine.fatorma@eatclub.com.au",
+        "hubspot_owner_id": "79737866"
+      },
+      {
+        "name": "Jay Franklin",
+        "email": "jay@eatclub.com.au",
+        "hubspot_owner_id": "77233361"
+      },
+      {
+        "name": "Jasmine Jung",
+        "email": "jasmine.jung@eatclub.com.au",
+        "hubspot_owner_id": "86971835"
+      },
+      {
+        "name": "Pippa Keddie",
+        "email": "pippa.keddie@eatclub.com.au",
+        "hubspot_owner_id": "87049955"
+      },
+      {
+        "name": "Sean Keogh",
+        "email": "sean@eatclub.com.au",
+        "hubspot_owner_id": "165221869"
+      },
+      {
+        "name": "Tania Marinopoulos",
+        "email": "tania.marinopoulos@eatclub.com.au",
+        "hubspot_owner_id": "79177179"
+      },
+      {
+        "name": "Nader Masrour",
+        "email": "nader@eatclub.com.au",
+        "hubspot_owner_id": "86040182"
+      },
+      {
+        "name": "Luke Maurel",
+        "email": "luke.maurel@eatclub.com.au",
+        "hubspot_owner_id": "79679820"
+      },
+      {
+        "name": "Tom McGay",
+        "email": "tom.mcgay@eatclub.com.au",
+        "hubspot_owner_id": "79204947"
+      },
+      {
+        "name": "Sam McKenzie",
+        "email": "sam@eatclub.com.au",
+        "hubspot_owner_id": "45043231"
+      },
+      {
+        "name": "Rosh McMahon",
+        "email": "rosh.mcmahon@eatclub.com.au",
+        "hubspot_owner_id": "79972972"
+      },
+      {
+        "name": "Nicole Orr",
+        "email": "nicole.orr@eatclub.com.au",
+        "hubspot_owner_id": "86971837"
+      },
+      {
+        "name": "Aaron Pantazis",
+        "email": "aaron.pantazis@eatclub.com.au",
+        "hubspot_owner_id": "82326909"
+      },
+      {
+        "name": "Sam Pundol",
+        "email": "sam.pundol@eatclub.com.au",
+        "hubspot_owner_id": "82517600"
+      },
+      {
+        "name": "Elliot Rayment",
+        "email": "elliot.rayment@eatclub.com.au",
+        "hubspot_owner_id": "573696162"
+      },
+      {
+        "name": "David Rey",
+        "email": "david.rey@eatclub.com.au",
+        "hubspot_owner_id": "83718150"
+      },
+      {
+        "name": "Kane Russell",
+        "email": "kane@eatclub.com.au",
+        "hubspot_owner_id": "169406621"
+      },
+      {
+        "name": "Rob Sheedy",
+        "email": "rob@eatclub.com.au",
+        "hubspot_owner_id": "77233451"
+      },
+      {
+        "name": "Lukas Symonds",
+        "email": "lukas.symonds@eatclub.com.au",
+        "hubspot_owner_id": "82326908"
+      },
+      {
+        "name": "Gabriella Szabo",
+        "email": "gabriella.szabo@eatclub.com.au",
+        "hubspot_owner_id": "81598595"
+      },
+      {
+        "name": "Finn Weir",
+        "email": "finn.weir@eatclub.com.au",
+        "hubspot_owner_id": "81598598"
+      },
+      {
+        "name": "Bart Wootton",
+        "email": "bart.wootton@eatclub.com.au",
+        "hubspot_owner_id": "90964244"
+      }
+    ],
+    "bdms": [
+      {
+        "name": "Holly Anderson",
+        "email": "holly.anderson@eatclub.com.au",
+        "hubspot_owner_id": "90964254"
+      },
+      {
+        "name": "Mohammad Anwary",
+        "email": "mohammad.anwary@eatclub.com.au",
+        "hubspot_owner_id": "86971552"
+      },
+      {
+        "name": "Paul Bazeos",
+        "email": "paul.bazeos@eatclub.com.au",
+        "hubspot_owner_id": "80717198"
+      },
+      {
+        "name": "Matthew Behan",
+        "email": "matthew.behan@eatclub.com.au",
+        "hubspot_owner_id": "81598596"
+      },
+      {
+        "name": "John Boylan",
+        "email": "john@eatclub.com.au",
+        "hubspot_owner_id": "1665585824"
+      },
+      {
+        "name": "Matthew Cahill",
+        "email": "matthew.cahill@eatclub.com.au",
+        "hubspot_owner_id": "86971554"
+      },
+      {
+        "name": "Bianca Conroy",
+        "email": "bianca.conroy@eatclub.com.au",
+        "hubspot_owner_id": "90964255"
+      },
+      {
+        "name": "Andrew Crace",
+        "email": "andrew.crace@eatclub.com.au",
+        "hubspot_owner_id": "89718008"
+      },
+      {
+        "name": "Marcus Edwards",
+        "email": "marcus.edwards@eatclub.com.au",
+        "hubspot_owner_id": "80717197"
+      },
+      {
+        "name": "Otis Elliott",
+        "email": "otis@eatclub.com.au",
+        "hubspot_owner_id": "78005380"
+      },
+      {
+        "name": "Dylan Farrugia",
+        "email": "dylan.farrugia@eatclub.com.au",
+        "hubspot_owner_id": "81598594"
+      },
+      {
+        "name": "Summar Featherstone",
+        "email": "summar.featherstone@eatclub.com.au",
+        "hubspot_owner_id": "79659369"
+      },
+      {
+        "name": "Alex Fung",
+        "email": "alex.fung@eatclub.com.au",
+        "hubspot_owner_id": "86971556"
+      },
+      {
+        "name": "Krista Hall",
+        "email": "krista.hall@eatclub.com.au",
+        "hubspot_owner_id": "79659366"
+      },
+      {
+        "name": "Phea Heang",
+        "email": "phea.heang@eatclub.com.au",
+        "hubspot_owner_id": "86971543"
+      },
+      {
+        "name": "Louis Heaton",
+        "email": "louis@eatclub.com.au",
+        "hubspot_owner_id": "177645741"
+      },
+      {
+        "name": "Poppy Hill",
+        "email": "poppy@eatclub.com.au",
+        "hubspot_owner_id": "34245760"
+      },
+      {
+        "name": "Rebecca Howarth",
+        "email": "rebecca@eatclub.com.au",
+        "hubspot_owner_id": "77484570"
+      },
+      {
+        "name": "Tristan Jung",
+        "email": "tristan.jung@eatclub.com.au",
+        "hubspot_owner_id": "86971559"
+      },
+      {
+        "name": "Mayank Khanna",
+        "email": "mayank.khanna@eatclub.com.au",
+        "hubspot_owner_id": "86971547"
+      },
+      {
+        "name": "Drew Kieran",
+        "email": "drew.kieran@eatclub.com.au",
+        "hubspot_owner_id": "687958440"
+      },
+      {
+        "name": "Joe Kirby",
+        "email": "joe.kirby@eatclub.com.au",
+        "hubspot_owner_id": "573696356"
+      },
+      {
+        "name": "Aashna Lal",
+        "email": "aashna.lal@eatclub.com.au",
+        "hubspot_owner_id": "89718013"
+      },
+      {
+        "name": "Prudence Madigan",
+        "email": "prudence.madigan@eatclub.com.au",
+        "hubspot_owner_id": "89718014"
+      },
+      {
+        "name": "Kate Maguire",
+        "email": "kate.maguire@eatclub.com.au",
+        "hubspot_owner_id": "89718007"
+      },
+      {
+        "name": "Paddy Murray",
+        "email": "patrick.murray@eatclub.com.au",
+        "hubspot_owner_id": "78092803"
+      },
+      {
+        "name": "Ashish Prajapati",
+        "email": "ashish.prajapati@eatclub.com.au",
+        "hubspot_owner_id": "86971558"
+      },
+      {
+        "name": "Emily Qiu",
+        "email": "emily.qiu@eatclub.com.au",
+        "hubspot_owner_id": "81598590"
+      },
+      {
+        "name": "Jeremy Rich",
+        "email": "jeremy.rich@eatclub.com.au",
+        "hubspot_owner_id": "89718012"
+      },
+      {
+        "name": "Oliver Richards",
+        "email": "oliver.richards@eatclub.com.au",
+        "hubspot_owner_id": "89718010"
+      },
+      {
+        "name": "Darcey Rogers",
+        "email": "darcey.rogers@eatclub.com.au",
+        "hubspot_owner_id": "85744367"
+      },
+      {
+        "name": "Katrina Siquian",
+        "email": "katrina.siquian@eatclub.com.au",
+        "hubspot_owner_id": "86971545"
+      },
+      {
+        "name": "Genevieve Skinner",
+        "email": "genevieve.skinner@eatclub.com.au",
+        "hubspot_owner_id": "81598592"
+      },
+      {
+        "name": "Andy Smith",
+        "email": "andy.smith@eatclub.com.au",
+        "hubspot_owner_id": "612098377"
+      },
+      {
+        "name": "Ange Stella",
+        "email": "ange@eatclub.com.au",
+        "hubspot_owner_id": "618180940"
+      },
+      {
+        "name": "Mitch Thompson",
+        "email": "mitch.thompson@eatclub.com.au",
+        "hubspot_owner_id": "80717201"
+      },
+      {
+        "name": "Ryan Tibbetts",
+        "email": "ryan.tibbetts@eatclub.com.au",
+        "hubspot_owner_id": "86971551"
+      },
+      {
+        "name": "Mandy Tramer",
+        "email": "mandy@eatclub.com.au",
+        "hubspot_owner_id": "1574459327"
+      },
+      {
+        "name": "Emma Viezzi",
+        "email": "emma@eatclub.com.au",
+        "hubspot_owner_id": "79176401"
+      },
+      {
+        "name": "Jenny Vincent",
+        "email": "jenny.vincent@eatclub.com.au",
+        "hubspot_owner_id": "82326996"
+      },
+      {
+        "name": "Neil Wilkinson",
+        "email": "neil.wilkinson@eatclub.com.au",
+        "hubspot_owner_id": "90964256"
+      },
+      {
+        "name": "Eelynn Yong",
+        "email": "eelynn.yong@eatclub.com.au",
+        "hubspot_owner_id": "86971549"
+      },
+      {
+        "name": "sam benjamin",
+        "email": "sam.benjamin@eatclub.com.au",
+        "hubspot_owner_id": "76488972"
+      }
+    ]
   }
 }
