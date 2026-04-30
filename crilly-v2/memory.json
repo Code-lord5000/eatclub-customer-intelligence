@@ -1,162 +1,117 @@
 {
-  "last_updated": "2026-04-26",
+  "last_updated": "2026-04-30",
   "last_run_week": "W16",
   "chronic_themes": [
     {
       "theme_id": "T001",
-      "theme": "Deal score zero venues accumulating",
-      "first_seen": "2026-W14",
-      "last_seen": "2026-W16",
+      "theme": "Mismatched expectation at sale",
+      "first_seen": "2026-W15",
+      "last_seen": "2026-W18",
       "recurrence_count": 3,
-      "lifecycle": "CHRONIC",
-      "heat_score": 9,
+      "lifecycle": "RISING",
+      "heat_score": 7,
       "okr": "OKR3",
-      "notes": "397 venues at score=0 as of W16, up from 284 in W15 (+113). No system alert exists. Tom McGay has 28 zero-score accounts. Second Wife (2E087C25) confirmed this week as zero-transaction venue. HubSpot unavailable W16 \u2014 count unverifiable.",
-      "jira_raised": false
+      "notes": "Venues signing up with a different understanding of how the product works \u2014 discount applies to total bill, brand calibre promises, commission model surprises. Gap between BDM pitch and reality surfaces as early churn. Most common specific misalignment: discount-applies-to-total-bill. Venues: Sushi Mami, Honest Crust, Fress, Persian Kebab.",
+      "jira_raised": false,
+      "consolidated_from": [
+        "T009"
+      ]
     },
     {
       "theme_id": "T002",
-      "theme": "Double dipping \u2014 Burpengary cluster + general",
-      "first_seen": "2026-W11",
-      "last_seen": "2026-W16",
-      "recurrence_count": 6,
+      "theme": "Over-reliance on AMs and lack of venue autonomy",
+      "first_seen": "2026-W12",
+      "last_seen": "2026-W18",
+      "recurrence_count": 7,
       "lifecycle": "CHRONIC",
-      "heat_score": 8,
-      "okr": "OKR3",
-      "notes": "Life of Chi (BE069D4E) churned W16 explicitly citing double dipping + Ipos no integration. First confirmed T002+T003 co-occurrence in a single churn. RedCat talking point not resolving it.",
-      "jira_raised": false
+      "heat_score": 9,
+      "okr": "OKR1",
+      "notes": "Venues can't self-serve basic config \u2014 NCI boost, seat times, guest limits, party size, no-show buffer, opening hours. AMs absorb the cost manually via Slack ops channels. When AM is unavailable (vacation, unassigned), venues in distress go unanswered and churn. Limerick Arms explicitly stated can't enable NCI boost on portal. 8+ distinct manual requests per week. Most direct OKR1 opportunity. AM vacation gap: The Nuns Pool, Friends & Flowers Cafe.",
+      "jira_raised": false,
+      "consolidated_from": [
+        "T007",
+        "T006"
+      ]
     },
     {
       "theme_id": "T003",
-      "theme": "POS integration gap as competitive loss",
-      "first_seen": "2026-W15",
-      "last_seen": "2026-W16",
-      "recurrence_count": 3,
-      "lifecycle": "RISING",
+      "theme": "Poor customer behaviour",
+      "first_seen": "2026-W11",
+      "last_seen": "2026-W18",
+      "recurrence_count": 8,
+      "lifecycle": "CHRONIC",
       "heat_score": 8,
       "okr": "OKR3",
-      "notes": "Spread Deli (W15): moved to First Table for Lightspeed + Now Book It. Life of Chi (W16): Ipos no integration cited alongside double dipping. T002 and T003 confirmed co-occurring in same churn.",
-      "jira_raised": false
+      "notes": "Customers exploiting offers in ways venues can't prevent \u2014 dine-in vouchers for takeaway, oversized parties, repeat redemptions, arriving outside booking windows, leaving without paying. Venues losing margin and losing trust in EatClub's customer quality. Dangerous new pattern: Lulo Spice using T&C abuse as justification for non-payment of debt. Confirmed churns: Plat Coffee, Lumen Alley, Thornbury Taphouse, Lulo Spice. Active risks: The Last Jar (4th cancel attempt), Annata, Forno 88 ($643 fraud attempt).",
+      "jira_raised": false,
+      "consolidated_from": [
+        "T002",
+        "T010"
+      ]
     },
     {
       "theme_id": "T004",
-      "theme": "Group cascade churn \u2014 Ramen Ippudo",
-      "first_seen": "2026-W16",
-      "last_seen": "2026-W16",
-      "recurrence_count": 1,
-      "lifecycle": "NEW",
-      "heat_score": 9,
-      "okr": "OKR3",
-      "notes": "8-venue cascade churn. No new signals W16 (no HubSpot/Granola). Monitoring.",
-      "jira_raised": false
+      "theme": "Platform reliability and trust",
+      "first_seen": "2026-W15",
+      "last_seen": "2026-W18",
+      "recurrence_count": 4,
+      "lifecycle": "RISING",
+      "heat_score": 8,
+      "okr": "OKR2",
+      "notes": "Venues configuring their deals and the platform ignoring them \u2014 deal settings reverting, holiday hours overriding manual choices, TA orders firing when offers are off. Silent product failures: Masala Flames iOS dine-in invisible for 5+ months (Partner Signup not found error, restID: 6A3A7879-EACD-4ACF-BA44-770D4608CF9C). Performance tab usage near zero despite active Portal engagement \u2014 venues managing deals blind. Both erode the same thing: confidence that the platform does what it's supposed to do.",
+      "jira_raised": false,
+      "consolidated_from": [
+        "T005",
+        "T008"
+      ]
     },
     {
       "theme_id": "T005",
-      "theme": "Deal settings silently reverting",
-      "first_seen": "2026-W15",
-      "last_seen": "2026-W16",
-      "recurrence_count": 3,
-      "lifecycle": "RISING",
+      "theme": "High fees and misconception of value",
+      "first_seen": "2026-W14",
+      "last_seen": "2026-W18",
+      "recurrence_count": 5,
+      "lifecycle": "CHRONIC",
       "heat_score": 8,
-      "okr": "OKR2",
-      "notes": "W16: Lumen Alley (2nd occurrence), Taketori Fusion, Rice Paper Scissors Fitzroy, Ombre Italian Newstead (TA with offers off). Holiday hours pop-up interaction appears to be a specific trigger. Jira ticket needed.",
-      "jira_raised": false
+      "okr": "OKR3",
+      "notes": "Venues don't believe EatClub is worth what they're paying. Manifests as fee complaints, deal score zero (venues disengaging from deal management), and POS integration cited as reason to leave (surface justification for underlying value perception failure). 397 venues at deal score zero as of W16. Riwayat saved with 3-month fee waiver. TacoBar, Subway Crows Nest, Roseberry Street Cafe citing cost pressure. Performance tab invisibility compounds this \u2014 venues can't see their own ROI.",
+      "jira_raised": false,
+      "consolidated_from": [
+        "T001",
+        "T003"
+      ]
     },
     {
       "theme_id": "T006",
-      "theme": "AM vacation coverage gap enabling churn",
-      "first_seen": "2026-W15",
-      "last_seen": "2026-W16",
+      "theme": "No group or enterprise product layer",
+      "first_seen": "2026-W16",
+      "last_seen": "2026-W18",
       "recurrence_count": 2,
       "lifecycle": "RISING",
       "heat_score": 7,
-      "okr": "OKR1",
-      "notes": "W15: The Nuns Pool unacted while AM on vacation. W16: Friends & Flowers Cafe cancel request unassigned, 4+ tickets with no owner. No automated OOO routing in HubSpot.",
-      "jira_raised": false
+      "okr": "OKR3",
+      "notes": "EatClub built for single venues. Multi-venue operators signing up but no group account layer, no multi-venue visibility, no relationship above individual AM. When one venue churns or owner disengages, all venues go with no early warning. Two confirmed cascade churns: Ramen Ippudo (8 venues), Gogyo (pattern identical \u2014 AM can't access decision-makers, POC gatekeeps). Mr Ramen San: 2-venue cascade from single $65.63 billing error. Jak's Group (7 venues, liquidation). Structural vulnerability clear.",
+      "jira_raised": false,
+      "consolidated_from": [
+        "T004"
+      ]
     },
     {
       "theme_id": "T007",
-      "theme": "Partner Portal self-serve gap \u2014 AMs manually doing venue config",
-      "first_seen": "2026-W12",
-      "last_seen": "2026-W16",
-      "recurrence_count": 5,
-      "lifecycle": "CHRONIC",
-      "heat_score": 9,
-      "okr": "OKR2",
-      "notes": "W16: 8+ distinct manual requests via ops channels. NCI boost, seat times, guest limits, no-show buffer, boost removal. Limerick Arms (B7F15903) explicitly stated can't enable NCI boost on portal. Most direct OKR1 opportunity.",
-      "jira_raised": false
-    },
-    {
-      "theme_id": "T008",
-      "theme": "Masala Flames iOS dine-in visibility bug",
-      "first_seen": "2025-W44",
-      "last_seen": "2026-W16",
-      "recurrence_count": 6,
-      "lifecycle": "CHRONIC",
-      "heat_score": 9,
-      "okr": "OKR3",
-      "notes": "5+ months unresolved. Two AMs reported independently in W16 without referencing each other \u2014 no engineering owner visible. ECPAY enabling is suspected fix. restID: 6A3A7879-EACD-4ACF-BA44-770D4608CF9C. ESCALATE.",
-      "jira_raised": false
-    },
-    {
-      "theme_id": "T009",
-      "theme": "Onboarding expectation gap \u2014 late-stage churn",
-      "first_seen": "2026-W15",
-      "last_seen": "2026-W16",
-      "recurrence_count": 2,
-      "lifecycle": "RISING",
-      "heat_score": 7,
-      "okr": "OKR3",
-      "notes": "W16: Sushi Mami (discount on total bill), Honest Crust (brand calibre promise), Fress (burger giveaway miscomm), Persian Kebab (no perceived value). Discount-applies-to-total-bill is the most common specific misalignment.",
-      "jira_raised": false
-    },
-    {
-      "theme_id": "T010",
-      "theme": "Customer T&C abuse creating venue friction",
-      "first_seen": "2026-W15",
-      "last_seen": "2026-W16",
-      "recurrence_count": 2,
-      "lifecycle": "RISING",
-      "heat_score": 7,
-      "okr": "OKR3",
-      "notes": "W16: 6+ dine-in for takeaway incidents, max pax breaches, time-window violations. The Last Jar (EC9FABAF) now at 4th cancel attempt citing this. Forno 88: $643 takeaway fraud attempt. Venue frustration escalating.",
-      "jira_raised": false
-    },
-    {
-      "theme_id": "T011",
-      "theme": "Billing disputes and refund confusion",
+      "theme": "Debt and silence as the pre-churn signal",
       "first_seen": "2026-W17",
-      "last_seen": "2026-W17",
-      "recurrence_count": 0,
-      "lifecycle": "CHRONIC",
-      "heat_score": 7,
-      "okr": "OKR3",
-      "notes": "Venues confused about charges, missed refunds, double charges, billing surprises. Migrated from SMS B-baseline taxonomy. Historical SMS log analysis (~Q3 2024) found chronic high volume of billing-related messages across thousands of events. Examples: Mr Ramen San (Apr 2026, $65.63 refund disputed); Everest MoMo Station ($148.08 charge dispute). Recurrence_count starts at 0 \u2014 to be built from real signals.",
-      "jira_raised": false
-    },
-    {
-      "theme_id": "T012",
-      "theme": "Venue silence \u2014 14+ day no-response",
-      "first_seen": "2026-W17",
-      "last_seen": "2026-W17",
-      "recurrence_count": 0,
+      "last_seen": "2026-W18",
+      "recurrence_count": 3,
       "lifecycle": "CHRONIC",
       "heat_score": 8,
       "okr": "OKR3",
-      "notes": "Venues going silent for 14+ days, often preceding churn. Migrated from SMS B-baseline taxonomy. Distinct from T006 (AM-side coverage gap) \u2014 T012 is venue-side silence. Historical SMS analysis found this as a leading churn predictor. Examples: Alexander Mediterranean ($266 debt with 14+ day silence). Recurrence_count starts at 0.",
-      "jira_raised": false
-    },
-    {
-      "theme_id": "T013",
-      "theme": "Debt accumulation triggering churn risk",
-      "first_seen": "2026-W17",
-      "last_seen": "2026-W17",
-      "recurrence_count": 0,
-      "lifecycle": "CHRONIC",
-      "heat_score": 8,
-      "okr": "OKR3",
-      "notes": "Venues with outstanding balances escalating to churn intent. Migrated from SMS B-baseline taxonomy. Frequently co-occurs with T012 (silence). Historical SMS analysis found debt-and-silence as the classic churn combo. Example: Alexander Mediterranean ($266 debt, watch list, escalating). Recurrence_count starts at 0.",
-      "jira_raised": false
+      "notes": "Venues with outstanding balances + 14+ day silence = predictable churn. Classic combo: debt accumulates, venue disengages, stops using product, churns with balance on books. Billing disputes accelerate this \u2014 venues surprised by charges dispute them, go silent, churn. Dangerous new pattern: venues using T&C abuse as grounds for non-payment (Lulo Spice). Active: Alexander Mediterranean ($266 debt, 14+ day silence), Everest MoMo Station ($148.08 dispute). Migrated from SMS B-baseline \u2014 historically one of the strongest churn predictors in the dataset.",
+      "jira_raised": false,
+      "consolidated_from": [
+        "T011",
+        "T012",
+        "T013"
+      ]
     }
   ],
   "venue_watch_list": [
