@@ -1,156 +1,142 @@
-**Sources available this run**: Slack (10 AU channels, 175 messages), HubSpot (300 tickets + 300 notes scanned), Churn (30 rows parsed, 21 AU churns in window), Mixpanel (4,158 events across 885 unique venues)
-
-**Sources unavailable / failed**: Granola (no customer-facing meetings in window — skipped), Deal Score (CSV parsed but returned 0 drops, 0 rises, 0 zero-score venues — suspect collector mismatch given T001 reported 397 zero-score venues in W16)
-
-**Confidence note**: 3-day window (Mon 27 Apr – Thu 30 Apr) limits full-week pattern visibility. HubSpot budget exhausted at 300 tickets/300 notes — some AU-relevant tickets may be missed from a pipeline exceeding 125K records. Deal Score returning zero is almost certainly a data quality issue, not evidence the problem resolved — T001 heat carried from prior week but cannot be validated this run. Granola absence means no AM-meeting signals; qualitative voice-of-venue from face-to-face is missing entirely. Mixpanel capped at top 100 of 885 venues; long-tail engagement not captured. Churn data tenure fields appear to reflect contract period rather than actual time on platform — do not treat as reliable tenure measurement.
+**Sources available this run**: Slack, HubSpot, Churn, Mixpanel
+**Sources unavailable / failed**: Granola (no customer-facing meetings in window — agent skipped), Dealscore (parsed 30 rows, returned 0 signals — no score changes detected)
+**Confidence note**: This run covers a narrow ~1.75-hour window (02:01–03:46 UTC, 30 Apr 2026) for Slack and HubSpot. Churn data is more complete (21 AU churns from full CSV parse). Mixpanel covers a full day (153 unique venues, capped at 100). The narrow Slack/HubSpot window means signal counts are understated — 3 billing disputes in under 2 hours suggests a much higher daily rate. Granola absence means no AM meeting colour this run. Dealscore returning zero signals is a coverage gap — the 397 zero-score venues from W16 remain unverified. Heat scores for T001 carry forward on chronic rule but are unrefreshed.
 
 ---
 
 ### 🔥 Rising themes this week
 
+**1. T011 — Billing disputes and refund confusion**
+- **Theme tag**: T011
+- **Heat**: 🔴 HIGH
+- **Signal count**: 5 signals / 3 sources (Slack, HubSpot, Churn)
+- **Lifecycle**: CHRONIC (4+ weeks — migrated from SMS baseline, now confirmed with live signals)
+- **Problem statement**: Venues and consumers can't get timely clarity on charges, transactions, and refunds. When proof of refund isn't provided, venues lose trust and churn — sometimes pulling sibling venues with them. Three billing disputes surfaced in a single 2-hour Slack window, suggesting this is constant background noise for CS and AMs.
+- **Mom Test quality**: STRONG — *"We have not received any refund of $65.63. Please provide us the date or receipt... Since we continue to have issues with Eatclub for Mid City site, we decided to stop entire partnership with Eatclub for Nova site as well."* (Mr Ramen San, confirmed churn, 2 venues lost). Shiraaz: *"They are claiming that we are not transparent on the contract specifications and billing processes. They said they want to disable our service until this matter is resolved."*
+- **OKR**: OKR3 (Churn Reduction)
+- **OST branch**: Friction in core venue experience
+- **Journey stage**: Ongoing engagement → Renewal-churn decision
+- **Recommended action**: **Discovery ticket** — Map the full billing dispute lifecycle (charge → query → CS ticket → AM escalation → refund → confirmation). The refund-proof gap (Mr Ramen San waited weeks for a receipt) is a specific, fixable system failure. Also: the consumer-side complaint ($230.55 venue overcharge + unauthorized tip) suggests billing friction flows in both directions.
+
 ---
 
-**1. Partner Portal self-serve gap — AMs manually doing venue configuration**
+**2. T007 — Partner Portal self-serve gap: AMs manually doing venue config**
 - **Theme tag**: T007
-- **Heat**: HIGH
-- **Signal count**: 15+ signals across 4 sources (Slack 8+, HubSpot 4, Mixpanel 3, Churn 4)
-- **Lifecycle**: CHRONIC (5+ weeks)
-- **Problem statement**: Venues cannot configure key deal parameters — NCI boost, seat times, guest limits, no-show buffer, item exclusions, first-time-customer limits — through Partner Portal. Every request becomes manual AM work, consuming hours weekly per AM and creating bottlenecks where venues wait for changes that should be instant.
-- **Mom Test quality**: STRONG — Behavioural evidence from multiple angles. Mixpanel detected 3 sessions with 21–28 offer edits in a single sitting, consistent with an AM batch-editing on behalf of venues. HubSpot shows Tania Marinopoulos submitting identical offer structures for Gami Chicken x2 venues. Slack coverage documents 8+ distinct manual config requests in a single week (Bang Bang x2, David's Master Pot x3, Tran Tran, Garden State Diner, Bavarian Sizzle, Handcrafted Pizza). Churn source confirms downstream impact: Zircon (couldn't self-optimise, early churn), Chaan Thai (saved in March, churning again because margins don't work at 20% and no lower option), Lulo Spice ($160 debt, wants 5–10% offers, "knows this isn't an option").
-- **Verbatim**: *"HS would like to have the following offers only, effective immediately & permanent. I did a one-off for tomorrow: 11:00 am – 12:00 pm: 35% off (1 Dine-in voucher) All Day: 20% off (Unlimited Takeaway & Dine-in vouchers)"* — Tania Marinopoulos (AM), HubSpot, for Gami Chicken
-- **Verbatim**: *"Hi Jordan, We need to update the offer to 20% all day every day. From 3-5:30pm, 25%. Also can you limit the offer to first time customers?"* — Eddie (venue owner, Madame Trang), via HubSpot. Note: "first time customers" is not a Portal-available filter.
-- **OKR**: OKR1 (primary — every manual request is AM time that should be self-serve), OKR2 (secondary — venues can't take revenue actions independently)
-- **OST branch**: Venue self-serve capability / Manual AM task reduction
+- **Heat**: 🔴 HIGH
+- **Signal count**: 3 clean Slack signals this run / 1 source (Slack)
+- **Lifecycle**: CHRONIC (4+ weeks)
+- **Problem statement**: Venues cannot perform basic configuration changes — NCI boost, takeaway enable, offer adjustments — through Partner Portal. AMs must request these through ops Slack channels, burning time on both sides. In a 1.75-hour window, Aaron Pantazis submitted 2 manual requests and Tania Marinopoulos submitted 1. Extrapolated across a full day and 23 AMs, this is the single highest-volume manual task category.
+- **Mom Test quality**: STRONG — *"Please add NCI boost on all their daily 25% deals"* (Aaron, Big Belly Burgers). *"Can we enable TA... On the phone with the venue now and wants to do the TA test order"* (Aaron, Wise Guys — real-time AM bottleneck). *"TA issue fixed at Le Feu Oasis. Please can we enable TA"* (Tania — AM had to follow up on a fix and then separately request enablement).
+- **OKR**: OKR1 (primary — direct manual AM work), OKR2 (venues can't self-serve)
+- **OST branch**: Manual AM task reduction / Venue self-serve capability
 - **Journey stage**: Ongoing engagement
-- **Recommended action**: **Discovery ticket** — Scope a Partner Portal self-serve expansion covering: (1) time-slot-specific offer configuration, (2) NCI/RCI boost toggle, (3) guest/party-size limits, (4) item/category exclusion, (5) first-time-customer offer restriction. The Mixpanel bulk-edit detector should become an automated flag: when single-user sessions exceed 15 edits, prompt the venue for self-serve onboarding.
+- **Recommended action**: **Discovery ticket** — Audit all config actions currently gated behind ops channels (NCI boost, TA enable, seat times, guest limits, no-show buffer, boost removal — at least 6 distinct action types identified across W16-W17). Size the volume: how many of these requests flow through Slack daily? Which can be exposed in Partner Portal with appropriate guardrails?
 
 ---
 
-**2. Customer T&C abuse creating venue friction — no tooling to manage offenders**
-- **Theme tag**: T010
-- **Heat**: HIGH
-- **Signal count**: 7 signals across 2 sources (Slack 2 + 5 in coverage notes, Churn 1)
-- **Lifecycle**: RISING (3 weeks, volume increasing)
-- **Problem statement**: Dine-in customers ordering takeaway, breaching max pax, arriving outside time windows, and stacking in-house offers with EC deals. Venues are frustrated and churning. There is no mechanism for venues or AMs to flag, warn, or block repeat offenders. AMs don't know what the protocol is. When repeated enough, this becomes the churn reason.
-- **Mom Test quality**: STRONG — Tania Marinopoulos (AM) explicitly asked for a process that doesn't exist. Lulo Spice churned citing customer T&C violations as justification for non-payment of debt. Coverage notes confirm 5 additional dine-in-for-takeaway incidents this run (Maikhana, Basilico Prospect, Terronia Cocktail Bar — 2 breaches in 5 days on a new venue, Beans and Beers Torquay, Suliya Korean Pocha).
-- **Verbatim**: *"What is the process of flagging a customer? And can we please reach out and let her know if she does it again we will suspend her account or something? Not sure what the protocol is for repeat offenders..."* — Tania Marinopoulos (AM), Slack #cs-and-am, re: Le Feu Oasis
-- **Verbatim**: *"customers weren't following T's and C's... I asked if he was going to pay his debt and he said he didn't have to because customers weren't following T's and C's"* — Cameron Landis (unknown team), Churn, re: Lulo Spice & Bar
-- **OKR**: OKR3 (friction in core venue experience driving churn), OKR1 (AMs manually chasing CS to resolve individual incidents)
-- **OST branch**: Friction in core venue experience
-- **Journey stage**: Ongoing engagement → Renewal-churn decision
-- **Recommended action**: **Discovery ticket** — Design a customer behaviour flagging system: (1) venue-initiated T&C violation report in Partner Portal, (2) automated warning to flagged customers, (3) suspension/ban capability for repeat offenders, (4) clear internal protocol documentation for AMs and CS. Terronia Cocktail Bar (2 breaches in 5 days, new venue) makes this an onboarding-stage risk as well.
+**3. T004 — Group cascade churn: Gogyo adds to pattern**
+- **Theme tag**: T004
+- **Heat**: 🟡 MEDIUM
+- **Lifecycle**: RISING (W2 — 2nd distinct group affected)
+- **Signal count**: 2 signals / 1 source (Churn)
+- **Problem statement**: When a multi-venue group decides to churn, all venues go simultaneously and AMs have no path to the decision-makers. Gogyo (Surry Hills + Fitzroy) is the second group cascade after Ramen Ippudo (8 venues, W16). The AM's point of contact "hid behind the directors decision and would not include them on any meeting attempts." Group churn amplifies venue loss by 2–8x per event.
+- **Mom Test quality**: STRONG — *"Group churned as they are coming into their busy season and they have also started a two for one promotion on the first Wednesday of every month. My POC hid behind the directors decision and would not include them on any meeting attempts."* (Elliot Rayment, AM)
+- **OKR**: OKR3 (Churn Reduction)
+- **OST branch**: Product fit for enterprise-Groups
+- **Journey stage**: Renewal-churn decision
+- **Recommended action**: **Interview** — Two group cascades in two weeks is a pattern. Interview Elliot Rayment on the Gogyo situation: What warning signs existed before the group decision? When was the last meaningful contact with actual decision-makers? What would have needed to exist in the system to flag this earlier?
 
 ---
 
-**3. Double dipping — customers stacking discounts across platforms or with in-house specials**
-- **Theme tag**: T002
-- **Heat**: HIGH
-- **Signal count**: 5 signals from 2 sources (Slack 4, HubSpot 1 — Pickled Monkey confirmed across both)
-- **Lifecycle**: CHRONIC (4+ weeks)
-- **Problem statement**: Customers are using EatClub deals simultaneously with other discount platforms (First Table) or in-venue specials (happy hour items, weekly specials). Venues absorb the margin loss and blame EatClub. The TA tablet workaround exists but is reactive and requires AM intervention. No systemic prevention. This co-occurs with T003 (POS integration) and T010 (T&C abuse) and is now a confirmed churn driver.
-- **Mom Test quality**: STRONG — Three independent double-dipping incidents in one run. Pickled Monkey Brewing churned explicitly citing double dipping (confirmed via both Slack churn request and HubSpot debt demand). Annata documented a specific First Table + EatClub double dip with receipts. Little Lamb Burpengary BDM setting up TA tablet specifically to prevent churn from double dipping. Thornbury Taphouse churned with "EC customers were using offers on their specials."
-- **Verbatim**: *"She was adamant... She doesn't like eat club customers and she says that they complain a lot. She also mentioned that they had been double dipping."* — Nader Masrour (AM), Slack, re: Pickled Monkey Brewing
-- **Verbatim**: *"They double-dipped by using both First Table and EatClub. I've attached the First Table receipt and the payment details the venue received through EatClub"* — Jasmine Jung (AM), Slack, re: Annata
-- **OKR**: OKR3 (direct churn cause)
-- **OST branch**: Friction in core venue experience
-- **Journey stage**: Ongoing engagement → Renewal-churn decision
-- **Recommended action**: **Discovery ticket** — This is the third consecutive week with churn-confirmed double-dipping. Investigate: (1) cross-platform detection at transaction level (can EC detect when a First Table booking overlaps?), (2) item/category exclusion on Portal (connects to T007 — venues should be able to exclude already-discounted items), (3) scope of Burpengary TA tablet workaround — is it scalable? The T002 + T007 intersection (item exclusion) may be the most efficient single fix.
-
----
-
-**4. Onboarding expectation gap — BDM promises diverging from product reality**
+**4. T009 — Onboarding expectation gap: financial viability misalignment**
 - **Theme tag**: T009
-- **Heat**: MEDIUM
-- **Signal count**: 4 signals across 2 sources (Slack 2, Churn 2)
-- **Lifecycle**: RISING (3 weeks)
-- **Problem statement**: Venues are churning within months because what they were told during sales doesn't match their experience. Common gaps: giveaway/commission structure misunderstanding, refund promises that AMs can't honour, "no perceived value" because venue can't see ROI. The most severe instance this run (Busan Baby) involved a BDM promising offerless transaction refunds that the AM could not confirm, leading to legal threats.
-- **Mom Test quality**: MEDIUM overall, one STRONG signal — Khau Galli churned citing "miscommunication around a giveaway when joining and commission confusion" (secondhand but specific). Khao Thai said "not seeing any difference in income" (specific perceived outcome). Busan Baby is STRONG: BDM Alex explicitly told owner Ginny that EatClub would refund offerless transactions; AM Gabriella could not guarantee this; owner now threatening legal action. OTiS pause request includes specific pricing model misalignment ("Make it cheaper for 1 or do a percentage of sales or a monthly subscription rather than both").
-- **Verbatim**: *"Requested a full refund from the commission and discounts so far after miscommunication around a giveaway when joining and commission confusion"* — Jordana Anderson (unknown team), Slack, re: Khau Galli
-- **OKR**: OKR3 (onboarding journey quality → early churn), OKR1 (AMs cleaning up BDM-set expectations)
-- **OST branch**: Onboarding journey quality
-- **Journey stage**: Onboarding → Activation → Renewal-churn decision
-- **Recommended action**: **Interview** — Need to sharpen: How common is the giveaway/commission misunderstanding? Is this a BDM scripting issue or a structural product complexity issue? Does the Arrows onboarding flow cover commission mechanics? Busan Baby requires immediate management review (see Friction Alerts).
+- **Heat**: 🟡 MEDIUM
+- **Lifecycle**: RISING (W3)
+- **Signal count**: 3 signals / 1 source (Churn)
+- **Problem statement**: Venues sign up expecting revenue uplift but discover that discount costs + commission + monthly fees erode margins they can't afford to lose — especially under rising food and labour costs. This week's churns include Khao Thai ("not seeing any difference in income"), Nurish Cafe ("commission is too high, running at a loss"), and Chaan Thai ("cannot maintain profit margin with even 20% deals"). The common thread: the value proposition wasn't stress-tested against the venue's actual margins during sales.
+- **Mom Test quality**: MEDIUM — Specific financial complaints but framed as opinions about platform economics rather than documented cost analysis. *"With rising operating costs, it has become difficult for us to continue offering additional discounts"* (Khao Thai). *"Venue cannot maintain their profit margin with even 20% deals. They run way too lean. Saved in March but churning again"* (Chaan Thai — repeat churn after prior save attempt).
+- **OKR**: OKR3 (Churn Reduction)
+- **OST branch**: Onboarding journey quality / Surfacing product value through data
+- **Journey stage**: Activation → Renewal-churn decision
+- **Recommended action**: **Watch + Interview** — This is the third consecutive week with margin-mismatch churns. Interview BDMs (Matthew Behan flagged Chaan Thai, Aaron Pantazis flagged Khao Thai) on how margin feasibility is assessed during sales. Is there a pre-sign calculator or margin check?
 
 ---
 
-**5. Debt accumulation triggering churn risk**
-- **Theme tag**: T013
-- **Heat**: MEDIUM
-- **Signal count**: 3 signals across 3 sources (Slack 1, HubSpot 1, Churn 1)
+**5. T001 — Deal score zero venues accumulating (DATA GAP)**
+- **Theme tag**: T001
+- **Heat**: 🔴 HIGH (chronic default — maintained on accumulated evidence)
+- **Signal count**: 0 signals this run / 0 sources
 - **Lifecycle**: CHRONIC (4+ weeks)
-- **Problem statement**: Venues with outstanding balances escalate from silence to active hostility to churn. The debt-and-silence combination (T013 + T012) remains the classic churn predictor. This run adds a new pattern: venues disputing debt by citing customer T&C violations as justification for non-payment (Lulo Spice). When debt and T&C abuse co-occur, the venue feels entitled to withhold payment, and the relationship becomes adversarial.
-- **Mom Test quality**: STRONG — Three distinct venues with specific financial stakes. The Red Chair: "I managed to get the debt paid but haven't been able to reach the owner since to reactivate. I've been chasing this since January." Pickled Monkey (HubSpot): "Do not debt our card as we have stopped using eat club." Lulo Spice: "$160.74 debt, owner dodging BDM calls... said he didn't have to [pay] because customers weren't following T's and C's."
-- **Verbatim**: *"Do not debt our card as we have stopped using eat club"* — Pickled Monkey Brewing venue, HubSpot ticket
-- **OKR**: OKR3 (churn trigger)
-- **OST branch**: Friction in core venue experience
+- **Problem statement**: 397 venues at deal score = 0 as of W16, up from 284 in W15 (+113 in one week). No system alert exists. No new data this run — dealscore collector parsed the CSV but returned zero score changes. The structural risk remains: every score-0 venue is invisible to the churn detection system.
+- **Mom Test quality**: N/A this run (no new signals)
+- **OKR**: OKR3 (Churn Reduction)
+- **OST branch**: Friction in core venue experience / Surfacing product value through data
 - **Journey stage**: Ongoing engagement → Renewal-churn decision
-- **Recommended action**: **Watch** — Monitor for T013 + T010 co-occurrence expanding. The Lulo Spice pattern (T&C abuse → debt refusal → churn) is new and dangerous. If venues learn they can cite T&C violations as grounds for non-payment, debt collection becomes much harder. Prioritise T010 tooling to prevent this pattern from spreading.
+- **Recommended action**: **Escalate (data gap)** — The dealscore collector needs to be checked. Returning 0 signals from a known population of 397+ zero-score venues suggests either a data pipeline issue or the CSV format changed. This theme cannot be properly tracked without working dealscore ingestion.
 
 ---
 
 ### 📋 All signals this week — classified
 
-**Slack (15 signals)**
+**Slack signals (9)**
 
-| Signal summary | Source | Author | Team | Affected | Mom Test | OKR | Theme | OST branch |
+| Signal summary | Source | Author | Author team | Who affected | Mom Test | OKR | Theme | OST branch |
 |---|---|---|---|---|---|---|---|---|
-| Yum Yum Tree + 4 venues: churn/pause batch, loyalty deactivation requested | Slack #churned | Libby Egan | AM | 5 venues (incl. Chopsticks Viet x2, Gill St Deli, Claypot) | STRONG | OKR3 | T012 | Core venue friction |
-| Busan Baby / Seoul Sweetie: owner Ginny threatening legal action, demanding full refund, BDM promised refund AM couldn't confirm, multi-team coordination failure | Slack #churned | Gabriella Szabo | AM | 2 venues | STRONG | OKR3, OKR1 | T009 + T006 + T011 | Onboarding quality |
-| Open Sesame HS: 3 venues planning to stop for 3 months, trying another platform | Slack #cs-and-am | Rose Indicio | Unknown | 3 venues | MEDIUM | OKR3 | T003 (adjacent) | Core venue friction |
-| The Red Chair: debt paid but owner unreachable since January, venue sold, account closed | Slack #churned | Jessie Helyar | Unknown | 1 venue | STRONG | OKR3 | T013 + T012 | Core venue friction |
-| Pickled Monkey Brewing: adamant churn, "doesn't like EC customers," double dipping cited | Slack #churned | Nader Masrour | AM | 1 venue | STRONG | OKR3 | T002 | Core venue friction |
-| Thornbury Taphouse: churn, EC customers using offers on specials, POS integration attempted and failed | Slack #churned | Cameron Landis | Unknown | 1 venue | STRONG | OKR3 | T002 + T003 | Core venue friction |
-| Little Lamb Burpengary: setting up TA tablet to save churn from double dipping | Slack #sales-admin | Mark Savaille | Unknown | 1 venue | STRONG | OKR3 | T002 | Core venue friction |
-| Annata: customer double-dipped First Table + EatClub, receipts provided | Slack #cs-and-am | Jasmine Jung | AM | 1 venue | STRONG | OKR3 | T002 | Core venue friction |
-| Dao Noodle / Eastbourne Alley: auto holiday hours applied for Anzac Day despite venues being open, also happened at Easter | Slack #tech-halp | Mandy Tramer | BDM | 2+ venues | STRONG | OKR2 | T005 | Deal score trust |
-| Le Feu Oasis: repeat T&C offender, no flagging/blocking mechanism, AM asking for process | Slack #cs-and-am | Tania Marinopoulos | AM | 1 venue | STRONG | OKR3, OKR1 | T010 | Core venue friction |
-| Smoky Charcoal Chicken: waive monthly for 3 months due to previous billing issues | Slack #churned | Jai Richards | Unknown | 1 venue | MEDIUM | OKR3 | T011 | Core venue friction |
-| Pleiku in Brunswick: pause requested, customer charged 10% commission outside offer time | Slack #churn-appt | Automated | System | 1 venue | MEDIUM | OKR3 | T011 | Core venue friction |
-| INC-19 resolved: business profile payment rollout sync with DB | Slack #incidents | Incident | System | Platform-wide | HIGH (incident) | OKR2 | Unmapped | Portal engagement |
-| OTiS: pricing model too expensive, discounting existing customers, can't exclude happy hour items | Slack #churn-appt | Automated | System | 1 venue | MEDIUM | OKR2, OKR3 | T007 + T009 | Venue-led revenue / Self-serve |
-| Khau Galli: churn after giveaway miscommunication and commission confusion | Slack #churned | Jordana Anderson | Unknown | 1 venue | MEDIUM | OKR3 | T009 | Onboarding quality |
+| Shiraaz Geelong: transaction not showing, contract transparency complaint, threatening to disable | Slack #cs-and-am | Harold Paet | Unknown team | Venue owner (Qaser Khan) | STRONG | OKR3 | T011 | Friction in core venue experience |
+| Smokin' Joes Pizza: venue sold/closed, confirmed by drive-by | Slack #churned_or_changed | Tom McGay | AM | Venue (closed) | STRONG | OKR3 | Unmapped (involuntary closure) | N/A |
+| Big Belly Burgers: NCI boost request on all daily 25% deals | Slack #churned_or_changed | Aaron Pantazis | AM | AM time + venue config | STRONG | OKR1/OKR2 | T007 | Manual AM task reduction |
+| Pickled Monkey Brewing: disputing charge from last week | Slack #cs-and-am | Harold Paet | Unknown team | Venue owner | MEDIUM | OKR3 | T011 | Friction in core venue experience |
+| Buteko: refund processing confusion, both venue and consumer contacted CS | Slack #cs-and-am | Jai Richards | Unknown team | Venue + Consumer | MEDIUM | OKR3 | T011 | Friction in core venue experience |
+| Cafe Gold Coast: live but offers can't be redeemed | Slack #tech-halp-super-urgent | Mitch Thompson | BDM | New venue (go-live blocked) | MEDIUM | OKR3 | Unmapped (go-live activation bug) | Onboarding journey quality |
+| La Botte Pizza: BDM at venue for GUID onboarding tap | Slack #sales-admin | Karen Sbaiz - Trinidad | Unknown team | Watch list venue | N/A | N/A | N/A (operational) | N/A |
+| Le Feu Oasis: TA enable request after issue fix | Slack #sales-admin | Tania Marinopoulos | AM | AM time + venue config | STRONG | OKR1/OKR2 | T007 | Manual AM task reduction |
+| Wise Guys Pizza: TA enable request, AM on phone with venue | Slack #sales-admin | Aaron Pantazis | AM | AM time + venue (waiting) | STRONG | OKR1/OKR2 | T007 | Manual AM task reduction |
 
-**HubSpot (9 signals)**
+**HubSpot signals (5)**
 
-| Signal summary | Source | Author | Team | Affected | Mom Test | OKR | Theme | OST branch |
+| Signal summary | Source | Author | Author team | Who affected | Mom Test | OKR | Theme | OST branch |
 |---|---|---|---|---|---|---|---|---|
-| Luca Joondalup: tried reaching AM for a week, multiple tickets + text, threatening to close 2 accounts | HubSpot | Venue owner | Venue | 2 accounts | STRONG | OKR1, OKR3 | T006 | System automation |
-| Dachshund Coffee Hunters Hill: closing business | HubSpot | Venue owner | Venue | 1 venue | HIGH (conf.) | OKR3 | Unmapped (closure) | — |
-| Pickled Monkey Brewing: "Do not debt our card as we have stopped using eat club" | HubSpot | Venue owner | Venue | 1 venue | STRONG | OKR3 | T013 | Core venue friction |
-| Volume One Espresso: pause request, "see how we go" | HubSpot | Venue owner | Venue | 1 venue | WEAK | OKR3 | Unmapped | — |
-| Myra's Kitchen: wants to remove EatClub day | HubSpot | Venue owner | Venue | 1 venue | WEAK | OKR3 | Unmapped | — |
-| Gami Chicken Point Cook: AM submitting permanent offer change on behalf of venue | HubSpot | Tania Marinopoulos | AM | 1 venue | STRONG | OKR1 | T007 | AM task reduction |
-| Gami Chicken Carnegie: identical AM-submitted offer change | HubSpot | Tania Marinopoulos | AM | 1 venue | STRONG | OKR1 | T007 | AM task reduction |
-| Caffe Primo Firle: venue wants offer changed from 25% to 20% | HubSpot | Elodie Fitzsimmons | Unknown | 1 venue | MEDIUM | OKR2 | T007 | Venue self-serve |
-| Madame Trang: venue wants offer update + first-time customer limit (not available on Portal) | HubSpot | Venue owner | Venue | 1 venue | STRONG | OKR2 | T007 | Venue self-serve |
+| La Botte: new deal, completed product testing + demos | HubSpot | Prudence Madigan | BDM | Watch list venue (positive) | N/A | N/A | N/A (expansion) | N/A |
+| Unknown venue: full account close process executed | HubSpot | Fernando Magistrado | Unknown team | Churned venue | MEDIUM | OKR3 | Unmapped | N/A |
+| MoonChild Bistro: reignition, completed demos | HubSpot | Tania Marinopoulos | AM | Reactivation | N/A | N/A | N/A (positive) | N/A |
+| Unknown venue: re-enabled after month in pause | HubSpot | Liel Cohen | Unknown team | Paused venue | LOW | N/A | N/A (positive) | N/A |
+| Consumer: $230.55 refund request — venue overcharged + unauthorized $25.10 tip | HubSpot | Unknown | Unknown team | Consumer + venue | MEDIUM | OKR3 | T011 / T010 | Friction in core venue experience |
 
-**Churn (21 signals — 12 controllable, 9 venue closures/sales)**
+**Churn signals (21)**
 
-| Signal summary | Source | Author | Team | Affected | Mom Test | OKR | Theme | OST branch |
+| Signal summary | Source | Author | Author team | Who affected | Mom Test | OKR | Theme | OST branch |
 |---|---|---|---|---|---|---|---|---|
-| Mr Ramen San Nova: $65.63 refund not received, demanding bank details removal, pulling Nova venue too | Churn | Jessie Helyar | Unknown | 2 venues (group) | STRONG | OKR3 | T011 | Core venue friction |
-| Zircon: early churn, "numbers not making money," AOV $110, 41 customers in ~1 month | Churn | Cameron Landis / Kane Russell | Unknown / AM | 1 venue | STRONG | OKR1 | T007 | Value through data |
-| M Yong Tofu: on offerless, wants to be on without it, can't opt out | Churn | Aaron Pantazis | AM | 1 venue | MEDIUM | OKR3 | T007 | Self-serve capability |
-| Khao Thai Little Bay: "not seeing any difference in income," rising costs | Churn | Aaron Pantazis | AM | 1 venue | STRONG | OKR3 | T009 | Value through data |
-| Chaan Thai: "cannot maintain profit margin with even 20% deals," saved March, churning again | Churn | Matthew Behan | BDM | 1 venue | STRONG | OKR1 | T007 | Self-serve capability |
-| Lulo Spice: $160 debt, customers outside arrival times, wants 5-10% offers, citing T&C as non-payment justification | Churn | Cameron Landis / Nancy Tandual | Unknown / Unknown | 1 venue | STRONG | OKR3 | T010 + T013 | Core venue friction |
-| Gogyo Surry Hills: group churn, busy season, running own promos, POC hiding behind directors | Churn | Elliot Rayment | AM | 1 venue (group) | STRONG | OKR3 | T004 | Enterprise/Groups |
-| Gogyo Fitzroy: same group churn | Churn | Elliot Rayment | AM | 1 venue (group) | STRONG | OKR3 | T004 | Enterprise/Groups |
-| Baba Ganouj: "I didn't like it" × 4 notes, early churn | Churn | Matthew Behan | BDM | 1 venue | WEAK | OKR3 | T009 | Onboarding quality |
-| My Place: early churn, financial, referred to BDM Otis | Churn | Gabriella Szabo | AM | 1 venue | WEAK | OKR1 | T007 | Value through data |
-| Nurish Cafe: "commission too high, everything very expensive now," running at a loss | Churn | Brianna Quinn / Kane Russell | Unknown / AM | 1 venue | MEDIUM | OKR3 | T009 (adjacent) | Value through data |
-| Melrose: no details, trying to reach out | Churn | Sam McKenzie | AM | 1 venue | WEAK | OKR3 | Unmapped | — |
-| **9 venue closures/sales**: Monsoon Palace (sold), Di Francesco Cucina (closed), NC's Chaat (closed), Rascals Deli (closed), Pot au Pho (closed), Mr Toast (sold, couldn't convert), San Churro (sold to HO), Sideshow Burgers (ownership change, re-signing), The Lil Hut (sold) | Churn | Various | Various | 9 venues | HIGH (conf.) | OKR3 | Unmapped (uncontrollable) | — |
+| Mr Ramen San Nova: refund not processed, cancelling both venues, demanding bank details removed | Churn | Jessie Helyar | Unknown team | 2 venues (Mid City + Nova) | STRONG | OKR3 | T011 | Friction in core venue experience |
+| Zircon Restaurant: early churn, "numbers not working", AOV $110, 41 customers | Churn | Kane Russell / Cameron Landis | AM / Unknown | Venue owner (Asanka) | MEDIUM | OKR3 | T009 | Onboarding journey quality |
+| Monsoon Palace: venue sold to Chedda Boy, couldn't convert new owner | Churn | Nader Masrour | AM | Venue (sold) | STRONG | OKR3 | Unmapped (involuntary) | N/A |
+| M Yong Tofu: offerless model unsustainable, wants lower than 20% deals | Churn | Aaron Pantazis | AM | Venue owner | MEDIUM | OKR3 | T009 | Surfacing product value |
+| Di Francesco Cucina: venue closed | Churn | Tom McGay | AM | Venue (closed) | STRONG | OKR3 | Unmapped (involuntary) | N/A |
+| Khao Thai Little Bay: rising costs, not seeing income difference, offered offerless but refused | Churn | Aaron Pantazis | AM | Venue owner | MEDIUM | OKR3 | T009 | Onboarding journey quality |
+| NC's Chaat and Dosa House: venue closed, owner returned to IT | Churn | Cameron Landis | Unknown team | Venue (closed) | STRONG | OKR3 | Unmapped (involuntary) | N/A |
+| Rascals Deli: permanently closed on Google, owner unreachable since March | Churn | Gabriella Szabo | AM | Venue (closed) | STRONG | OKR3 | Unmapped (involuntary) | N/A |
+| Chaan Thai: can't maintain profit margin even at 20%, saved in March but churning again | Churn | Matthew Behan | BDM | Venue owner | STRONG | OKR3 | T009 | Onboarding journey quality |
+| Lulo Spice & Bar: $160.74 debt, T&C abuse (arrival times), re-sign → pause → blacklist | Churn | Cameron Landis / Nancy Tandual | Unknown team | Venue + AM | STRONG | OKR3 | T010 + T013 | Friction in core venue experience |
+| Gogyo Surry Hills: group churn, too full, POC blocked director access | Churn | Elliot Rayment | AM | 2+ venue group | STRONG | OKR3 | T004 | Product fit for enterprise-Groups |
+| Baba Ganouj: "I didn't like it", early churn, missing transactions | Churn | Matthew Behan | BDM | Venue owner (Sally) | WEAK | OKR3 | Unmapped (early churn, vague) | Onboarding journey quality |
+| Melrose Restaurant: "missing features", no details, trying to reach out | Churn | Sam McKenzie | AM | Venue owner | WEAK | OKR3 | Unmapped (vague) | Product experience |
+| San Churro Southbank: venue sold back to HO, new owners incoming | Churn | Matthew Behan | BDM | Venue (sold) | STRONG | OKR3 | Unmapped (involuntary) | N/A |
+| Gogyo Fitzroy: group churn (same group as Surry Hills) | Churn | Elliot Rayment | AM | 2+ venue group | STRONG | OKR3 | T004 | Product fit for enterprise-Groups |
+| Pot au Pho Bar Mornington: closed indefinitely, may sell or close | Churn | Tania Marinopoulos | AM | Venue (closed) | STRONG | OKR3 | Unmapped (involuntary) | N/A |
+| Mr Toast: sold, new owner rejected EC + all third parties | Churn | Brianna Quinn | Unknown team | Venue (sold) | STRONG | OKR3 | Unmapped (involuntary) | N/A |
+| Sideshow Burgers Rosanna: ownership change, re-signing with new contract | Churn | Elodie Fitzsimmons | Unknown team | Technical churn (re-sign) | STRONG | N/A | Unmapped (positive churn/re-sign) | N/A |
+| The Lil Hut Bardwell Park: sold, no referral interest | Churn | Unknown | Unknown team | Venue (sold) | MEDIUM | OKR3 | Unmapped (involuntary) | N/A |
+| My Place: called to cancel, BDM (Otis) attempting save | Churn | Gabriella Szabo | AM | Venue owner (Izi) | WEAK | OKR3 | Unmapped (vague early churn) | N/A |
+| Nurish Cafe Bondi Junction: fees too high, running at loss, closing down | Churn | Kane Russell / Brianna Quinn | AM / Unknown | Venue owner | MEDIUM | OKR3 | T009 | Onboarding journey quality |
 
-**Mixpanel (4 notable + 96 engagement telemetry)**
+**Mixpanel — aggregate summary (not individually tabled)**
 
-| Signal summary | Source | Author | Team | Affected | Mom Test | OKR | Theme | OST branch |
-|---|---|---|---|---|---|---|---|---|
-| Yum Yum Tree (7831FFCB): 1 session, 0 edits, 3 offers views — minimal engagement from churning venue | Mixpanel | — | — | 1 venue (watch list) | STRONG (behav.) | OKR2 | T012 | Portal engagement |
-| Bulk edit pattern: 28 offer edits in 1 session (restID E3E5F488) — AM editing on behalf of venue | Mixpanel | — | — | 1 venue + AM | STRONG (behav.) | OKR1 | T007 | AM task reduction |
-| Bulk edit pattern: 24 offer edits in 1 session (restID 6E2C2CF4) | Mixpanel | — | — | 1 venue + AM | STRONG (behav.) | OKR1 | T007 | AM task reduction |
-| Bulk edit pattern: 21 offer edits in 1 session (restID 6B7CCCDA) | Mixpanel | — | — | 1 venue + AM | STRONG (behav.) | OKR1 | T007 | AM task reduction |
-| **96 additional Portal engagement signals**: 885 unique venues active, median 6-8 offer edits per engaged venue. Performance tab usage remains very low (majority = 0 clicks). Positive OKR2 signal overall. | Mixpanel | — | — | 885 venues | — | OKR2 | — | Portal engagement |
+153 unique venues engaged with Partner Portal. Top-line:
+- 15 venues with 3+ offer edits (active deal managers)
+- ~52 venues made at least 1 offer edit
+- ~23 venues clicked Performance tab (only 15% of engaged venues)
+- 1 venue made 7 performance tab clicks with 0 offer edits (data-exploration-only session)
+- 0 watch list hits
+- Dominant pattern: venues come to edit offers, not to review performance data. Performance tab engagement remains strikingly low relative to offers engagement. This is the OKR2 gap in quantified form.
 
 ---
 
@@ -158,119 +144,104 @@
 
 **OKR 1 — Scale AM Optimisation**
 
-| Branch | This run | Direction |
-|---|---|---|
-| **Manual AM task reduction** | STRENGTHENED. 3 Mixpanel bulk-edit patterns (21–28 edits/session) quantitatively prove AMs are doing venue config work through Portal. Gami x2 HubSpot tickets show the same AM (Tania) submitting identical offer structures across multiple venues — template work that should be automated. 8+ manual config requests in Slack coverage notes (NCI, RCI, seat times, party size). Busan Baby showed 3 internal staff touching one churn case without coordination — time multiplied by disorganisation. | ▲ |
-| **Venue self-serve capability** | STRENGTHENED. Madame Trang owner explicitly asked for first-time-customer offer limit — a feature not available in Portal. OTiS requested item exclusion ("I can't exclude items so people can use it on heavily discounted happy hour items"). Caffe Primo wants to change discount from 25% to 20% — a simple operation requiring AM intermediation. Gap between what Portal can do and what venues need to do independently is widening as venue sophistication increases. | ▲ |
-| **System automation** | WEAKENED. Luca Joondalup went a full week with no AM response across multiple tickets — no escalation triggered. Busan Baby had 3+ internal parties acting on the same case without the assigned AM's knowledge — no single-owner routing. T005 holiday hours auto-applied incorrectly with no venue notification or override mechanism. Each of these is a missing workflow. | ▼ |
+| Branch | Status |
+|---|---|
+| **Manual AM task reduction** | STRENGTHENED. 3 manual config requests in 1.75 hours (NCI boost, TA enable x2). Aaron Pantazis alone submitted 2. Extrapolated across a full day and 23 AMs, this is the most volume-dense automation opportunity. |
+| **Venue self-serve capability** | STRENGTHENED. The Mixpanel data shows venues *are* using Partner Portal for offers (52+ venues edited offers today). But they can't do NCI boost, TA enable, or other config changes there — they must go through AM → ops channel. The portal is half-built for self-serve. |
+| **System automation** | NO CHANGE. No new signals on automated alerting, OOO routing, or proactive system actions this run. T006 (AM vacation coverage gap) had no new evidence. |
 
 **OKR 2 — Drive Deal Performance Through System-Led Actions**
 
-| Branch | This run | Direction |
-|---|---|---|
-| **Partner Portal engagement** | POSITIVE. 885 unique venues engaged in 3 days across 4,158 events. Offer edit activity is healthy — top venues making 15-19 edits per session. This suggests a meaningful cohort of self-serve venues is emerging. Portal is being used. | ▲ |
-| **Venue-led revenue actions** | WEAKENED by T007 constraints. Venues want to take more sophisticated actions (time-slot-specific offers, first-time customer limits, item exclusions) but Portal doesn't support them. Demand for self-serve is outpacing capability. Additionally, OTiS feedback — "It isn't bringing people in so much as giving discounts to people who already come here" — challenges the core value proposition for some venue types. | ▼ |
-| **Deal score visibility and trust** | NO MOVEMENT. Deal score collector returned zero signals. T001 (397 zero-score venues W16) not validated. No AM or venue discussion of deal score in any channel. Performance tab clicks remain very low in Mixpanel (most venues = 0). Venues are managing deals but not understanding their impact. | — |
+| Branch | Status |
+|---|---|
+| **Partner Portal engagement** | STRENGTHENED with nuance. 153 venues active in one day is a positive baseline. But only 15% clicked Performance tab — venues manage offers but don't explore revenue data. The one venue with 7 performance clicks and 0 edits is interesting: they looked at data extensively but didn't take action. Why? |
+| **Venue-led revenue actions** | WEAKENED. Venues are editing offers (good) but not being guided to revenue-driving actions. The 3 Slack config requests (T007) show that some revenue actions (NCI boost, TA enable) still require AM intervention — venues can't self-serve into higher performance. |
+| **Deal score visibility and trust** | NO CHANGE (data gap). Dealscore collector returned 0 signals. Cannot assess. |
 
 **OKR 3 — Churn Reduction**
 
-| Branch | This run | Direction |
-|---|---|---|
-| **Friction in core venue experience** | STRENGTHENED (negatively). T002 (double dipping), T010 (T&C abuse), and T013 (debt) all produced confirmed churn signals this run. New pattern identified: T010 + T013 co-occurrence at Lulo Spice where venue cited T&C violations as justification for non-payment of debt. 21 churns in 3 days (12 controllable) is elevated. | ▲▲ |
-| **Product fit for enterprise-Groups** | NEW EVIDENCE. Gogyo group (2 venues, Surry Hills + Fitzroy) churned — second group cascade after Ramen Ippudo. AM Elliot Rayment: "My POC hid behind the directors decision and would not include them on any meeting attempts." EatClub has no group-level relationship management tool. POC gatekeeping is a structural vulnerability. Mr Ramen San also pulling Nova venue after billing dispute at Mid City — single-owner multi-venue cascade emerging as pattern. | ▲ |
-| **Onboarding journey quality** | STRENGTHENED (negatively). Khau Galli (giveaway miscommunication), OTiS (pricing model surprise), Busan Baby (BDM promise that AM couldn't honour). The discount-applies-to-total-bill and giveaway mechanics are the most common specific misalignments. BDM-to-AM handoff is where expectations diverge most. | ▲ |
-| **Surfacing product value through data** | WEAKENED. Khao Thai: "not seeing any difference in income." M Yong Tofu: cancelled because couldn't see value in offerless. Zircon: "numbers weren't making money." Performance tab underutilised per Mixpanel. Venues that churn for "financial" reasons may be failing to see ROI that actually exists — but the platform isn't showing it to them. | ▼ |
+| Branch | Status |
+|---|---|
+| **Friction in core venue experience** | STRENGTHENED (negative). T011 billing disputes are the dominant friction signal: 5 instances across 3 sources, 1 confirmed churn with group contagion (Mr Ramen San losing both venues). Lulo Spice adds T&C abuse + debt. |
+| **Product fit for enterprise-Groups** | STRENGTHENED (negative). Gogyo is the 2nd group cascade in 2 weeks (after Ramen Ippudo). Pattern is clear: AMs can't access group-level decision-makers; when the decision is made, it's final and affects all venues simultaneously. |
+| **Onboarding journey quality** | STRENGTHENED (negative). 3 margin-mismatch churns (Khao Thai, Nurish Cafe, Chaan Thai) + early churns (Zircon, Baba Ganouj, My Place). Venues sign without understanding the economics. Chaan Thai was "saved in March but churning again" — save didn't address root cause. |
+| **Surfacing product value through data** | WEAKENED. Mixpanel shows 85% of portal-engaged venues ignore Performance tab. If venues can't see or understand their EatClub-driven revenue, they default to "I'm not seeing a difference" (Khao Thai) or "numbers aren't working" (Zircon). |
 
 ---
 
 ### ⚠️ Friction stack watch
 
-**1. Busan Baby / Seoul Sweetie** ⚠️ IMMEDIATE ESCALATION TO LUKE
-- **restIDs**: DFD83978-6FCA-445A-97A4-72FA6F8FFA8D / 666D8C05-21AA-4BF7-A9E4-A0A86A8AD2E5
-- **Signals**: T009 (BDM promised refund on offerless transactions) + T006 (AM not informed of other staff involvement) + T011 (full refund demanded on all offerless since 1 April) + legal threat
-- **Sources**: Slack (Gabriella Szabo)
-- **Journey stages**: Onboarding → Activation → Renewal-churn decision (full stack)
-- **Analysis**: This is the most dangerous signal this run. Owner Ginny is threatening legal action. Three internal parties (BDM Alex, Mandy Tramer, Jay Franklin) touched this case without the assigned AM (Gabriella) knowing. The BDM told the owner EatClub would refund offerless transactions — a commitment the AM couldn't confirm. Owner says "she can't get a straight answer from anyone" and calls EC "fraudulent and liars." This is a process failure, not a venue failure. Requires immediate senior intervention. Recommend Pan or Luke call Ginny directly.
+**1. Mr Ramen San — Mid City + The Nova (Little Bourke St)**
+- **restID**: 51077CCA-E630-4551-BB38-1CED8858F7F9 (Nova); Mid City restID unknown
+- **Signals**: Churn (confirmed) — $65.63 refund not processed → proof of payment never sent → trust destroyed → both venues cancelled → demanding bank details removed
+- **Journey stages**: Ongoing engagement (billing dispute) → Renewal-churn decision (group contagion)
+- **Friction stack**: Refund processing failure (T011) → AM/CS communication gap → escalation to Emma (leadership) → still unresolved weeks later → sibling venue pulled into churn
+- **Analysis**: This is the textbook friction cascade. A $65.63 problem became a 2-venue loss. The refund was apparently made but proof was never sent to the venue until very late ("Emma emailed the receipt today; waiting on response"). The delay between refund and confirmation destroyed trust. Even after escalation to a senior role, the venue had to ask multiple times. The Nova may still be saveable if proof arrives quickly — Royston "will consider reactivating" if refunds confirmed.
+- ⚠️ **FLAG TO LUKE**: Active save opportunity on Nova if refund receipt is confirmed. Time-sensitive.
 
-**2. Pickled Monkey Brewing** ⚠️ CONFIRMED CHURN
-- **restID**: 628911A8-F348-4958-BD7A-8915B7FB3D14
-- **Signals**: T002 (double dipping cited in churn call) + T013 (HubSpot: "Do not debt our card")
-- **Sources**: Slack (Nader Masrour) + HubSpot (venue owner)
-- **Journey stages**: Ongoing engagement → Renewal-churn decision
-- **Analysis**: Two-source confirmation. Venue owner was adamant on call — "waste of time" to meet in person. Double dipping was the stated reason. Debt demand arriving via HubSpot suggests outstanding balance. Classic T002 + T013 co-occurrence.
+**2. Shiraaz Geelong Indian Restaurant**
+- **restID**: UNKNOWN — needs lookup
+- **Signals**: Slack #cs-and-am — transaction not showing on venue's end + contract transparency complaint → threatening to disable
+- **Journey stages**: Ongoing engagement (transaction discrepancy) → Renewal-churn decision (disable threat)
+- **Friction stack**: Missing transaction visibility (T011) → venue feels contract terms aren't transparent → QC'd (paused?) pending AM call
+- **Analysis**: Harold Paet (CS) routed to an AM but the venue owner (Qaser Khan) is already at disable-threat stage. This mirrors the early stage of Mr Ramen San: a billing discrepancy that, if unresolved, compounds into churn. Needs immediate AM callback.
+- ⚠️ **FLAG TO LUKE**: New churn risk — needs AM assignment and same-day callback.
 
-**3. Yum Yum Tree Victoria Park** — escalated from WATCH to CRITICAL
-- **restID**: 7831FFCB-CFC7-4B48-A98B-564D4B4E29E2
-- **Signals**: T012 (in churn/pause batch) + Mixpanel (1 session, 0 edits, 3 offers views — looking but not acting)
-- **Sources**: Slack (Libby Egan) + Mixpanel
-- **Journey stages**: Ongoing engagement → Renewal-churn decision
-- **Analysis**: Prior-week note: "No one bothered to call me" (AM non-responsive complaint). Now in Libby's churn/pause batch. Mixpanel shows the venue logged in and viewed offers tab 3 times but made no edits — possible "last look" before disengaging. Friction stack: T012 (silence) + T006 (AM non-response) + now churn.
-
-**4. Mr Ramen San (Mid City + The Nova)**
-- **restIDs**: 51077CCA-E630-4551-BB38-1CED8858F7F9 (Nova), Mid City (unknown restID)
-- **Signals**: T011 ($65.63 refund not received, demanding bank details removal) + cascade to 2nd venue
-- **Sources**: Churn (Jessie Helyar)
-- **Journey stages**: Ongoing engagement → Renewal-churn decision
-- **Analysis**: Billing dispute at Mid City has now caused churn at Nova. Owner Royston "still wants proof we paid the refund." This is a T004-adjacent pattern — single owner pulling multiple venues due to unresolved issue at one. Emma (senior) emailed receipt, waiting on response. If Nova is lost, this becomes a 2-venue cascade from a single $65.63 billing error.
-
-**5. Thornbury Taphouse** — CONFIRMED CHURN
-- **restID**: E69B286F-99D3-41CD-A93C-EBE8839EF373
-- **Signals**: T002 (offers on specials) + T003 (POS integration attempted, owner dragged feet) + refund demand
-- **Sources**: Slack (Cameron Landis)
-- **Journey stages**: Ongoing engagement → Renewal-churn decision
-- **Analysis**: T002 + T003 co-occurrence confirmed for the second time (after Life of Chi W16). Venue tried POS integration but owner didn't follow through, then demanded refund for all redeemed offers on specials. The item exclusion gap (T007) would have prevented this — if the venue could exclude specials from EC offers, the double-stacking wouldn't occur.
-
-**6. Lulo Spice & Bar** — CONFIRMED CHURN
+**3. Lulo Spice & Bar**
 - **restID**: C2E82FF1-730F-4921-A6BE-26B963856D69
-- **Signals**: T010 (customers outside arrival times) + T013 ($160.74 debt, refusing to pay, citing T&C violations)
-- **Sources**: Churn (Cameron Landis)
-- **Journey stages**: Ongoing engagement → Renewal-churn decision
-- **Analysis**: New dangerous pattern: venue using T&C abuse incidents as justification for non-payment. "He said he didn't have to pay because customers weren't following T's and C's." Previously churned in Nov 2025, resigned March, paused 3 weeks later. Account blacklisted. If this logic spreads to other venues with T&C complaints, debt collection becomes systemically harder.
+- **Signals**: Churn (confirmed) — resigned in March → paused 3 weeks later due to $160.74 debt → owner dodging calls → complained about T&C abuse (arrival times) → refused to pay debt → blacklisted
+- **Journey stages**: Activation (re-sign) → Ongoing engagement (T&C abuse, debt accumulation) → Renewal-churn decision (blacklisted)
+- **Friction stack**: Re-sign (T009 — expectations reset?) → T&C abuse frustration (T010) → debt accumulation (T013) → refusal to pay → complete relationship breakdown
+- **Analysis**: Classic 3-layer friction stack. The venue was churned once, re-signed, then hit every friction point in sequence. The owner's position — "he didn't have to pay because customers weren't following T's and C's" — reveals that T&C abuse directly enables debt disputes. T010 and T013 are linked.
 
-**7. Annata** — ACTIVE BUT AT RISK
-- **restID**: 342C2191-4A42-4E46-A5A1-A735B0EA08F0
-- **Signals**: T002 (First Table double dip documented with receipts) + Mixpanel (5 offer edits, 11 offers views — actively engaged)
-- **Sources**: Slack (Jasmine Jung) + Mixpanel
-- **Journey stages**: Ongoing engagement
-- **Analysis**: Interesting tension — this venue is actively managing their offers on Portal (healthy engagement) while simultaneously dealing with cross-platform customer abuse. An engaged venue that could churn if the double-dipping issue isn't resolved. Worth proactive AM outreach.
+**4. Garibaldi Pizzeria (existing watch list — CRITICAL, no new signals)**
+- **restID**: UNKNOWN — needs lookup
+- **Notes**: Still CRITICAL from W15-W16. Angie urgently contacting multiple channels. No signals this run across any source. Silence on a CRITICAL venue is itself a signal.
+- ⚠️ **FLAG TO LUKE**: No activity visible on Garibaldi across Slack, HubSpot, or Churn. If no AM is actively engaged, this is slipping.
+
+**5. The Last Jar (existing watch list — CRITICAL, no new signals)**
+- **restID**: EC9FABAF-1C92-4C45-8C6F-79B836A09D20
+- **Notes**: 4th cancel request from Bryony. No new signals this run. Silence suggests either save attempt in progress off-channel, or venue has been let go.
 
 ---
 
 ### 💡 Synthesis notes
 
 **What surprised me:**
-
-1. **Busan Baby is the worst internal coordination failure I've seen in Crilly's memory.** Three staff touched one churn case — BDM, senior BDM, and a different AM — without the assigned AM knowing. The BDM made a refund commitment the company may not be able to honour. This isn't a product problem, it's a process catastrophe that will repeat without HubSpot ticket ownership enforcement.
-
-2. **The T010 + T013 co-occurrence at Lulo Spice is a new and contagious pattern.** If venues learn they can cite customer misbehaviour as grounds for non-payment, every T&C abuse incident becomes a potential debt refusal. The fix isn't collections — it's T010 tooling (flag/block bad customers) so venues never feel the T&C abuse in the first place.
-
-3. **885 venues active on Portal in 3 days is a genuinely positive OKR2 signal** that risks being drowned out by churn noise. Self-serve IS happening. The problem isn't adoption — it's capability ceiling. Venues are hitting the wall of what Portal lets them do, and the overflow becomes AM workload.
-
-4. **Gogyo is the second group cascade in recent weeks** (after Ramen Ippudo). The pattern is identical: AM can't access decision-makers, POC gatekeeps. EatClub has no group-level account management framework. Two data points don't make a trend, but the structural vulnerability is clear.
-
-5. **Performance tab usage is abysmal.** Across hundreds of engaged venues, most show 0 performance-tab clicks. Venues are managing deals blind — editing offers without understanding impact. This is the biggest untapped lever for OKR2.
+- **48% of this week's churns are involuntary** (venue closed or sold). 10 of 21 churned venues simply ceased to exist — not a product or service failure. This inflates the churn rate in ways that no product intervention can address. If EatClub separated involuntary churn (closure/sale) from voluntary churn (dissatisfaction), the actionable churn rate would drop meaningfully. The Sideshow Burgers signal is encouraging: ownership changed and the new owner is re-signing. There may be an opportunity to systematize new-owner conversion for sold venues.
+- **T011 velocity is alarming.** 3 billing disputes in under 2 hours on Slack, plus a confirmed 2-venue churn from a single unprocessed refund. This is not a new theme — it was migrated from SMS baseline data — but this is the first run where live, high-confidence signals stack up across multiple sources simultaneously. Billing friction appears to be constant background noise that CS and AMs absorb every day.
+- **The churn collector is over-mapping to T007.** Four financial-viability churns (Zircon, Chaan Thai, Lulo Spice, My Place) were mapped to T007 (Partner Portal self-serve gap) by the collector, but their evidence describes margin pressure and economic unsustainability, not self-serve gaps. This inflates T007's churn-linked signal count. I corrected these to T009 and other themes in my analysis. The collector's theme-matching logic should be reviewed.
 
 **What is missing:**
-
-- **Deal score data is a black hole this run.** T001 (397 zero-score venues) cannot be validated. The collector parsed a CSV but found nothing. Either the data source has changed, the file is stale, or the parser is misconfigured. This needs investigation before next run.
-- **Granola absence** means zero qualitative AM-meeting signals. Key context from face-to-face venue conversations is invisible this run.
-- **HubSpot scan was budget-limited** (300 tickets/notes). Watch list venues showed no in-window activity, but they may have tickets outside the sampled range.
-- **Two unmapped signals worth tracking**: (a) Da Vinci order routing failure — order showed "sent" but venue never received it, suggesting a silent drop in the order relay pipeline; (b) Subzilla Deli — venue threatening to cancel because EC customer left a negative Google review that dropped their rating from 4.8 to 4.7. Neither fits existing themes but could be emerging patterns.
+- **Dealscore data is a blind spot.** 397 zero-score venues were identified in W16 and we have no update. The dealscore collector parsed the CSV but returned nothing. Either the input data has changed format, the threshold logic isn't matching, or there genuinely were no changes — but the latter seems unlikely.
+- **Granola silence means we lose AM meeting context.** No meetings this window = no qualitative insight from venue conversations. The quantitative signals (Slack requests, churns) don't tell us what AMs are hearing in calls. Were any of the churn venues flagged in prior AM meetings?
+- **No insight on T005 (deal settings reverting).** This was RISING in W16 with 4 venues affected. Zero signals this run. Either it's been fixed, it's happening off-channel, or the narrow window missed it.
+- **Watch list venues are silent.** 7 of 9 watch list venues produced zero signals across all sources. For CRITICAL venues (Garibaldi, The Last Jar), silence is itself concerning.
 
 **Interview questions to sharpen weakest signals:**
 
-- **T009 (Onboarding expectation gap)**: "Walk me through what you were told about commission and discounts when you signed up. At what point did reality diverge from expectation? Was there a specific moment where you realised the economics weren't what you expected?"
-- **T004 (Group cascade)**: "When the decision was made to leave EatClub, who made it? Was it your decision or a head-office directive? What would have changed your mind? Did you feel your AM had access to the right people?"
-- **OTiS pricing model**: "You mentioned EC gives discounts to people who already come here. How do you currently distinguish between new and returning customers? If EC could target offers only at new customers, would that change your view?"
-- **Performance tab**: "When you log into Partner Portal, do you look at your deal performance? What information would you need to see to decide whether to increase or decrease your offers?"
+For **T004 (Group cascade churn)** — interview Elliot Rayment (AM):
+1. "Walk me through the last 4 weeks with Gogyo. When did you first sense the group was considering leaving?"
+2. "You mentioned the POC hid behind the directors — had you ever had direct contact with the directors? What would you have needed to reach them?"
+3. "If the system had flagged 'multiple venues in this group showing declining deal engagement' 6 weeks ago, what would you have done differently?"
 
-**What would move OKR 1 most?**
+For **T009 (Financial viability churn)** — interview Aaron Pantazis (AM, flagged Khao Thai + M Yong Tofu) and Matthew Behan (BDM, flagged Chaan Thai):
+1. "Chaan Thai was saved in March but churned again. What was the save offer? Why didn't it hold?"
+2. "When a venue says 'the numbers don't work even at 20%', do you have access to their actual margin data? What would help you assess viability before churn?"
+3. "How often do you encounter venues where the BDM's original pitch didn't match the venue's economic reality?"
 
-Build Partner Portal self-serve for the 5 config actions that generate the most manual requests: (1) time-slot-specific offer creation/editing, (2) NCI/RCI boost toggle, (3) guest/party-size limits, (4) item/category exclusion, (5) first-time-customer offer restriction. Mixpanel bulk-edit detection should auto-flag sessions >15 edits and prompt venues for self-serve activation. Conservative estimate: each self-serve action eliminates 10-15 minutes of AM time per occurrence. With 8+ occurrences per week across the team, this is 2+ hours/week recovered immediately, scaling as adoption grows.
+For **T011 (Billing disputes)** — interview Harold Paet (CS, surfaced 2 of 3 Slack billing disputes):
+1. "How many billing dispute tickets do you handle per day on average?"
+2. "When a venue disputes a charge, what's the typical resolution path and how long does it take?"
+3. "In the Shiraaz case, the venue said contract specs and billing processes aren't transparent. What specifically are they confused about?"
 
-**What would move OKR 2 most?**
+**What would move OKR 1 most:**
+Exposing NCI boost, takeaway enable, and offer configuration in Partner Portal self-serve. The T007 signals are precise, repeated, and directly measurable. Three requests in 1.75 hours × projected across a full day × 23 AMs = significant manual hours. This is the most concrete, highest-confidence OKR 1 opportunity in the current signal set.
 
-Two interventions: (1) Make Performance tab the default landing page on Portal login, or add a "How are your deals performing?" banner to the offers tab — most venues never click Performance despite active engagement. (2) Fix T005 (deal settings reverting / holiday hours auto-application) — if venues can't trust their configuration is stable, they won't invest in optimising it. Trust precedes engagement.
+**What would move OKR 2 most:**
+The Mixpanel data reveals the gap: venues use Partner Portal for offer management but almost never engage with performance data (85% skip the Performance tab). Two levers:
+1. Make performance insights unavoidable — surface them in the offers flow rather than gating them behind a separate tab.
+2. Connect performance data to recommended actions ("Your Thursday lunch deals drove 12 extra covers last week — want to extend to Friday?"). The venue with 7 performance clicks and 0 edits is a clue: even when venues look at data, they don't know what action to take.
 
 ---
 
