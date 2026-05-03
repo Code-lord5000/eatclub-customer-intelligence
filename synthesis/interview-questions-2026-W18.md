@@ -1,15 +1,15 @@
-## T009 — Onboarding expectation gap
-- Walk me through what you were told about commission and discounts when you signed up. At what point did reality diverge from expectation?
-- Was there a specific promise made during the sales process that turned out differently? Can you be specific about what was said?
-- If you could change one thing about what you were told before signing, what would it be?
-
 ## T004 — Group cascade churn
-- When the decision was made to leave EatClub, who made it — you or head office?
-- Did your Account Manager have access to the actual decision-maker? If not, what would have helped?
-- Would a group-wide dashboard or single point of contact for all your venues have changed the experience?
+- Walk me through the last 4 weeks with Gogyo. When did you first sense the group was considering leaving?
+- You mentioned the POC hid behind the directors — had you ever had direct contact with the directors? What would you have needed to reach them?
+- If the system had flagged declining deal engagement across multiple venues in this group 6 weeks ago, what would you have done differently?
 
-## Portal Performance tab — venue understanding of ROI
-- When you log into Partner Portal, do you look at your deal performance? Why or why not?
-- What information would help you decide whether to adjust your offers?
-- Do you feel you understand how much revenue EatClub is generating for your venue?
+## T009 — Onboarding expectation gap / financial viability
+- Chaan Thai was saved in March but churned again. What was the save offer and why didn't it hold?
+- When a venue says 'the numbers don't work even at 20%', do you have access to their actual margin data?
+- How often do you encounter venues where the BDM's original pitch didn't match the venue's economic reality?
+
+## T011 — Billing disputes (CS process depth)
+- How many billing dispute tickets do you handle per day on average?
+- When a venue disputes a charge, what's the typical resolution path and how long does it take?
+- In the Shiraaz case, the venue said contract specs and billing processes aren't transparent — what specifically confuses venues?
 
