@@ -54,3 +54,125 @@ Traceback (most recent call last):
               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
   File "<frozen os>", line 679, in __getitem__
 KeyError: 'ANTHROPIC_API_KEY'
+[main dad1389] chore: weekly synthesis 2026-W17
+ 1 file changed, 230 insertions(+), 175 deletions(-)
+fatal: could not read Username for 'https://github.com': Device not configured
+
+🧠 Crilly v2 starting — 2026-04-23 06:00
+
+Running collectors in parallel...
+  Starting slack...
+  Starting granola...
+  Starting hubspot...
+  Starting sms...
+  Starting churn...
+  Starting dealscore...
+  Starting mixpanel...
+  mixpanel done (2171 chars)
+  granola done (12825 chars)
+  hubspot done (13855 chars)
+  churn done (26596 chars)
+  sms done (2 chars)
+  slack done (73 chars)
+  dealscore done (0 chars)
+
+All collectors complete.
+
+Running orchestrator...
+  Starting orchestrator...
+  orchestrator done (34419 chars)
+
+Orchestrator complete.
+
+Synthesis saved: /Users/adam/PM/customer-repo/synthesis/2026-W17-synthesis.md
+TODO Jira: [OKR 3 (Churn Reduction)] Early churn from broken sign-to-onboard journey
+TODO Jira: [OKR 3 (Churn Reduction)] Billing opacity and settlement shock
+TODO Jira: [OKR 2 (Deal Performance)] Deal configuration confusion prevents venue self-management
+Interview questions saved: /Users/adam/PM/customer-repo/synthesis/interview-questions-2026-W17.md
+TODO Slack DM Luke: Melroad Pizza n Kebab (F5751B8E-2DC1-4B5D-927D-C46EE3FB62CD)
+TODO Slack DM Luke: Wok & Wild (None)
+TODO Slack DM Luke: Himalayan Nepalese Restaurant & Cafe - Victoria Park (None)
+TODO Slack DM Luke: Belles Hot Chicken Circular Quay (None)
+TODO Slack DM Luke: The Famished Wolf Kensington (None)
+TODO Slack DM Luke: Bar Conte Sydney + Bar Conte Surry Hills (None)
+Watch list (9 items):
+  - Manual venue profile population: 133 hrs/month, $200k/yr — figures need primary-source validation before scoping
+  - Group/multi-location churn pattern: C9 (3 locations), Schnitz (2 locations), Bar Conte (2 locations) — no group-level detection or management exists
+  - Ops deal override pattern (Vaishali): frequency unknown — needs quantification before escalation
+  - Holiday hours last-minute process: recurring internal friction but does not directly impact venues yet
+  - Justin's churn radar / deal performance dashboard concept: solution-shaped signal — needs problem decomposition
+  - Liyin Rice Roll Master: considering cancellation but conditional — AM/BDM engagement may save
+  - Churn notes data quality: 40% of records are empty or useless — structural process gap in offboarding
+  - Freckle (Angela Ho's BDM scraper): actively being built — watch for whether it ships or stalls
+  - Sam's time-of-day blended pricing concept: specific product hypothesis — watch for whether it enters backlog
+
+✅ Crilly run complete.
+
+[main edef414] chore: weekly synthesis 2026-W19
+ 2 files changed, 302 insertions(+), 12 deletions(-)
+ create mode 100644 synthesis/2026-W19-synthesis.md
+fatal: could not read Username for 'https://github.com': Device not configured
+
+🧠 Crilly v2 starting — 2026-05-04 06:00
+
+📋 Loading run context...
+   last_run_at: 2026-04-30T03:54:43.986819Z
+   themes: 7 loaded (T001, T002, T003, T004, T005, T006, T007)
+   watch_list: 9 venues
+   staff_directory: 23 AMs, 43 BDMs
+
+📞 Running Granola pre-check...
+   5 meetings in window, 1 customer-facing
+
+🤖 Running 3 agent collectors in parallel...
+  Starting slack...
+  Starting hubspot...
+  Starting granola...
+  granola done (822 chars)
+  hubspot done (4275 chars)
+  slack done (15959 chars)
+
+📊 Running Python readers (dealscore, churn, mixpanel)...
+   ✓ dealscore
+   ✓ churn
+   ✓ mixpanel
+
+All collectors complete.
+
+🚦 Pulling in-flight Jira tickets for suppression...
+   ⚠️  Jira fetch failed: curl: (3) bad range in URL position 138:
+https://eatclubapp.atlassian.net/rest/api/3/search?jql=project = "IDEA" AND status in ("In Progress", "In Validation") AND "Product Lane[Dropdown]" = "Restaura
+Running orchestrator...
+  Starting orchestrator...
+  orchestrator done (40345 chars)
+
+Orchestrator complete.
+
+Synthesis saved: /Users/adam/PM/customer-repo/synthesis/2026-W19-synthesis.md
+TODO Jira: [OKR1] Venues cannot self-serve basic configuration — AMs absorb every change
+TODO Jira: [OKR3] Venues don't believe EatClub is worth the cost — and can't see their own ROI
+TODO Jira: [OKR3] Customer abuse eroding venue trust — now weaponised to justify non-payment
+TODO Jira: [OKR3] Group/franchise venues churn in cascades — no product layer to detect or prevent
+TODO Jira: [OKR3] Debt + silence = predictable churn with no automated detection
+TODO Slack DM Luke: Yum Yum Tree Victoria Park (7831FFCB-CFC7-4B48-A98B-564D4B4E29E2)
+TODO Slack DM Luke: Honki Tonki - Hindley Street (52C271EE-7E18-41E3-876E-C0D6FA4CF0C3)
+TODO Slack DM Luke: La Botte Pizza - Pascoe Vale (DB6BD926-E4E9-4884-919A-725DD772E9BC)
+Watch list (12 items):
+  - Garibaldi Pizzeria — CRITICAL, no signals, silence unresolved since W15
+  - The Last Jar (EC9FABAF) — CRITICAL, 4th cancel attempt, no signals this window
+  - Masala Flames (6A3A7879) — ESCALATING, iOS bug 5+ months, no engineering owner assigned
+  - Lumen Alley (B0A4E510) — ESCALATING, deal revert recurrence, no signals this window
+  - Alexander Mediterranean (7D4929E5) — $266 debt + 14-day silence, no movement
+  - Everest MoMo Station (D82CAAD0) — $148.08 dispute, March cancel email not actioned
+  - Delhi Darbar (B6D9E9C6) — billing bug (membershipBillingDay 0) + pause request
+  - The Terrace Thai — wants to permanently disable dine-in, reason unclear, needs AM outreach
+  - KiKi Pan Asian (4DD124BA) — threatened churn over Earn, needs follow-up
+  - Bodrum Essendon (A83A40BB) — deleting Sunday offers, reason 'other', monitor
+  - T001 lifecycle — recommend move to FADING, zero strong signals this window
+  - REST-406 — recurring platform error flagged by eng, no venue impact data, needs triage
+
+✅ All sessions completed successfully.
+
+
+✅ Crilly run complete.
+
