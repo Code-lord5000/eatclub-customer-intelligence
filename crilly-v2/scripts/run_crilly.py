@@ -526,55 +526,6 @@ def handle_routing(output):
             print(f"  - {item}")
 
 
-if __name__ == "__main__":
-    print(f"\n🧠 Crilly v2 starting — {datetime.now().strftime('%Y-%m-%d %H:%M')}\n")
-
-    # Load context once at top level — passed to orchestrator after collectors run
-    themes, watch_list, staff_directory = _load_run_context()
-
-    signals = run_collectors()
-    print("\nAll collectors complete.\n")
-
-    print("🚦 Pulling in-flight Jira tickets for suppression...")
-    suppression_list = _get_jira_in_flight()
-    signals["_jira_suppression"] = json.dumps(suppression_list)
-
-    output = run_orchestrator(signals, themes, watch_list, staff_directory)
-    print("\nOrchestrator complete.\n")
-
-    # Save full output including routing block
-    save_full_output(output)
-
-    # Save synthesis doc
-    save_synthesis(output)
-
-    # Parse routing and update memory.json
-    print("\n📝 Updating memory.json...")
-    routing = handle_routing(output)
-    _update_memory(routing, output)
-
-    # Commit everything in one shot
-    week = datetime.now().isocalendar()[0].__str__() + "-W" + str(datetime.now().isocalendar()[1]).zfill(2)
-    os.system(
-        f'cd ~/PM/customer-repo && '
-        f'git add synthesis/ crilly-v2/memory.json crilly-v2/logs/ && '
-        f'git commit -m "chore: weekly synthesis {week} + memory update" && '
-        f'git push origin main'
-    )
-
-    _save_state_file()
-
-    # Loud failure summary
-    if SESSION_FAILURES:
-        print("\n⚠️  SESSION FAILURES THIS RUN:")
-        for f in SESSION_FAILURES:
-            print(f"  - {f['agent']}: {f['reason']}")
-            print(f"    {f['detail'][:200]}")
-        print()
-    else:
-        print("\n✅ All sessions completed successfully.\n")
-
-    print("\n✅ Crilly run complete.\n")
 def save_full_output(output):
     """Save complete orchestrator output including routing block to logs/."""
     week = datetime.now().isocalendar()[0].__str__() + "-W" + str(datetime.now().isocalendar()[1]).zfill(2)
@@ -666,3 +617,53 @@ def replay_from_last_output():
         f'git push origin main'
     )
     print("\n✅ Replay complete.\n")
+
+if __name__ == "__main__":
+    print(f"\n🧠 Crilly v2 starting — {datetime.now().strftime('%Y-%m-%d %H:%M')}\n")
+
+    # Load context once at top level — passed to orchestrator after collectors run
+    themes, watch_list, staff_directory = _load_run_context()
+
+    signals = run_collectors()
+    print("\nAll collectors complete.\n")
+
+    print("🚦 Pulling in-flight Jira tickets for suppression...")
+    suppression_list = _get_jira_in_flight()
+    signals["_jira_suppression"] = json.dumps(suppression_list)
+
+    output = run_orchestrator(signals, themes, watch_list, staff_directory)
+    print("\nOrchestrator complete.\n")
+
+    # Save full output including routing block
+    save_full_output(output)
+
+    # Save synthesis doc
+    save_synthesis(output)
+
+    # Parse routing and update memory.json
+    print("\n📝 Updating memory.json...")
+    routing = handle_routing(output)
+    _update_memory(routing, output)
+
+    # Commit everything in one shot
+    week = datetime.now().isocalendar()[0].__str__() + "-W" + str(datetime.now().isocalendar()[1]).zfill(2)
+    os.system(
+        f'cd ~/PM/customer-repo && '
+        f'git add synthesis/ crilly-v2/memory.json crilly-v2/logs/ && '
+        f'git commit -m "chore: weekly synthesis {week} + memory update" && '
+        f'git push origin main'
+    )
+
+    _save_state_file()
+
+    # Loud failure summary
+    if SESSION_FAILURES:
+        print("\n⚠️  SESSION FAILURES THIS RUN:")
+        for f in SESSION_FAILURES:
+            print(f"  - {f['agent']}: {f['reason']}")
+            print(f"    {f['detail'][:200]}")
+        print()
+    else:
+        print("\n✅ All sessions completed successfully.\n")
+
+    print("\n✅ Crilly run complete.\n")
